@@ -1125,35 +1125,45 @@ h1 {
     margin-top: 10px; } }
 
 #wrap-container-my-gifts {
-  padding: 70px 0px;
+  padding: 50px 0px;
   background-color: #4ad0e4; }
 
 #wrap-container-my-gifts .item-search {
-  width: 80%;
+  width: 77%;
   margin: 0px auto; }
 
 #container-my-gifts {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  padding: 20px 100px; }
+  padding: 20px 100px 0px 100px; }
 
 .item-my-gifts {
   background-color: #fff;
-  width: 40%;
+  width: 36%;
   margin: 0px auto;
   margin-top: 20px;
   margin-bottom: 40px;
   display: flex;
   overflow-wrap: break-word;
-  height: 320px;
+  height: 280px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px; }
 
 .item-my-gifts .info-gifts-item {
   font-size: 17px;
-  width: 35%; }
+  width: 35%;
+  position: relative; }
+
+.item-my-gifts .info-gifts-item .text-description {
+  height: 173px;
+  overflow: hidden;
+  margin: 0px; }
+
+.item-my-gifts .info-gifts-item .time-create {
+  position: absolute;
+  bottom: -15px; }
 
 .item-my-gifts .img-item-my-gifts {
   border-radius: 10px;
@@ -1241,7 +1251,7 @@ h1 {
   margin-right: 4px; }
 
 .pagi-btn .pagination li a {
-  background-color: #4ad0e4;
+  background-color: transparent;
   color: #fff; }
 
 .pagi-btn .pagination .page-item .page-link:hover {
@@ -1267,6 +1277,18 @@ h1 {
     padding: 40px 0px; }
   .item-my-gifts {
     height: 220px;
-    width: 45%; }
+    width: 43%; }
   .item-my-gifts .info-gifts-item p {
-    font-size: 16px; } }
+    font-size: 12px; }
+  .item-my-gifts .edit-delete .icon-edit .fa {
+    font-size: 14px;
+    width: 26px;
+    height: 23px;
+    line-height: 23px; }
+  .item-my-gifts .edit-delete .icon-delete .fa {
+    font-size: 14px;
+    width: 26px;
+    height: 23px;
+    line-height: 23px; }
+  .edit-delete {
+    display: flex; } }
