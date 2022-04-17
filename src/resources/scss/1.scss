@@ -4,13 +4,15 @@
     box-sizing: border-box;
 }
 
-a, a:hover {
+a,
+a:hover {
     text-decoration: none;
 }
 
 // ---------------------LOGIN - REGISTER--------------------
-#login, #register {
-    background:black;
+#login,
+#register {
+    background: black;
     width: 100%;
     height: 937px;
     margin: 0px auto;
@@ -25,7 +27,8 @@ a, a:hover {
     left: 37%;
 }
 
-.welcome-login, .welcome-register {
+.welcome-login,
+.welcome-register {
     width: 60%;
     margin: 40px auto;
     text-align: center;
@@ -34,7 +37,8 @@ a, a:hover {
     font-family: 'Montserrat', sans-serif;
 }
 
-.vanlang-login, .vanlang-register {
+.vanlang-login,
+.vanlang-register {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -56,7 +60,8 @@ a, a:hover {
     border-radius: 5px;
 }
 
-.text-login, .text-register {
+.text-login,
+.text-register {
     width: 100%;
     text-align: center;
     color: rgb(0, 0, 0);
@@ -67,7 +72,7 @@ a, a:hover {
 
 .login-wrap .form-group,
 .register-wrap .form-group {
-    margin: 0px auto ;
+    margin: 0px auto;
     width: 100%;
     margin-top: 50px;
     margin-bottom: 30px;
@@ -110,7 +115,7 @@ a, a:hover {
 }
 
 .form-group-register {
-    margin: 0px auto ;
+    margin: 0px auto;
     width: 100%;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -124,7 +129,7 @@ a, a:hover {
     width: 100%;
     height: 40px;
     border-radius: 5px;
-    background: -webkit-linear-gradient(right,#e14c4c,#b10a0a);
+    background: -webkit-linear-gradient(right, #e14c4c, #b10a0a);
     font-family: 'Montserrat', sans-serif;
     border: none;
     font-weight: 600;
@@ -133,15 +138,12 @@ a, a:hover {
 }
 
 .btn-login:hover {
-    background: -webkit-linear-gradient(right,#b10a0a,#e14c4c);
+    background: -webkit-linear-gradient(right, #b10a0a, #e14c4c);
 }
-
-
-
 
 //----
 .user-avatar {
-    width:  28px;
+    width: 28px;
     height: 28px;
     border-radius: 50%;
     margin-right: 4px;
@@ -188,7 +190,7 @@ a, a:hover {
     z-index: 2;
     transition: 0.5s;
 }
-.container-header{
+.container-header {
     background-color: rgb(255, 255, 255);
     height: 60px;
     padding-top: 20px;
@@ -234,30 +236,26 @@ a, a:hover {
 
 .card-gift-item {
     height: 424px;
-    transition: transform .5s;
+    transition: transform 0.5s;
 }
 
 .card-gift-item:hover {
-    box-shadow:
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 10px 20px rgba(0, 0, 0, 0.12);
-  transform: translateY(-7px);
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-7px);
 }
 
 .card-gift-all {
     height: 395px;
-    transition: transform .5s;
+    transition: transform 0.5s;
 }
 
 .card-gift-all:hover {
-    box-shadow:
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 10px 20px rgba(0, 0, 0, 0.12);
-  transform: translateY(-7px);
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-7px);
 }
 
 .home {
@@ -270,7 +268,6 @@ a, a:hover {
     font-size: 70px;
     font-weight: 600;
 }
-
 
 //Messenger
 #show-messenger {
@@ -288,7 +285,7 @@ a, a:hover {
 
 .chatMenu {
     flex: 3.5;
-    background-color:#0D87CA;
+    background-color: #0d87ca;
     padding-left: 20px;
     border-radius: 5px 0px 0px 5px;
 }
@@ -303,7 +300,6 @@ a, a:hover {
 .chatBox {
     flex: 5;
     border-left: 1px solid rgb(145, 140, 140);
-    
 }
 
 .chatBoxWrapper {
@@ -311,9 +307,9 @@ a, a:hover {
     flex-direction: column;
     justify-content: space-between;
     border-top: 1px solid rgb(157, 152, 152);
-    border-right: 1px  solid rgb(157, 152, 152);
+    border-right: 1px solid rgb(157, 152, 152);
     border-radius: 0px 5px 5px 0px;
-    border-bottom: 1px  solid rgb(157, 152, 152);
+    border-bottom: 1px solid rgb(157, 152, 152);
 }
 
 .chatBoxTop {
@@ -342,7 +338,7 @@ a, a:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #0D87CA;
+    background-color: #0d87ca;
     color: white;
 }
 
@@ -394,22 +390,21 @@ a, a:hover {
     margin-top: 17px;
     margin-bottom: 17px;
     color: #fff;
-
 }
 //dùng
-#conversationFacebook .fa{
-   font-size: 40px;
-   border-radius: 50%;
-   color: #fff;
-   margin-right: 10px;
-}
-
-#conversationInstagram .fa{
+#conversationFacebook .fa {
     font-size: 40px;
     border-radius: 50%;
     color: #fff;
     margin-right: 10px;
- }
+}
+
+#conversationInstagram .fa {
+    font-size: 40px;
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 10px;
+}
 
 .message {
     display: flex;
@@ -452,7 +447,7 @@ a, a:hover {
 .own .messageText {
     background-color: rgb(10, 159, 233);
     color: rgb(255, 255, 255);
-    margin-right:  5px;
+    margin-right: 5px;
 }
 
 .chatOnlineFriend {
@@ -486,7 +481,6 @@ a, a:hover {
     right: 0;
 }
 
-
 /// Banner
 
 .van-lang-gifts {
@@ -496,7 +490,7 @@ a, a:hover {
 }
 
 .row {
-    height:80%;
+    height: 80%;
 }
 
 .row-2 {
@@ -524,44 +518,44 @@ a, a:hover {
 #myCarousel h4 {
     font-size: 50px;
     margin-bottom: 15px;
-    color: #FFF;
+    color: #fff;
     line-height: 100%;
     letter-spacing: 0.5px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 #myCarousel p {
     font-size: 18px;
     margin-bottom: 15px;
-    color: #d5d5d5
+    color: #d5d5d5;
 }
 
 #myCarousel .carousel-item a {
-    background: #FF0000;
+    background: #ff0000;
     font-size: 14px;
-    color: #FFF;
+    color: #fff;
     padding: 13px 32px;
-    display: inline-block
+    display: inline-block;
 }
 
 #myCarousel .carousel-item a:hover {
-    background: #FF0000;
-    text-decoration: none
+    background: #ff0000;
+    text-decoration: none;
 }
 
 #myCarousel .carousel-item h4 {
     -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft
+    animation-name: fadeInLeft;
 }
 
 #myCarousel .carousel-item p {
     -webkit-animation-name: slideInRight;
-    animation-name: slideInRight
+    animation-name: slideInRight;
 }
 
 #myCarousel .carousel-item a {
     -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp
+    animation-name: fadeInUp;
 }
 
 #myCarousel .carousel-item .mask img {
@@ -569,7 +563,7 @@ a, a:hover {
     animation-name: slideInRight;
     display: block;
     height: auto;
-    max-width: 100%
+    max-width: 100%;
 }
 
 #myCarousel h4,
@@ -579,7 +573,7 @@ a, a:hover {
     -webkit-animation-duration: 1s;
     animation-duration: 1.2s;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both
+    animation-fill-mode: both;
 }
 
 #myCarousel .container-banner {
@@ -590,7 +584,7 @@ a, a:hover {
 
 #myCarousel .carousel-item {
     height: 100%;
-    min-height: 550px
+    min-height: 550px;
 }
 
 #myCarousel {
@@ -609,7 +603,7 @@ a, a:hover {
     top: 50%;
     bottom: auto;
     transform: translateY(-50%);
-    background-color: #FF0000
+    background-color: #ff0000;
 }
 
 .carousel-item {
@@ -619,32 +613,32 @@ a, a:hover {
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    transition: -webkit-transform .6s ease;
-    transition: transform .6s ease;
-    transition: transform .6s ease, -webkit-transform .6s ease;
+    transition: -webkit-transform 0.6s ease;
+    transition: transform 0.6s ease;
+    transition: transform 0.6s ease, -webkit-transform 0.6s ease;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-perspective: 1000px;
-    perspective: 1000px
+    perspective: 1000px;
 }
 
 .carousel-fade .carousel-item {
     opacity: 0;
-    -webkit-transition-duration: .6s;
-    transition-duration: .6s;
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
     -webkit-transition-property: opacity;
-    transition-property: opacity
+    transition-property: opacity;
 }
 
 .carousel-fade .carousel-item-next.carousel-item-left,
 .carousel-fade .carousel-item-prev.carousel-item-right,
 .carousel-fade .carousel-item.active {
-    opacity: 1
+    opacity: 1;
 }
 
 .carousel-fade .carousel-item-left.active,
 .carousel-fade .carousel-item-right.active {
-    opacity: 0
+    opacity: 0;
 }
 
 .carousel-fade .carousel-item-left.active,
@@ -654,18 +648,17 @@ a, a:hover {
 .carousel-fade .carousel-item.active {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
-    transform: translateX(0)
+    transform: translateX(0);
 }
 
-@supports (transform-style:preserve-3d) {
-
+@supports (transform-style: preserve-3d) {
     .carousel-fade .carousel-item-left.active,
     .carousel-fade .carousel-item-next,
     .carousel-fade .carousel-item-prev,
     .carousel-fade .carousel-item-prev.active,
     .carousel-fade .carousel-item.active {
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -675,20 +668,20 @@ a, a:hover {
 .carousel-fade .carousel-item-prev.active,
 .carousel-fade .carousel-item.active {
     -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0);
 }
 
 @-webkit-keyframes fadeInLeft {
     from {
         opacity: 0;
         -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0)
+        transform: translate3d(-100%, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -696,32 +689,32 @@ a, a:hover {
     from {
         opacity: 0;
         -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0)
+        transform: translate3d(-100%, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .fadeInLeft {
     -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft
+    animation-name: fadeInLeft;
 }
 
 @-webkit-keyframes fadeInUp {
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0)
+        transform: translate3d(0, 100%, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -729,31 +722,31 @@ a, a:hover {
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0)
+        transform: translate3d(0, 100%, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .fadeInUp {
     -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp
+    animation-name: fadeInUp;
 }
 
 @-webkit-keyframes slideInRight {
     from {
         -webkit-transform: translate3d(100%, 0, 0);
         transform: translate3d(100%, 0, 0);
-        visibility: visible
+        visibility: visible;
     }
 
     to {
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -761,18 +754,18 @@ a, a:hover {
     from {
         -webkit-transform: translate3d(100%, 0, 0);
         transform: translate3d(100%, 0, 0);
-        visibility: visible
+        visibility: visible;
     }
 
     to {
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .slideInRight {
     -webkit-animation-name: slideInRight;
-    animation-name: slideInRight
+    animation-name: slideInRight;
 }
 
 //// New Home
@@ -790,7 +783,7 @@ a, a:hover {
 .logo {
     display: inline-block;
     width: 400px;
-    color:#ff1717;
+    color: #ff1717;
     font-size: 30px;
     font-weight: 600;
     position: absolute;
@@ -805,7 +798,7 @@ a, a:hover {
 }
 
 .logo:hover {
-    color:#ff1717;
+    color: #ff1717;
 }
 
 .banner-text {
@@ -835,7 +828,7 @@ a, a:hover {
     margin: 0 10px;
     padding: 12px 0;
     color: #fff;
-    border: .5px solid #fff;
+    border: 0.5px solid #fff;
     position: relative;
     z-index: 1;
     transition: color 0.5s;
@@ -849,7 +842,7 @@ a, a:hover {
     left: 0;
     background: #fff;
     z-index: -1;
-    transition: 0.5s ;
+    transition: 0.5s;
 }
 
 .banner-btn a:hover span {
@@ -907,11 +900,11 @@ nav ul li a:hover {
 }
 
 #menuBtn img {
-   width: 20px; 
-   margin-top: 15px;
+    width: 20px;
+    margin-top: 15px;
 }
 
-@media screen and (max-width: 770px){
+@media screen and (max-width: 770px) {
     .banner-text h1 {
         font-size: 44px;
     }
@@ -920,7 +913,6 @@ nav ul li a:hover {
         margin: 20px auto;
     }
 }
-
 
 /* List Gifts */
 #list-gifts {
@@ -962,26 +954,25 @@ nav ul li a:hover {
 }
 
 /* feature */
-#feature { 
+#feature {
     width: 100%;
     padding: 70px 0;
     background: #efefef;
-
 }
 
-.title-text, 
+.title-text,
 .title-text-goal,
 .title-text-footer {
     text-align: center;
     padding-bottom: 50px;
 }
 
-.title-text p, 
+.title-text p,
 .title-text-goal p,
 .title-text-footer p {
     margin: auto;
-    font-size: 40px; 
-    color: #8A1E1D;
+    font-size: 40px;
+    color: #8a1e1d;
     font-weight: bold;
     position: relative;
     z-index: 1;
@@ -989,10 +980,10 @@ nav ul li a:hover {
 }
 
 .title-text p::after {
-    content: "";
+    content: '';
     width: 50px;
     height: 35px;
-    background-image: url("https://www.logolynx.com/images/logolynx/47/477f80afed9c9272d0f1c35090218fb5.jpeg");
+    background-image: url('https://www.logolynx.com/images/logolynx/47/477f80afed9c9272d0f1c35090218fb5.jpeg');
     background-size: cover;
     position: absolute;
     top: -20px;
@@ -1002,11 +993,11 @@ nav ul li a:hover {
 }
 
 .title-text-goal p::after {
-    content: "";
+    content: '';
     width: 50px;
     height: 35px;
     // background: linear-gradient(#07776c, #fff);
-    background-image: url("/public/img/logo_goal.png");
+    background-image: url('/public/img/logo_goal.png');
     background-size: cover;
     position: absolute;
     top: -20px;
@@ -1069,14 +1060,14 @@ nav ul li a:hover {
     border-radius: 8px;
     color: #009688;
     border: 1px solid #009688;
-} 
+}
 
 .feature-text p {
     padding: 20px;
     text-align: initial;
 }
 
-@media screen and (max-width:770px){
+@media screen and (max-width: 770px) {
     .title-text h1 {
         font-size: 35px;
     }
@@ -1091,9 +1082,6 @@ nav ul li a:hover {
     }
 }
 
-
-
-
 /* testimonial */
 
 .join-us {
@@ -1102,7 +1090,7 @@ nav ul li a:hover {
 }
 
 .join-us a {
-    font-size:20px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -1127,7 +1115,7 @@ nav ul li a:hover {
     border-radius: 5px;
     box-shadow: 0 10px 20px 3px rgb(200, 204, 200);
     cursor: pointer;
-    transition: transform .5s;
+    transition: transform 0.5s;
 }
 
 .testimonial-col a {
@@ -1164,7 +1152,7 @@ nav ul li a:hover {
     transform: translateY(-7px);
 }
 
-@media screen and (max-width:770px) {
+@media screen and (max-width: 770px) {
     .testimonial-col {
         flex-basis: 100%;
     }
@@ -1185,14 +1173,15 @@ nav ul li a:hover {
     flex-wrap: wrap;
 }
 
-.footer-left, .footer-right {
+.footer-left,
+.footer-right {
     flex-basis: 45%;
     padding: 10px;
     margin-bottom: 20px;
 }
 
 .footer-right {
-    text-align:  right;
+    text-align: right;
 }
 
 .footer-row h1 {
@@ -1203,7 +1192,8 @@ nav ul li a:hover {
     line-height: 35px;
 }
 
-.footer-left .fa, .footer-right .fa {
+.footer-left .fa,
+.footer-right .fa {
     font-size: 20px;
     color: #009688;
     margin: 10px;
@@ -1231,14 +1221,13 @@ nav ul li a:hover {
     margin: 40px 5px 0;
     color: #009688;
     cursor: pointer;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .social-links .fa:hover {
     background: #009688;
     color: #fff;
     transform: translateY(-7px);
-
 }
 
 .social-links p {
@@ -1246,8 +1235,9 @@ nav ul li a:hover {
     margin-top: 20px;
 }
 
-@media screen and (max-width:770px) {
-    .footer-left, .footer-right {
+@media screen and (max-width: 770px) {
+    .footer-left,
+    .footer-right {
         flex-basis: 100%;
         font-size: 14px;
     }
@@ -1256,30 +1246,25 @@ nav ul li a:hover {
     }
 }
 
-
-
-
 //// End new home
 
 /// LOGIN
-html, body {
+html,
+body {
     min-height: 100%;
 }
-  
+
 body {
     width: 100%;
-	height: 100%;
+    height: 100%;
     // background:black;
-    background-size:contain;
+    background-size: contain;
     background-repeat: no-repeat;
-    
 }
-
-
 
 /// USER DETAIL
 #user-detail {
-    background-color: #3CB6D9;
+    background-color: #3cb6d9;
     padding: 50px;
 }
 
@@ -1301,7 +1286,6 @@ body {
     object-fit: cover;
 }
 
-
 .form-user-detail {
     padding: 0px 50px;
     width: 70%;
@@ -1315,7 +1299,6 @@ body {
 .item-form .fa {
     margin-right: 5px;
 }
-
 
 /// Create Detail Gift
 .create-detail-gift {
@@ -1341,11 +1324,11 @@ body {
     padding: 50px;
 }
 
-#gift-detail .right-detail { 
+#gift-detail .right-detail {
     margin-left: 30px;
 }
 
-#gift-detail .right-detail .detail-des { 
+#gift-detail .right-detail .detail-des {
     width: 550px;
     background-color: #fff;
 }
@@ -1355,7 +1338,7 @@ body {
     font-weight: bold;
 }
 
-#gift-detail .right-detail .info-detail p{
+#gift-detail .right-detail .info-detail p {
     font-size: 20px;
     font-weight: 300;
     overflow: hidden;
@@ -1369,17 +1352,17 @@ body {
 
 .image-detail {
     height: 550px;
-    width:  550px;
+    width: 550px;
     border-radius: 5px;
 }
 
 #btn-delete-user {
-     padding: 10px 20px;
-     border-radius: 8px;
-     background-color: rgb(81, 180, 255);
-     border: none;
-     color: white;
-     cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: rgb(81, 180, 255);
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 ///Stored gifts
@@ -1392,7 +1375,7 @@ body {
     width: 70%;
     background-color: #fff;
     margin: 0px auto;
-    padding:30px;
+    padding: 30px;
     border-radius: 5px;
 }
 
@@ -1401,21 +1384,16 @@ body {
     padding: 50px;
 }
 
-
-
-
-
 //dùng
 .pagi-btn {
     text-align: center;
 }
 //dùng
 .pagi-btn .pagination {
-    width:200px;
+    width: 200px;
     // background-color: #000;
     padding: 0px auto;
-    margin:0px auto ;
-
+    margin: 0px auto;
 }
 //dùng chung
 .pagi-btn .pagination .page-item .active {
@@ -1452,26 +1430,22 @@ body {
 .col-gift {
     width: 300px;
     // background-color: rgb(147, 57, 57);
-
 }
 //dùng
 .col-author {
     width: 300px;
     // background-color: rgb(255, 255, 255);
-
 }
 //dùng
 .col-time-gift {
     width: 200px;
     // background-color: rgb(68, 15, 15);
-
 }
 
 //dùng
 .col-stt {
     width: 80px;
     // background-color: rgb(169, 161, 161);
-
 }
 //dùng
 .col-username {
@@ -1494,16 +1468,14 @@ body {
     // background-color: rgb(245, 209, 209);
 }
 
-
 ///dùng
 .wrap-stored-user {
     width: 70%;
     background-color: #fff;
     margin: 0px auto;
-    padding:30px;
+    padding: 30px;
     border-radius: 5px;
 }
-
 
 ///dùng chung
 .item-search {
@@ -1527,7 +1499,7 @@ body {
     outline: 1px solid rgb(66, 181, 239);
 }
 ///dùng chung
-.item-search  .fa-search {
+.item-search .fa-search {
     position: relative;
     right: 35px;
     font-size: 20px;
@@ -1549,7 +1521,6 @@ body {
     margin: 0px auto;
     padding-left: 22px;
 }
-
 
 #show-all-gifts .item-search .input-search {
     display: inline-block;
@@ -1580,7 +1551,7 @@ body {
     transition: 0.4s;
 }
 
-#show-all-gifts .item-search  .fa-search {
+#show-all-gifts .item-search .fa-search {
     position: relative;
     right: 35px;
     font-size: 20px;
@@ -1590,7 +1561,7 @@ body {
     padding-left: 5px;
 }
 
-#show-all-gifts .item-search  .fa-search:hover {
+#show-all-gifts .item-search .fa-search:hover {
     font-size: 21px;
     color: rgb(75, 73, 73);
 }
@@ -1621,12 +1592,12 @@ body {
 }
 
 #show-all-gifts .pagination {
-    width:200px;
+    width: 200px;
     // background-color: #000;
     padding: 0px auto;
-    margin:0px auto ;
+    margin: 0px auto;
     padding-bottom: 50px;
-    padding-top:50px;
+    padding-top: 50px;
 }
 
 #show-all-gifts .pagination .page-item .page-link {
@@ -1641,13 +1612,11 @@ body {
     display: flex;
 }
 
-
 /// My Gifts
 #wrap-container-my-gifts .item-search {
     width: 80%;
     margin: 0px auto;
 }
-
 
 #container-my-gifts {
     width: 100%;
@@ -1662,12 +1631,13 @@ body {
     margin-top: 20px;
     margin-bottom: 40px;
     display: flex;
-    // background: #777;
     overflow-wrap: break-word;
     height: 320px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+        rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+        rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 .item-my-gifts .info-gifts-item {
@@ -1689,7 +1659,7 @@ body {
     margin-right: 5px;
 }
 
-.item-my-gifts .edit-delete .icon-edit .fa{
+.item-my-gifts .edit-delete .icon-edit .fa {
     display: inline-block;
     border: 1px solid rgb(5, 183, 253);
     color: rgb(5, 183, 253);
@@ -1703,11 +1673,11 @@ body {
     cursor: pointer;
 }
 
-.item-my-gifts .edit-delete .icon-edit .fa:hover{
+.item-my-gifts .edit-delete .icon-edit .fa:hover {
     transform: translateY(-1px);
 }
 
-.item-my-gifts .edit-delete .icon-delete .fa{
+.item-my-gifts .edit-delete .icon-delete .fa {
     display: inline-block;
     border: 1px solid rgb(237, 7, 7);
     color: rgb(235, 5, 5);
@@ -1721,13 +1691,9 @@ body {
     cursor: pointer;
 }
 
-.item-my-gifts .edit-delete .icon-delete .fa:hover{
+.item-my-gifts .edit-delete .icon-delete .fa:hover {
     transform: translateY(-1px);
 }
-
-
-
-
 
 // Chat
 #container-chat {
@@ -1752,7 +1718,7 @@ body {
     border: 1.5px solid #000;
     border-radius: 5px;
     padding: 10px;
-} 
+}
 
 #box-chat {
     // background-color: rgb(222, 186, 186);
@@ -1778,7 +1744,7 @@ body {
     border-radius: 50%;
 }
 
-#thongBao div{
+#thongBao div {
     display: flex;
     height: 65px;
     line-height: 65px;
@@ -1790,7 +1756,7 @@ body {
 }
 
 #thongBao div p {
-    color: #5A9CFF;
+    color: #5a9cff;
     height: 100%;
     padding-left: 10px;
     border-radius: 20px;

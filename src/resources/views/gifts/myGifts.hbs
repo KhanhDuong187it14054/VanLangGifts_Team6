@@ -47,34 +47,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 
- //  $.ajax({
- //     url: '/gifts/get-my-gifts',
- //   })
- //   .then(rs => {
- //       $('#container-my-gifts').html('');
- //       for (let i = 0; i < rs.gifts.length; i++) {
-  //        const element = rs.gifts[i];
-  //        const myTime  = element.createdAt.split('T')[0]
-  //        var item = $(`
-  //                    <div class="item-my-gifts">
-  //                      <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
-  //                      <div class="info-gifts-item">
-  //                          <p>Tên quà tặng: ${element.name}</p>
-  //                          <p>Mô tả: ${element.description}</p>
-  //                          <p class="time-create">Ngày tạo: ${myTime}</p>
-  //                      </div>
-  //                      <div id="edit-delete" class="edit-delete">
-  //                          <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-  //                          <a href="" class="icon-delete" data-toggle="modal" data-id="${element._id}"
-  //                            data-target="#delete-gift-modal" onclick="gotoCheck()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-  //                      </div>
-  //                  </div>
-  //                  `)
-  //
-  //        $('#container-my-gifts').append(item);
-  //      }
-  //  })
- ///----Code LoadPage()----///
+
   var currentPage = 1;
 
   function loadPage(page) {

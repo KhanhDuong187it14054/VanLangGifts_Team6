@@ -1123,3 +1123,139 @@ h1 {
   .form-create-detail-gift button {
     font-size: 12px;
     margin-top: 10px; } }
+
+#wrap-container-my-gifts {
+  padding: 70px 0px;
+  background-color: #4ad0e4; }
+
+#wrap-container-my-gifts .item-search {
+  width: 80%;
+  margin: 0px auto; }
+
+#container-my-gifts {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 100px; }
+
+.item-my-gifts {
+  background-color: #fff;
+  width: 40%;
+  margin: 0px auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  overflow-wrap: break-word;
+  height: 320px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px; }
+
+.item-my-gifts .info-gifts-item {
+  font-size: 17px;
+  width: 35%; }
+
+.item-my-gifts .img-item-my-gifts {
+  border-radius: 10px;
+  margin-right: 20px;
+  width: 45%; }
+
+.item-my-gifts .info-gifts-item {
+  margin-right: 20px; }
+
+.item-my-gifts .edit-delete .icon-edit {
+  margin-right: 5px; }
+
+.item-my-gifts .edit-delete .icon-edit .fa {
+  display: inline-block;
+  border: 1px solid #05b7fd;
+  color: #05b7fd;
+  border-radius: 5px;
+  padding-left: 7px;
+  padding-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  cursor: pointer; }
+
+.item-my-gifts .edit-delete .icon-edit .fa:hover {
+  transform: translateY(-1px); }
+
+.item-my-gifts .edit-delete .icon-delete .fa {
+  display: inline-block;
+  border: 1px solid #ed0707;
+  color: #eb0505;
+  border-radius: 5px;
+  padding-left: 7px;
+  padding-bottom: 10px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  cursor: pointer; }
+
+.item-my-gifts .edit-delete .icon-delete .fa:hover {
+  transform: translateY(-1px); }
+
+.item-search {
+  width: 100%;
+  margin: 0px auto;
+  margin-top: 25px;
+  margin-bottom: 25px; }
+
+.item-search .input-search {
+  display: inline-block;
+  width: 280px;
+  padding: 3px 10px;
+  padding-right: 34px;
+  border-radius: 20px;
+  border: 1px solid #42b5ef; }
+
+.item-search .input-search:focus-visible {
+  outline: 1px solid #42b5ef; }
+
+.item-search .fa-search {
+  position: relative;
+  right: 35px;
+  font-size: 20px;
+  color: #42b5ef;
+  cursor: pointer;
+  border-left: 1px solid #42b5ef;
+  padding-left: 5px; }
+
+.pagi-btn {
+  text-align: center; }
+
+.pagi-btn .pagination {
+  width: 140px;
+  padding: 0px auto;
+  margin: 0px auto; }
+
+.pagi-btn .pagination .page-item .active {
+  background-color: rgba(26, 174, 188, 0.97);
+  border-radius: 50%; }
+
+.pagi-btn .pagination .page-item .page-link {
+  border: none;
+  margin-right: 4px; }
+
+.pagi-btn .pagination li a {
+  background-color: #4ad0e4;
+  color: #fff; }
+
+.pagi-btn .pagination .page-item .page-link:hover {
+  border-radius: 50%; }
+
+.pagi-btn .pagination .item-pagination {
+  display: flex; }
+
+.pagi-btn .pagination .page-item .page-link:focus {
+  z-index: 2;
+  outline: 0;
+  box-shadow: none; }
+
+.item-my-gifts:hover {
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-7px);
+  transition: transform 0.5s; }
