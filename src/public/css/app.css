@@ -1296,3 +1296,29 @@ h1 {
     line-height: 23px; }
   .edit-delete {
     display: flex; } }
+
+@media only screen and (max-width: 46.1875em) {
+  #container-my-gifts {
+    padding: 20px 20px 0px 20px; }
+  .item-my-gifts {
+    width: 100%; }
+  .item-my-gifts .img-item-my-gifts {
+    height: 45%;
+    width: 38%; }
+  .item-my-gifts .edit-delete .icon-edit .fa {
+    margin-bottom: 10px; }
+  .item-my-gifts .info-gifts-item {
+    width: 55%;
+    position: relative; }
+  .name-gift {
+    font-size: 16px; }
+  .item-my-gifts .info-gifts-item .text-description {
+    position: absolute;
+    left: -137px;
+    top: 121px;
+    width: 300px;
+    font-size: 16px;
+    height: 100px; }
+  .item-my-gifts .info-gifts-item .time-create {
+    width: 300px;
+    left: -137px; } }
