@@ -1413,17 +1413,24 @@ h1 {
   border-radius: 50%; }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+  #show-all-gifts {
+    padding-top: 30px; }
   #wrap-all-gifts {
     width: 90%;
     display: flex;
     justify-content: space-around; }
   #show-all-gifts .item-search {
-    width: 86%; }
+    width: 87%; }
   .item-all-gift {
     width: 225px;
     margin-right: 0px; }
   #show-all-gifts .item-search .input-search {
     width: 260px;
-    height: 30px; }
+    height: 26px; }
   #show-all-gifts .item-search .item-type {
-    padding: 1px 10px; } }
+    padding: 4px 12px;
+    font-size: 12px; }
+  #show-all-gifts .pagination {
+    padding-bottom: 30px;
+    padding-top: 12px;
+    font-size: 12px; } }
