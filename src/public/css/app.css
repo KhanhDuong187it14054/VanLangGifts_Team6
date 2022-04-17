@@ -1129,7 +1129,7 @@ h1 {
   background-color: #4ad0e4; }
 
 #wrap-container-my-gifts .item-search {
-  width: 80%;
+  width: 77%;
   margin: 0px auto; }
 
 #container-my-gifts {
@@ -1271,6 +1271,8 @@ h1 {
   transition: transform 0.5s; }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+  #wrap-container-my-gifts .item-search {
+    width: 80%; }
   #container-my-gifts {
     padding: 20px 90px; }
   #wrap-container-my-gifts {
@@ -1280,6 +1282,8 @@ h1 {
     width: 43%; }
   .item-my-gifts .info-gifts-item p {
     font-size: 12px; }
+  .item-my-gifts .info-gifts-item .text-description {
+    height: 130px; }
   .item-my-gifts .edit-delete .icon-edit .fa {
     font-size: 14px;
     width: 26px;

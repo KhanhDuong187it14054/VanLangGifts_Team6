@@ -1528,7 +1528,7 @@ h1 {
 }
 
 #wrap-container-my-gifts .item-search {
-    width: 80%;
+    width: 77%;
     margin: 0px auto;
 }
 
@@ -1704,6 +1704,10 @@ h1 {
 }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+    #wrap-container-my-gifts .item-search {
+        width: 80%;
+    }
+
     #container-my-gifts {
         padding: 20px 90px;
     }
@@ -1719,6 +1723,10 @@ h1 {
 
     .item-my-gifts .info-gifts-item p {
         font-size: 12px;
+    }
+
+    .item-my-gifts .info-gifts-item .text-description {
+        height: 130px;
     }
 
     .item-my-gifts .edit-delete .icon-edit .fa {
