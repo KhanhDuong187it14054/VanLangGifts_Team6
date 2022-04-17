@@ -4,7 +4,8 @@
     box-sizing: border-box;
 }
 
-a, a:hover {
+a,
+a:hover {
     text-decoration: none;
 }
 
@@ -27,9 +28,10 @@ h1 {
 }
 
 // ---------------------LOGIN - REGISTER--------------------
-#login, #register {
+#login,
+#register {
     background-image: url('https://img.freepik.com/free-vector/hand-painted-background-violet-orange-colours_23-2148427578.jpg?w=2000');
-    background-size:  cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     overflow-y: auto;
@@ -52,12 +54,12 @@ h1 {
     background-color: #fff;
     color: rgb(232, 49, 49);
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 10px 20px rgba(0, 0, 0, 0.12);
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.welcome-login, .welcome-register {
+.welcome-login,
+.welcome-register {
     width: 100%;
     margin: 40px auto;
     text-align: center;
@@ -66,7 +68,8 @@ h1 {
     font-family: 'Open Sans', sans-serif;
 }
 
-.vanlang-login, .vanlang-register {
+.vanlang-login,
+.vanlang-register {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -78,9 +81,8 @@ h1 {
     padding: 30px 50px;
     border-radius: 5px;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 10px 20px rgba(0, 0, 0, 0.12);
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
 .register-wrap {
@@ -91,12 +93,12 @@ h1 {
     padding: 30px 50px;
     border-radius: 5px;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 10px 20px rgba(0, 0, 0, 0.12);
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.text-login, .text-register {
+.text-login,
+.text-register {
     width: 100%;
     text-align: center;
     color: rgb(0, 0, 0);
@@ -107,7 +109,7 @@ h1 {
 
 .login-wrap .form-group,
 .register-wrap .form-group {
-    margin: 0px auto ;
+    margin: 0px auto;
     width: 100%;
     margin-top: 35px;
     margin-bottom: 35px;
@@ -149,7 +151,7 @@ h1 {
 }
 
 .form-group-register {
-    margin: 0px auto ;
+    margin: 0px auto;
     width: 100%;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -166,7 +168,7 @@ h1 {
     width: 100%;
     height: 40px;
     border-radius: 5px;
-    background: -webkit-linear-gradient(right,#e14c4c,#b10a0a);
+    background: -webkit-linear-gradient(right, #e14c4c, #b10a0a);
     font-family: 'Open Sans', sans-serif;
     border: none;
     font-weight: 600;
@@ -175,12 +177,13 @@ h1 {
 }
 
 .btn-login:hover {
-    background: -webkit-linear-gradient(right,#b10a0a,#e14c4c);
+    background: -webkit-linear-gradient(right, #b10a0a, #e14c4c);
 }
 
 /* Tablet: width >= 740px and width < 1024px */
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
-    .welcome-login, .welcome-register {
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+    .welcome-login,
+    .welcome-register {
         font-size: 35px;
         margin: 20px auto;
         width: 100%;
@@ -198,7 +201,8 @@ h1 {
         padding: 22px;
     }
 
-    .text-login, .text-register {
+    .text-login,
+    .text-register {
         font-size: 25px;
     }
 
@@ -249,8 +253,9 @@ h1 {
 }
 
 /* Mobile: width < 740px */
-@media only screen and (max-width: 46.1875em){
-    .welcome-login, .welcome-register {
+@media only screen and (max-width: 46.1875em) {
+    .welcome-login,
+    .welcome-register {
         font-size: 20px;
         margin: 20px auto;
     }
@@ -267,7 +272,8 @@ h1 {
         padding: 20px;
     }
 
-    .text-login, .text-register {
+    .text-login,
+    .text-register {
         font-size: 20px;
     }
 
@@ -333,7 +339,7 @@ h1 {
 #banner .logo {
     display: inline-block;
     width: 400px;
-    color:#ff1717;
+    color: #ff1717;
     font-size: 30px;
     font-weight: 600;
     position: absolute;
@@ -347,7 +353,7 @@ h1 {
 }
 
 #banner .logo:hover {
-    color:#ff1717;
+    color: #ff1717;
 }
 
 #sideNav {
@@ -400,20 +406,20 @@ h1 {
 }
 
 #menuBtn img {
-    width: 20px; 
+    width: 20px;
     margin-top: 15px;
 }
 
- /* Tablet: width >= 740px and width < 1024px */
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     #banner {
         height: 76px;
     }
-    
+
     #banner .logo {
         display: inline-block;
         width: 220px;
-        color:#ff1717;
+        color: #ff1717;
         font-size: 20px;
         font-weight: 600;
         position: absolute;
@@ -453,11 +459,11 @@ h1 {
 }
 
 /* Mobile: width < 740px */
-@media only screen and (max-width: 46.1875em){
+@media only screen and (max-width: 46.1875em) {
     #banner {
         height: 76px;
     }
-    
+
     #banner .logo {
         font-size: 20px;
     }
@@ -502,7 +508,7 @@ h1 {
 }
 
 .row {
-    height:80%;
+    height: 80%;
 }
 
 .row-2 {
@@ -530,44 +536,44 @@ h1 {
 #myCarousel h4 {
     font-size: 50px;
     margin-bottom: 15px;
-    color: #FFF;
+    color: #fff;
     line-height: 100%;
     letter-spacing: 0.5px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 #myCarousel p {
     font-size: 18px;
     margin-bottom: 15px;
-    color: #d5d5d5
+    color: #d5d5d5;
 }
 
 #myCarousel .carousel-item a {
-    background: #FF0000;
+    background: #ff0000;
     font-size: 14px;
-    color: #FFF;
+    color: #fff;
     padding: 13px 32px;
-    display: inline-block
+    display: inline-block;
 }
 
 #myCarousel .carousel-item a:hover {
-    background: #FF0000;
-    text-decoration: none
+    background: #ff0000;
+    text-decoration: none;
 }
 
 #myCarousel .carousel-item h4 {
     -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft
+    animation-name: fadeInLeft;
 }
 
 #myCarousel .carousel-item p {
     -webkit-animation-name: slideInRight;
-    animation-name: slideInRight
+    animation-name: slideInRight;
 }
 
 #myCarousel .carousel-item a {
     -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp
+    animation-name: fadeInUp;
 }
 
 #myCarousel .carousel-item .mask img {
@@ -575,7 +581,7 @@ h1 {
     animation-name: slideInRight;
     display: block;
     height: auto;
-    max-width: 100%
+    max-width: 100%;
 }
 
 #myCarousel h4,
@@ -585,7 +591,7 @@ h1 {
     -webkit-animation-duration: 1s;
     animation-duration: 1.2s;
     -webkit-animation-fill-mode: both;
-    animation-fill-mode: both
+    animation-fill-mode: both;
 }
 
 #myCarousel .container-banner {
@@ -596,7 +602,7 @@ h1 {
 
 #myCarousel .carousel-item {
     height: 100%;
-    min-height: 550px
+    min-height: 550px;
 }
 
 #myCarousel {
@@ -615,7 +621,7 @@ h1 {
     top: 50%;
     bottom: auto;
     transform: translateY(-50%);
-    background-color: #FF0000
+    background-color: #ff0000;
 }
 
 .carousel-item {
@@ -625,32 +631,32 @@ h1 {
     -ms-flex-align: center;
     align-items: center;
     width: 100%;
-    transition: -webkit-transform .6s ease;
-    transition: transform .6s ease;
-    transition: transform .6s ease, -webkit-transform .6s ease;
+    transition: -webkit-transform 0.6s ease;
+    transition: transform 0.6s ease;
+    transition: transform 0.6s ease, -webkit-transform 0.6s ease;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-perspective: 1000px;
-    perspective: 1000px
+    perspective: 1000px;
 }
 
 .carousel-fade .carousel-item {
     opacity: 0;
-    -webkit-transition-duration: .6s;
-    transition-duration: .6s;
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
     -webkit-transition-property: opacity;
-    transition-property: opacity
+    transition-property: opacity;
 }
 
 .carousel-fade .carousel-item-next.carousel-item-left,
 .carousel-fade .carousel-item-prev.carousel-item-right,
 .carousel-fade .carousel-item.active {
-    opacity: 1
+    opacity: 1;
 }
 
 .carousel-fade .carousel-item-left.active,
 .carousel-fade .carousel-item-right.active {
-    opacity: 0
+    opacity: 0;
 }
 
 .carousel-fade .carousel-item-left.active,
@@ -660,18 +666,17 @@ h1 {
 .carousel-fade .carousel-item.active {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
-    transform: translateX(0)
+    transform: translateX(0);
 }
 
-@supports (transform-style:preserve-3d) {
-
+@supports (transform-style: preserve-3d) {
     .carousel-fade .carousel-item-left.active,
     .carousel-fade .carousel-item-next,
     .carousel-fade .carousel-item-prev,
     .carousel-fade .carousel-item-prev.active,
     .carousel-fade .carousel-item.active {
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -681,20 +686,20 @@ h1 {
 .carousel-fade .carousel-item-prev.active,
 .carousel-fade .carousel-item.active {
     -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0);
 }
 
 @-webkit-keyframes fadeInLeft {
     from {
         opacity: 0;
         -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0)
+        transform: translate3d(-100%, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -702,32 +707,32 @@ h1 {
     from {
         opacity: 0;
         -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0)
+        transform: translate3d(-100%, 0, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .fadeInLeft {
     -webkit-animation-name: fadeInLeft;
-    animation-name: fadeInLeft
+    animation-name: fadeInLeft;
 }
 
 @-webkit-keyframes fadeInUp {
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0)
+        transform: translate3d(0, 100%, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -735,31 +740,31 @@ h1 {
     from {
         opacity: 0;
         -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0)
+        transform: translate3d(0, 100%, 0);
     }
 
     to {
         opacity: 1;
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .fadeInUp {
     -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp
+    animation-name: fadeInUp;
 }
 
 @-webkit-keyframes slideInRight {
     from {
         -webkit-transform: translate3d(100%, 0, 0);
         transform: translate3d(100%, 0, 0);
-        visibility: visible
+        visibility: visible;
     }
 
     to {
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -767,21 +772,21 @@ h1 {
     from {
         -webkit-transform: translate3d(100%, 0, 0);
         transform: translate3d(100%, 0, 0);
-        visibility: visible
+        visibility: visible;
     }
 
     to {
         -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0)
+        transform: translate3d(0, 0, 0);
     }
 }
 
 .slideInRight {
     -webkit-animation-name: slideInRight;
-    animation-name: slideInRight
+    animation-name: slideInRight;
 }
 
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     #myCarousel {
         height: 480px;
     }
@@ -792,7 +797,7 @@ h1 {
 }
 
 /* Mobile: width < 740px */
-@media only screen and (max-width: 46.1875em){
+@media only screen and (max-width: 46.1875em) {
     #myCarousel {
         height: 464px;
     }
@@ -826,7 +831,7 @@ h1 {
 .title-text p {
     margin: auto;
     font-size: 40px;
-    color: #8A1E1D;
+    color: #8a1e1d;
     font-weight: bold;
     position: relative;
     z-index: 1;
@@ -834,10 +839,10 @@ h1 {
 }
 
 .title-text p::after {
-    content: "";
+    content: '';
     width: 50px;
     height: 35px;
-    background-image: url("https://www.logolynx.com/images/logolynx/47/477f80afed9c9272d0f1c35090218fb5.jpeg");
+    background-image: url('https://www.logolynx.com/images/logolynx/47/477f80afed9c9272d0f1c35090218fb5.jpeg');
     background-size: cover;
     position: absolute;
     top: -20px;
@@ -858,16 +863,14 @@ h1 {
 
 .card-gift-item {
     height: 424px;
-    transition: transform .5s;
+    transition: transform 0.5s;
 }
 
 .card-gift-item:hover {
-    box-shadow:
-  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-  0 12.5px 10px rgba(0, 0, 0, 0.06),
-  0 10px 20px rgba(0, 0, 0, 0.12);
-  transform: translateY(-7px);
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-7px);
 }
 
 .item-size-image {
@@ -899,7 +902,7 @@ h1 {
     color: #fff;
 }
 
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     .title-text {
         padding-bottom: 0px;
     }
@@ -941,7 +944,7 @@ h1 {
     }
 }
 
-@media only screen and (max-width: 46.1875em){
+@media only screen and (max-width: 46.1875em) {
     .container-gift {
         width: 373px;
     }
@@ -966,7 +969,7 @@ h1 {
         padding: 5px 10px;
         font-size: 15px;
     }
-    
+
     .card-title {
         height: 45px;
     }
@@ -997,8 +1000,8 @@ h1 {
 
 .title-text-goal p {
     margin: auto;
-    font-size: 40px; 
-    color: #8A1E1D;
+    font-size: 40px;
+    color: #8a1e1d;
     font-weight: bold;
     position: relative;
     z-index: 1;
@@ -1006,10 +1009,10 @@ h1 {
 }
 
 .title-text-goal p::after {
-    content: "";
+    content: '';
     width: 50px;
     height: 35px;
-    background-image: url("/public/img/logo_goal.png");
+    background-image: url('/public/img/logo_goal.png');
     background-size: cover;
     position: absolute;
     top: -20px;
@@ -1075,7 +1078,7 @@ h1 {
     border-radius: 10px;
 }
 
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     .title-text-goal p {
         font-size: 30px;
     }
@@ -1101,8 +1104,7 @@ h1 {
     }
 }
 
-@media only screen and (max-width: 46.1875em){
-
+@media only screen and (max-width: 46.1875em) {
     .feature-box {
         display: inline-block;
         width: 100%;
@@ -1153,7 +1155,7 @@ h1 {
     border-radius: 5px;
     box-shadow: 0 10px 20px 3px rgb(200, 204, 200);
     cursor: pointer;
-    transition: transform .5s;
+    transition: transform 0.5s;
 }
 
 .testimonial-col a {
@@ -1197,7 +1199,7 @@ h1 {
 
 .testimonial-col .join-us a {
     color: #27c0ff;
-    font-size:20px;
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -1205,7 +1207,7 @@ h1 {
     color: #0f97d1;
 }
 
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     .title-text p {
         font-size: 30px;
     }
@@ -1231,7 +1233,7 @@ h1 {
     }
 }
 
-@media only screen and (max-width: 46.1875em){
+@media only screen and (max-width: 46.1875em) {
     .title-text {
         padding-bottom: 30px;
     }
@@ -1240,8 +1242,6 @@ h1 {
         flex-basis: 100%;
     }
 }
-
-
 
 // ---------------------FOOTER--------------------
 #footer {
@@ -1271,7 +1271,7 @@ h1 {
 .title-text-footer p {
     margin: auto;
     font-size: 40px;
-    color: #8A1E1D;
+    color: #8a1e1d;
     font-weight: bold;
     position: relative;
     z-index: 1;
@@ -1286,7 +1286,8 @@ h1 {
     flex-wrap: wrap;
 }
 
-.footer-left, .footer-right {
+.footer-left,
+.footer-right {
     padding: 10px;
     margin-bottom: 20px;
 }
@@ -1295,7 +1296,8 @@ h1 {
     text-align: right;
 }
 
-.footer-left .fa, .footer-right .fa {
+.footer-left .fa,
+.footer-right .fa {
     font-size: 20px;
     color: #009688;
     margin: 10px;
@@ -1314,14 +1316,13 @@ h1 {
     margin: 40px 5px 0;
     color: #009688;
     cursor: pointer;
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .social-links .fa:hover {
     background: #009688;
     color: #fff;
     transform: translateY(-7px);
-
 }
 
 .social-links p {
@@ -1329,7 +1330,7 @@ h1 {
     margin-top: 20px;
 }
 
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     #footer {
         padding: 30px 0 20px;
     }
@@ -1349,10 +1350,9 @@ h1 {
     .footer-right h1 {
         font-size: 20px;
     }
-
 }
 
-@media only screen and (max-width: 46.1875em){
+@media only screen and (max-width: 46.1875em) {
     .footer-left h1 {
         font-size: 25px;
     }
@@ -1372,7 +1372,7 @@ h1 {
 
 // ---------------------USER-DETAIL--------------------
 #user-detail {
-    background-color: #3CB6D9;
+    background-color: #3cb6d9;
     padding: 50px;
 }
 
@@ -1385,9 +1385,8 @@ h1 {
     padding: 25px;
     border-radius: 5px;
     box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 10px 20px rgba(0, 0, 0, 0.12);
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
 .wrap-user-detail img {
@@ -1409,7 +1408,7 @@ h1 {
 }
 
 .item-form input {
-    font-family: 'Open Sans' ,sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .item-form .fa {
@@ -1417,29 +1416,43 @@ h1 {
     color: rgb(44, 158, 245);
 }
 
-@media only screen and (min-width: 46.25em)and (max-width: 1280px){
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     .wrap-user-detail img {
-        height: 285px;
+        height: 200px;
+        width: 20%;
     }
 
     .item-form {
-        margin-bottom: 9px;
+        margin-bottom: 0px;
     }
 
     .item-form label {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .item-form input {
-        font-size: 13px;
+        font-size: 11px;
+    }
+
+    .item-form .fa {
+        font-size: 11px;
+    }
+
+    .form-user-detail {
+        width: 80%;
     }
 
     .form-user-detail button {
-        font-size: 15px;
+        font-size: 11px;
+        margin-top: 5px;
+    }
+
+    #user-detail {
+        padding: 8px 50px 40px 50px;
     }
 }
 
-@media only screen and (max-width: 46.1875em){
+@media only screen and (max-width: 46.1875em) {
     #user-detail {
         padding: 10px;
     }
@@ -1463,7 +1476,6 @@ h1 {
         width: 100%;
     }
 }
-
 
 // ---------------------ADD-GIFTS--------------------
 .create-detail-gift {

@@ -1049,15 +1049,23 @@ h1 {
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
   .wrap-user-detail img {
-    height: 285px; }
+    height: 200px;
+    width: 20%; }
   .item-form {
-    margin-bottom: 9px; }
+    margin-bottom: 0px; }
   .item-form label {
-    font-size: 14px; }
+    font-size: 12px; }
   .item-form input {
-    font-size: 13px; }
+    font-size: 11px; }
+  .item-form .fa {
+    font-size: 11px; }
+  .form-user-detail {
+    width: 80%; }
   .form-user-detail button {
-    font-size: 15px; } }
+    font-size: 11px;
+    margin-top: 5px; }
+  #user-detail {
+    padding: 8px 50px 40px 50px; } }
 
 @media only screen and (max-width: 46.1875em) {
   #user-detail {
