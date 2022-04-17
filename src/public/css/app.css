@@ -1322,3 +1322,92 @@ h1 {
   .item-my-gifts .info-gifts-item .time-create {
     width: 300px;
     left: -136px; } }
+
+#show-all-gifts {
+  width: 100%;
+  background-color: #fff;
+  padding-top: 50px; }
+
+#show-all-gifts .item-search {
+  width: 78%;
+  margin: 0px auto;
+  padding-left: 22px; }
+
+#show-all-gifts .item-search .input-search {
+  display: inline-block;
+  width: 280px;
+  padding: 3px 10px;
+  padding-right: 34px;
+  border-radius: 20px;
+  border: 1px solid #42b5ef; }
+
+#show-all-gifts .item-search .input-search:focus-visible {
+  outline: 1px solid #42b5ef; }
+
+#show-all-gifts .item-search .item-type {
+  border-radius: 25px;
+  border: 1px solid #42b5ef;
+  padding: 4px 14px;
+  margin-right: 5px;
+  cursor: pointer; }
+
+#show-all-gifts .item-search .item-type:hover {
+  cursor: pointer;
+  background-color: #42b5ef;
+  color: #fff;
+  transition: 0.4s; }
+
+#show-all-gifts .item-search .fa-search {
+  position: relative;
+  right: 35px;
+  font-size: 20px;
+  color: #42b5ef;
+  cursor: pointer;
+  border-left: 1px solid #42b5ef;
+  padding-left: 5px; }
+
+#show-all-gifts .item-search .fa-search:hover {
+  font-size: 21px;
+  color: #4b4949; }
+
+#wrap-all-gifts {
+  width: 78%;
+  padding: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px auto;
+  align-items: center; }
+
+#wrap-all-gifts #text-none {
+  width: 500px;
+  text-align: center;
+  margin: 0px auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #0e81e6; }
+
+.item-all-gift {
+  margin-right: 40px;
+  margin-top: 20px;
+  width: 320px; }
+
+#show-all-gifts .pagination {
+  width: 200px;
+  padding: 0px auto;
+  margin: 0px auto;
+  padding-bottom: 50px;
+  padding-top: 50px; }
+
+#show-all-gifts .pagination .page-item .page-link {
+  margin-right: 5px;
+  border: none; }
+
+#show-all-gifts .pagination .page-item .page-link:hover {
+  border-radius: 50%; }
+
+#show-all-gifts .pagination .item-pagination {
+  display: flex; }
+
+#show-all-gifts .pagination .item-pagination .page-item .active {
+  background-color: rgba(206, 230, 247, 0.974);
+  border-radius: 50%; }

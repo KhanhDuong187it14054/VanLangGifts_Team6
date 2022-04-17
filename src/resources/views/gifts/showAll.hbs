@@ -42,25 +42,6 @@
         loadPage(1)
     }
 
-    //    $('#paging').pagination({
-    //    dataSource: '/gifts/get-all?page=1',
-    //    locator: 'data',
-    //     totalNumberLocator: function (response) {
-    //         return response.total;
-    //     },
-    //    pageSize: 8,
-    //    afterPageOnClick: function (event, pageNumber) {
-    //         loadPage(pageNumber);
-    //     },
-    //     afterPreviousOnClick: function (event, pageNumber) {
-    //         loadPage(pageNumber)
-    //     },
-    //     afterNextOnClick: function (event, pageNumber) {
-    //         loadPage(pageNumber)
-    //      }
-    //  })
-
-
     var currentPage = 1;
 
     function loadPage(page) {
@@ -106,6 +87,12 @@
                     $('#wrap-all-gifts').append(itemNone);
                 }
 
+                const activeItem = $('.page-link');
+                for (i = 0; i < activeItem.length; i++) {
+                    if(parseInt(activeItem[i].innerText) === currentPage) {
+                        activeItem[i].classList.add("active");
+                    }
+                }
 
                 var textNone = document.getElementById('text-none');
                 var pre = document.getElementById('pre');
@@ -148,6 +135,13 @@
                                     <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
                                 `)
                     $('.item-pagination').append(itemLi);
+                }
+
+                const activeItem = $('.page-link');
+                for (i = 0; i < activeItem.length; i++) {
+                    if(parseInt(activeItem[i].innerText) === currentPage) {
+                        activeItem[i].classList.add("active");
+                    }
                 }
 
                 for (let i = 0; i < rs.data.length; i++) {
@@ -223,6 +217,14 @@
                                 `)
                     $('#wrap-all-gifts').append(item);
                 }
+
+                const activeItem = $('.page-link');
+                for (i = 0; i < activeItem.length; i++) {
+                    if(parseInt(activeItem[i].innerText) === currentPage) {
+                        activeItem[i].classList.add("active");
+                    }
+                }
+                
                 var itemNone = $(`<h3 class="text-none">Xin lỗi bạn. </br> Hiện quà tặng này không có.</h3>`)
                 if (rs.data.length === 0) {
                     $('#wrap-all-gifts').append(itemNone);
