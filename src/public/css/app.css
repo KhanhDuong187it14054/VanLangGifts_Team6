@@ -1078,7 +1078,7 @@ h1 {
     font-size: 11px;
     margin-top: 13px; }
   #user-detail {
-    padding: 8px 50px 40px 50px; } }
+    padding: 15px 50px 40px 50px; } }
 
 @media only screen and (max-width: 46.1875em) {
   #user-detail {
@@ -1107,3 +1107,8 @@ h1 {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px; }
+
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+  .form-create-detail-gift button {
+    font-size: 15px;
+    margin-top: 15px; } }
