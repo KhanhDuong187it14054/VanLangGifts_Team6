@@ -1411,3 +1411,14 @@ h1 {
 #show-all-gifts .pagination .item-pagination .page-item .active {
   background-color: rgba(206, 230, 247, 0.974);
   border-radius: 50%; }
+
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+  #wrap-all-gifts {
+    width: 90%;
+    display: flex;
+    justify-content: space-around; }
+  #show-all-gifts .item-search {
+    width: 84%; }
+  .item-all-gift {
+    width: 290px;
+    margin-right: 0px; } }
