@@ -1904,11 +1904,20 @@ h1 {
     }
 
     #show-all-gifts .item-search {
-        width: 84%;
+        width: 86%;
     }
 
     .item-all-gift {
-        width: 290px;
+        width: 225px;
         margin-right: 0px;
+    }
+
+    #show-all-gifts .item-search .input-search {
+        width: 260px;
+        height: 30px;
+    }
+
+    #show-all-gifts .item-search .item-type {
+        padding: 1px 10px;
     }
 }
