@@ -1112,3 +1112,14 @@ h1 {
   .form-create-detail-gift button {
     font-size: 15px;
     margin-top: 15px; } }
+
+@media only screen and (max-width: 46.1875em) {
+  .form-create-detail-gift {
+    width: 100%; }
+  .form-create-detail-gift h3 {
+    font-size: 20px; }
+  .item-form {
+    margin-bottom: 5px; }
+  .form-create-detail-gift button {
+    font-size: 12px;
+    margin-top: 10px; } }
