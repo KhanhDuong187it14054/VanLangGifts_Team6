@@ -1059,6 +1059,8 @@ h1 {
   color: #2c9ef5; }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+  .wrap-user-detail {
+    padding: 25px 25px 16px 25px; }
   .wrap-user-detail img {
     height: 200px;
     width: 20%; }
@@ -1074,7 +1076,7 @@ h1 {
     width: 80%; }
   .form-user-detail button {
     font-size: 11px;
-    margin-top: 5px; }
+    margin-top: 13px; }
   #user-detail {
     padding: 8px 50px 40px 50px; } }
 
