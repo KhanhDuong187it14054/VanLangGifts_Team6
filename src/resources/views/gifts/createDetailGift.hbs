@@ -1,0 +1,28 @@
+<div class="create-detail-gift">
+    <div class="form-create-detail-gift">
+        <h3 style="font-family:'Segoe UI'">Thêm quà tặng</h3>
+        <form method="POST" action="/gifts/store">
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="name">Tên quà tặng</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="description">Mô tả</label>
+                <input type="text" class="form-control" id="description" name="description">
+            </div>
+            {{!-- <div class="">
+                <label for="v style=" font-family:'Segoe UI'" ideoId">Video ID</label>
+                <input type="  text" class="form-control" id="videoId" name="videoId">
+            </div> --}}
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="image">Link image</label>
+                <input type="text" class="form-control" id="image" name="image">
+            </div>
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="author">Người tặng</label>
+                <input type="text" class="form-control" id="author" name="author">
+            </div>
+            <button style="font-family:'Segoe UI'" type="submit" class="btn btn-primary">Thêm quà tặng</button>
+        </form>
+    </div>
+</div>

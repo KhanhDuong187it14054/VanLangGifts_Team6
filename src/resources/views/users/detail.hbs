@@ -1,0 +1,65 @@
+<div id="user-detail">
+    Thông tin cá nhân
+  <div class="wrap-user-detail">
+    {{#if avatar}}
+    <img src="{{avatar}}" alt="user images">
+    {{else}}
+    <img src="https://icon-library.com/images/user-icon/user-icon-14.jpg" alt="user images" />
+    {{/if}}
+
+    <form class="form-user-detail" method="POST" action="/users/update/{{username}}?_method=PUT">
+      <div class="item-form">
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+        <label for="email">Email</label>
+        <input value="{{email}}" type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+          placeholder="Enter email" disabled>
+      </div>
+
+      <div class="item-form">
+        <i class="fa fa-user-o" aria-hidden="true"></i>
+        <label for="username">Username</label>
+        <input value="{{username}}" type="username" class="form-control" id="username" name="username"
+          aria-describedby="emailHelp" placeholder="Enter username" disabled>
+      </div>
+
+      <div class="item-form">
+        <i class="fa fa-id-card-o" aria-hidden="true"></i>
+        <label for="name">Name</label>
+        <input value="{{name}}" type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp"
+          placeholder="Enter name">
+      </div>
+
+      <div class="item-form">
+        <i class="fa fa-phone" aria-hidden="true"></i>
+        <label for="phone">Phone</label>
+        <input value="{{phone}}" type="phone" class="form-control" id="phone" name="phone" aria-describedby="emailHelp"
+          placeholder="Enter phone">
+      </div>
+
+      <div class="item-form">
+        <i class="fa fa-picture-o" aria-hidden="true"></i>
+        <label for="avatar">Avatar</label>
+        <input value="{{avatar}}" type="avatar" class="form-control" id="avatar" name="avatar"
+          aria-describedby="emailHelp" placeholder="Enter avatar">
+      </div>
+
+      <div class="item-form">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <label for="facebook">Facebook</label>
+        <input value="{{facebook}}" type="facebook" class="form-control" id="facebook" name="facebook"
+          aria-describedby="emailHelp" placeholder="Enter link facebook">
+      </div>
+
+      <div class="item-form">
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+        <label for="instagram">Instagram</label>
+        <input value="{{instagram}}" type="instagram" class="form-control" id="instagram" name="instagram"
+          aria-describedby="emailHelp" placeholder="Enter link instagram">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+  </div>
+
+</div>

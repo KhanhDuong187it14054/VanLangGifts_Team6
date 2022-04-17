@@ -1,0 +1,95 @@
+<div class="container-stored-gift">
+<div class="mt-4 wrap-stored-gift">
+  <div>
+    <a href="/me/stored/gifts">Danh sách quà tặng</a>
+    <h3>Quà tặng đã xóa</h3>
+  </div>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Tên quà tặng</th>
+                <th scope="col">Người tặng</th>
+                <th scope="col" colspan="2">Thời gian xóa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each gifts}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.author}}</td>
+                <td>{{this.deletedAt}}</td>
+                <td>
+                    <a href="" class="btn btn-link btn-restore" data-id={{this._id}}>Khôi phục</a>
+                    <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-gift-modal">Xóa vĩnh viễn</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+              <td colspan="5" class="text-center">
+                Thùng rác trống
+                <a href="/me/stored/gifts/"> Danh sách quà tặng</a>
+              </td>
+            </tr>
+
+            {{/each}}
+        </tbody>
+    </table>.
+</div>
+</div>
+{{!-- Confirm delete code --}}
+<div id="delete-gift-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa quà tặng</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Hành động này không thể khôi phục.Bạn chắc chắn muốn xóa quà tặng này ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button id="btn-delete-gift" type="button" class="btn btn-danger">Xóa vĩnh viễn</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+<form name="delete-gift-form" method="POST"></form>
+<form name="restore-gift-form" method="POST"></form>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        var giftId;
+        var deleteForm = document.forms['delete-gift-form'];
+        var restoreForm = document.forms['restore-gift-form'];
+        var btnDeleteGift = document.getElementById('btn-delete-gift');
+        var btnRestore = $('.btn-restore');
+        // when dialog confirm clicked
+        $('#delete-gift-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            giftId = button.data('id');
+        });
+
+        // when delete gift btn clicked
+        btnDeleteGift.onclick = function () {
+            deleteForm.action = '/gifts/' + giftId + '/force?_method=DELETE';
+            deleteForm.submit();
+        }
+
+        // Restore btn clicked
+        btnRestore.click(function (e) {
+          e.preventDefault();
+
+          var giftId = $(this).data('id');
+          restoreForm.action = '/gifts/' + giftId + '/restore?_method=PATCH';
+          restoreForm.submit();
+        })
+    });
+</script>

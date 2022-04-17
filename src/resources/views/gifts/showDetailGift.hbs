@@ -1,0 +1,27 @@
+<div id="gift-detail">
+    <div>
+        <img class="image-detail" src="{{gift.image}}" alt="Ảnh quà tặng">
+    </div>
+    <div class="right-detail">
+        <div class="info-detail">
+            <p class="detail-name" style="font-family:'Segoe UI'" >Tên quà tặng:<span> {{ gift.name }} </span></p>
+            <p class="detail-des" style="font-family:'Segoe UI'" >Mô tả:  <span>{{gift.description}}</span></p>
+            <p style="font-family:'Segoe UI'">Người tặng: <span>{{gift.author}} </span> </p>
+        </div>
+        <button data-id="{{gift.idAuthor}}" id="btn-delete-user" style="font-family:'Segoe UI'"> Liên hệ </button>
+    </div>
+</div>
+<form name="delete-user-form" method="GET"></form>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        var userId = document.getElementById('btn-delete-user').getAttribute('data-id');
+        var deleteForm = document.forms['delete-user-form'];
+        $('#btn-delete-user').click(function () {
+            deleteForm.action = '/conversations/' + userId + '?_method=GET';
+            deleteForm.submit();
+        });
+    })
+</script>

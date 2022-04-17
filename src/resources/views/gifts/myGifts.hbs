@@ -1,0 +1,290 @@
+<div id="wrap-container-my-gifts">
+    <div class="item-search">
+        <input type="text" class="input-search">
+        <i class="fa fa-search" aria-hidden="true" onclick="loadPage(1)"></i>
+    </div>
+    <div id="container-my-gifts"></div>
+    <div class="pagi-btn">
+          <ul class="pagination">
+            <li class="page-item" id="pre"><a class="page-link" href="#" onclick="prePage()"><i
+                  class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+            <li class="item-pagination">
+              {{!--
+            <li class="page-item"><a class="page-link" href="#" onclick="loadPage(1)">1</a></li>
+            <li class="page-item"><a class="page-link" href="#" onclick="loadPage(3)">3</a></li>
+            --}}
+            </li>
+            <li class="page-item" id="next"><a class="page-link" href="#" onclick="nextPage()"><i
+                  class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
+</div>
+
+{{!-- Confirm delete code --}}
+    <div id="delete-gift-modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Xóa quà tặng</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Bạn chắc chắn muốn xóa quà tặng này ?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            <button id="btn-delete-gift" type="button" class="btn btn-danger">Xóa bỏ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<form name="delete-gift-form" method="POST"></form>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+ //  $.ajax({
+ //     url: '/gifts/get-my-gifts',
+ //   })
+ //   .then(rs => {
+ //       $('#container-my-gifts').html('');
+ //       for (let i = 0; i < rs.gifts.length; i++) {
+  //        const element = rs.gifts[i];
+  //        const myTime  = element.createdAt.split('T')[0]
+  //        var item = $(`
+  //                    <div class="item-my-gifts">
+  //                      <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
+  //                      <div class="info-gifts-item">
+  //                          <p>Tên quà tặng: ${element.name}</p>
+  //                          <p>Mô tả: ${element.description}</p>
+  //                          <p class="time-create">Ngày tạo: ${myTime}</p>
+  //                      </div>
+  //                      <div id="edit-delete" class="edit-delete">
+  //                          <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+  //                          <a href="" class="icon-delete" data-toggle="modal" data-id="${element._id}"
+  //                            data-target="#delete-gift-modal" onclick="gotoCheck()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+  //                      </div>
+  //                  </div>
+  //                  `)
+  //
+  //        $('#container-my-gifts').append(item);
+  //      }
+  //  })
+ ///----Code LoadPage()----///
+  var currentPage = 1;
+
+  function loadPage(page) {
+    currentPage = page
+    var valueSearch = $('.input-search').val();
+    $.ajax({
+      url: '/gifts/get-my-gifts?page=' + page + '&name=' + valueSearch,
+    })
+      .then(rs => {
+        $('#container-my-gifts').html('');
+        $('.item-pagination').html('');
+        for (let i = 0; i < rs.tongSoPage; i++) {
+          var itemLi = $(`
+                  <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
+                `)
+          $('.item-pagination').append(itemLi);
+        }
+
+        for (let i = 0; i < rs.gifts.length; i++) {
+          const element = rs.gifts[i];
+          const myTime  = element.createdAt.split('T')[0]
+          var item = $(`
+                      <div class="item-my-gifts">
+                        <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
+                        <div class="info-gifts-item">
+                            <p>Tên quà tặng: ${element.name}</p>
+                            <p>Mô tả: ${element.description}</p>
+                            <p class="time-create">Ngày tạo: ${myTime}</p>
+                        </div>
+                        <div id="edit-delete" class="edit-delete">
+                            <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href="" class="icon-delete" data-toggle="modal" data-id="${element._id}"
+                              data-target="#delete-gift-modal" onclick="gotoCheck()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    `)
+
+          $('#container-my-gifts').append(item);
+        }
+
+        var itemNone = $(`<h3 id="text-none">Xin lỗi bạn. </br> Bạn chưa đăng quà tặng nào.</h3>`)
+        if (rs.gifts.length === 0) {
+          $('#container-my-gifts').append(itemNone);
+        }
+
+        const activeItem = $('.page-link');
+        for (i = 0; i < activeItem.length; i++) {
+          if(parseInt(activeItem[i].innerText) === currentPage) {
+            activeItem[i].classList.add("active");
+          }
+        }
+
+        var textNone = document.getElementById('text-none');
+        var pre = document.getElementById('pre');
+        var next = document.getElementById('next');
+
+        if (textNone) {
+          pre.style.display = "none";
+          next.style.display = "none";
+        }
+        else {
+          pre.style.display = "block";
+          next.style.display = "block";
+        }
+
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+  loadPage(currentPage)
+
+  function prePage() {
+        currentPage--;
+        if (currentPage < 1) {
+            currentPage = 1;
+        }
+
+        var valueSearch = $('.input-search').val();
+        $.ajax({
+            url: '/gifts/get-my-gifts?page=' + currentPage + '&name=' + valueSearch,
+        })
+            .then(rs => {
+                $('#container-my-gifts').html('');
+                $('.item-pagination').html('');
+                for (let i = 0; i < rs.tongSoPage; i++) {
+                    var itemLi = $(`
+                                    <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
+                                `)
+                    $('.item-pagination').append(itemLi);
+                }
+
+                for (let i = 0; i < rs.gifts.length; i++) {
+                  const element = rs.gifts[i];
+                  const myTime  = element.createdAt.split('T')[0]
+                  var item = $(`
+                              <div class="item-my-gifts">
+                                <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
+                                <div class="info-gifts-item">
+                                    <p>Tên quà tặng: ${element.name}</p>
+                                    <p>Mô tả: ${element.description}</p>
+                                    <p class="time-create">Ngày tạo: ${myTime}</p>
+                                </div>
+                                <div id="edit-delete" class="edit-delete">
+                                    <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a href="" class="icon-delete" data-toggle="modal" data-id="${element._id}"
+                                      data-target="#delete-gift-modal" onclick="gotoCheck()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                            `)
+
+                  $('#container-my-gifts').append(item);
+                }
+
+
+                var itemNone = $(`<h3 class="text-none">Xin lỗi bạn. </br> Bạn chưa đăng quà tặng nào.</h3>`)
+                if (rs.gifts.length === 0) {
+                    $('#container-my-gifts').append(itemNone);
+                }
+
+                const activeItem = $('.page-link');
+                for (i = 0; i < activeItem.length; i++) {
+                  console.log(parseInt(activeItem[i].innerText));
+                  if(parseInt(activeItem[i].innerText) === currentPage) {
+                    activeItem[i].classList.add("active");
+                  }
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    function nextPage() {
+        currentPage++;
+        var pageItem = $('.page-item')
+
+        if (currentPage > pageItem.length - 2) {
+            currentPage = pageItem.length - 2
+        }
+
+        var valueSearch = $('.input-search').val();
+        $.ajax({
+            url: '/gifts/get-my-gifts?page=' + currentPage + '&name=' + valueSearch,
+        })
+            .then(rs => {
+                $('#container-my-gifts').html('');
+                $('.item-pagination').html('');
+                for (let i = 0; i < rs.tongSoPage; i++) {
+                    var itemLi = $(`
+                                    <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
+                                `)
+                    $('.item-pagination').append(itemLi);
+                }
+
+                for (let i = 0; i < rs.gifts.length; i++) {
+                  const element = rs.gifts[i];
+                  const myTime  = element.createdAt.split('T')[0]
+                  var item = $(`
+                              <div class="item-my-gifts">
+                                <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
+                                <div class="info-gifts-item">
+                                    <p>Tên quà tặng: ${element.name}</p>
+                                    <p>Mô tả: ${element.description}</p>
+                                    <p class="time-create">Ngày tạo: ${myTime}</p>
+                                </div>
+                                <div id="edit-delete" class="edit-delete">
+                                    <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a href="" class="icon-delete" data-toggle="modal" data-id="${element._id}"
+                                      data-target="#delete-gift-modal" onclick="gotoCheck()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                            `)
+
+                  $('#container-my-gifts').append(item);
+                }
+
+                var itemNone = $(`<h3 class="text-none">Xin lỗi bạn. </br> Bạn chưa đăng quà tặng nào.</h3>`)
+                if (rs.gifts.length === 0) {
+                    $('#container-my-gifts').append(itemNone);
+                }
+
+                const activeItem = $('.page-link');
+                for (i = 0; i < activeItem.length; i++) {
+                  if(parseInt(activeItem[i].innerText) === currentPage) {
+                    activeItem[i].classList.add("active");
+                  }
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+
+    function gotoCheck() {
+        var giftId;
+        var deleteForm = document.forms['delete-gift-form'];
+        var btnDeleteGift = document.getElementById('btn-delete-gift');
+
+        $('#delete-gift-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            giftId = button.data('id');
+        });
+
+        btnDeleteGift.onclick = function () {
+        deleteForm.action = '/gifts/' + giftId + '/force?_method=DELETE';
+        deleteForm.submit();
+     }
+    }
+
+</script>

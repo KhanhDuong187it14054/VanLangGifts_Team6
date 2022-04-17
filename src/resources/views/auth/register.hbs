@@ -1,0 +1,71 @@
+<div id="register">
+    <div id="login-fail" style="display: none" class="alert alert-danger"></div>
+    <h1 class="welcome-register">THANK FOR <span class="vanlang-register" style="color: white">REGISTER</span></h1>
+    <div class="register-wrap">
+        <h2 class="text-login">REGISTER</h2>
+        <div class="form-group-register">
+            <label class="label-register" for="exampleInputEmail1">Email</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group-register">
+            <label class="label-register" for="exampleInputEmail1">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username">
+        </div>
+        <div class="form-group-register">
+            <label class="label-register" for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password">
+        </div>
+        <div class="form-group-register mb-10">
+            <label class="label-register" for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Enter confirm password">
+        </div>
+        <button type="submit" class="btn-login btn-register btn-primary" id="buttonEnter" onclick="gotoRegister()">REGISTER</button>
+    </div>
+</div>
+
+
+<script>
+    function gotoRegister() {
+        $.ajax({
+            url: '/auth/register',
+            type: 'POST',
+            data: {
+                username: $('#username').val(),
+                password: $('#password').val(),
+                confirmPassword: $('#confirmPassword').val(),
+                email: $('#email').val(),
+            }
+        })
+            .then(data => {
+                console.log(data.message)
+                if (data.message === "") {
+                    console.log(data)
+                    window.location.href = "/auth/login"   //home
+                } else {
+                    $('#login-fail').html('');
+                    var itemLi = $(`
+                        <strong>${data.message}</strong>
+                    `)
+                    $('#login-fail').append(itemLi);
+                    if (data.message) {
+                        var i = 0;
+                        var setTime1 = function () {
+                            $("#login-fail").hide();
+                        }
+
+                        var setTime = setInterval(() => {
+                            i++;
+                            $("#login-fail").show();
+                            if (i === 30) {
+                                clearInterval(setTime)
+                                setTime1();
+                            }
+                        }, 100)
+                    }
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+</script>

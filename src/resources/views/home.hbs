@@ -1,0 +1,185 @@
+<div id="home-container">
+
+<!-- Banner -->
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="mask flex-center">
+                <div class="container-banner">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 col-12 order-md-1 order-2">
+                            <h4>Chào Mừng K27 Đến Với {{accessToken}}</h4>
+                            <h4 class="van-lang-gifts" style="color: red"> <strong> VAN LANG GIFTS </strong></h4>
+                            <p>Nơi sinh viên Văn Lang trao nhau những món quà ý nghĩa.<br></p> <br> <a href="#">ĐỌC THÊM</a>
+                        </div>
+                        <div class="col-md-6 col-12 order-md-2 order-2"><img src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.15752-9/251362907_304687707921374_5576266918968219662_n.jpg?stp=dst-jpg_s2048x2048&_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=_Pe13Uml3pAAX_I41w7&_nc_ht=scontent.fsgn2-4.fna&oh=03_AVJh0SST6PsX6ehn9CzvaplE2nQ8fqcmXcEEps0qcuPAHw&oe=62765112" class="mx-auto img-banner" alt="slide"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="mask flex-center">
+                <div class="container-banner">
+                    <div class="row align-items-center">
+                        <div class="col-md-7 col-12 order-md-1 order-2">
+                            <h4 style="color: red">1.000.000 Quà Tặng</h4>
+                            <p>Là con số quà tặng Văn Lang Gifts hướng đến năm 2023</p> <br>
+                             {{!-- <a href="#">ĐỌC THÊM</a> --}}
+                        </div>
+                        <div class="col-md-5 col-12 order-md-2 order-1"><img src="https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/142444144_2126103230854062_7353501831744434717_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=e3f864&_nc_ohc=zBJiaxuH-lEAX_djwnF&_nc_ht=scontent.fsgn2-4.fna&oh=00_AT9pN186SECe6rgjqdnIIAMBxPsd32UtVVkKeAGEjf6mig&oe=6266109A" class="mx-auto" alt="slide"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div> <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+</div>
+
+<!-- List Gifts -->
+<div id="list-gifts">
+    <div class="title-text">
+        <p>List Gifts</p>
+        <h1>Take And Give Gifts</h1>
+    </div>
+    <div class="row container-gift">
+        {{#each gifts}}
+        <div class="col-lg-4 mt-2 mb-4 item-gift ">
+            <div class="card card-gift-item ">
+                <a class="item-size-image" href="/gifts/{{this.slug}}">
+                    <img class="image-size-home" src="{{this.image}}" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
+                    <a href="/gifts/{{this.slug}}">
+                        <p class="card-title" style="font-family:'Segoe UI'">Tên quà tặng:  {{this.name}}</p>
+                    </a>
+                    <p class="card-text" style="font-family:'Segoe UI'">Người tặng: {{this.author}}</p>
+                    {{!-- <a href="/gifts/{{this.slug}}" class="btn btn-primary">Tìm hiểu</a> --}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="title-text">
+        <button class="btn btn-info btn-all-gifts">
+            <a href="/gifts/show-all"><h4 style="font-weight: bold;">ALL GIFTS</h4></a>
+        </button>
+    </div>
+</div>
+
+
+<!-- Features -->
+<section id="feature">
+    <div class="title-text-goal">
+        <p>GOALS</p>
+        <h1>Go To The Future</h1>
+    </div>
+    <div class="feature-box">
+        <div class="features">
+            <h1>1.000.000 Gifts</h1>
+            <div class="features-desc">
+                <div class="feature-icon">
+                    <i class="fa fa-shield"></i>
+                </div>
+                <div class="feature-text">
+                    <p style="font-family:'Segoe UI'">Hướng đến mục tiêu trao 1.000.000 món quà trong năm 2023.
+                    </p>
+                </div>
+            </div>
+            <h1>5.000 Users</h1>
+            <div class="features-desc">
+                <div class="feature-icon">
+                    <i class="fa fa-check-square-o"></i>
+                </div>
+                <div class="feature-text">
+                    <p style="font-family:'Segoe UI'">
+                        5.000 bạn sinh viên Văn Lang tham gia Van Lang Gifts.
+                    </p>
+                </div>
+            </div>
+            <h1>More And More</h1>
+            <div class="features-desc">
+                <div class="feature-icon">
+                    <i class="fa fa-inr"></i>
+                </div>
+                <div class="feature-text">
+                    <p style="font-family:'Segoe UI'">Nhiều và nhiều hơn nữa các thành viên tham gia xây dựng Văn Lang Gifts.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="features-img">
+            <img src="/public/img/vanlangve.jpg" alt="barber man">
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Testimonial -->
+<section id="testimonial">
+    <div class="title-text">
+        <p>MY TEAM</p>
+        <h1>Do All Together</h1>
+    </div>
+    <div class="testimonial-row">
+        <div class="testimonial-col">
+            <a href="https://twitter.com/CaoKhanhDuong">
+            <div class="user">
+                <img src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.6435-9/118777220_1241033746244360_5134027906666697754_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=2Qqz_y1OJfIAX_ChFBU&_nc_ht=scontent.fsgn2-3.fna&oh=00_AT8D5sLP4uw0W7RIl6hH9IZ6u63jEZPc22A1IWcXjC4EbA&oe=62651894" alt="img-1">
+                <div class="user-info">
+                    <h4>KHANH DUONG <i class="fa fa-twitter"></i> </h4>
+                    <small>@ckhduong</small>
+                </div>
+            </div>
+            <p>Information Technology student of Van Lang University. His dream is to become a web programmer.
+            </p>
+            </a>
+        </div>
+        <div class="testimonial-col">
+            <a>
+            <div class="user">
+                <img src="/public/img/user.png" alt="img-1">
+                <div class="user-info">
+                    <h4>It's you<i class="fa fa-twitter"></i> </h4>
+                    <small>@I_love_you</small>
+                </div>
+            </div>
+            <p class="join-us">
+                <a href="#">JOIN US</a>
+            </p>
+            </a>
+        </div>
+        <div class="testimonial-col">
+            <div class="user">
+                <img src="https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/97802865_288046692233023_2774281644645810176_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=174925&_nc_ohc=MlJSPNYXllkAX_jmfND&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT97LMze_ASF9x6yjpnMErbhj-w7dcoGbk4q-nT0zepYYw&oe=62682DAD" alt="img-1">
+                <div class="user-info">
+                    <h4>THIEN BAO<i class="fa fa-twitter"></i> </h4>
+                    <small>@baothien</small>
+                </div>
+            </div>
+            <p>Information Technology student of Van Lang University. His dream is to become a web programmer.
+            </p>
+        </div>
+    </div>
+</section>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    $(document).ready(function(){
+        var setAuto = 3000;
+        $('#myCarousel').carousel({
+            interval: setAuto,
+        })
+        $('#myCarousel').click(function(setAuto){
+            if(setAuto !== true){
+                setAuto = true;
+            } else {
+                setAuto = 3000;
+            }
+        })
+    });
+  } )
+</script>

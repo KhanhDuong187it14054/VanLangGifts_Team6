@@ -1,0 +1,129 @@
+<div id="show-messenger">
+    <div class="messenger">
+        <div class="chatMenu">
+            <div class="chatMenuWrapper">
+                    <div class="conversation">
+                        <img id="conversationImg" src="{{avatarAuthor}}" alt="" />
+                        <span id="conversationName">{{usernameAuthor}}</span>
+                        <br />
+                        <span id="conversationEmail">Email: {{emailAuthor}}</span>
+                        <br />
+                        Phone: <span id="conversationPhone">{{phoneAuthor}}</span>
+                        <br />
+                        <span><a id="conversationInstagram" href="{{instagramAuthor}}"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
+                        <span><a id="conversationFacebook" href="{{facebookAuthor}}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></span>
+                        </div>
+            </div>
+        </div>
+        <div class="chatBox">
+            <div class="chatBoxWrapper">
+                <div class="chatBoxTop" id="chatBoxTop">
+                    {{!-- <div class="own">
+                        <div class="messageTop" id="messageText">
+                            <p class="messageText" >{{this.text}}</p>
+                        </div>
+                    </div> --}}
+                </div>
+                <div class="chatBoxBottom">
+                    <textarea class="chatMessageInput" placeholder="Write something ..." name="text"
+                        id="text"></textarea>
+                    <button id="btnSubmitChat" class="chatSubmitButton" >Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="myId" style="display:none">{{idCurrentUser}}</div>
+<div id="idRoom" style="display:none">{{idRoom}}</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io("http://localhost:1104");
+    var tenPhong = $("#idRoom").html();
+    var myId = $("#myId").html();
+
+    socket.on("server-gui-lai-tin", function(data) {
+        if(data.id === myId){
+            $("#chatBoxTop").append(`
+            <div class="own">
+                <div class="messageTop" id="messageText">
+                    <p class="messageText" >` + data.nd + `</p>
+                    <img class="messageImg" id="imageAuthor" src="http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" alt="" />
+                </div>
+            </div>
+            `);
+        } else {
+            $("#chatBoxTop").append(`
+            <div>
+                <div class="messageTop" id="messageText">
+                    <img class="messageImg" id="imageAuthor" src="http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" alt="" />
+                    <p class="messageText" >` + data.nd + `</p>
+                </div>
+            </div>
+            `);
+        }
+    });
+
+
+    $(document).ready(function() {
+        if ($("#conversationImg").attr('src') === "") {
+            $("#conversationImg").attr('src', "http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png")
+        }
+        if ($("#conversationPhone").text() === "") {
+            $("#conversationPhone").text("Phone: Chưa cập nhật")
+        }
+
+        $.ajax({
+            url: '/messages/' + tenPhong,
+            type: 'GET',
+        })
+        .then(data => {
+           // console.log(data[0].sender)
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].sender === myId) {
+                    $("#chatBoxTop").append(`
+                    <div class="own">
+                        <div class="messageTop" id="messageText">
+                            <p class="messageText" >` + data[i].text + `</p>
+                            <img class="messageImg" id="imageAuthor" src="http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" alt="" />
+                        </div>
+                    </div>
+                    `)
+                } else {
+                    $("#chatBoxTop").append(`
+                    <div>
+                        <div class="messageTop" id="messageText">
+                            <img class="messageImg" id="imageAuthor" src="http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" alt="" />
+                            <p class="messageText" >` + data[i].text + `</p>
+                        </div>
+                    </div>
+                    `);
+                }
+            }
+        })
+        
+        socket.emit("tao-phong", tenPhong);
+        $("#btnSubmitChat").click(function () {
+            // Thêm tin nhắn vào DB
+            $.ajax({
+                url: '/messages',
+                type: 'POST',
+                data: {
+                        text: $("#text").val(),
+                        conversationId: tenPhong,
+                        sender: myId,
+                    }
+            })
+        
+            socket.emit('user-gui-tin',
+                {
+                    nd: $('#text').val(),
+                    id: myId,
+                }
+            )
+        });
+    })
+</script>
