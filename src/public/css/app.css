@@ -1518,7 +1518,7 @@ h1 {
   width: 70%;
   background-color: #fff;
   margin: 0px auto;
-  padding: 0px 30px;
+  padding: 30px 30px;
   border-radius: 5px; }
 
 .checkbox-select-all-options {
@@ -1552,8 +1552,7 @@ h1 {
   .container-stored-gift {
     padding: 30px 50px; }
   .wrap-stored-gift {
-    padding-bottom: 0px;
-    padding-top: 5px; }
+    padding: 30px 30px; }
   .wrap-stored-gift h3 {
     font-size: 16px; }
   .wrap-stored-gift a {
