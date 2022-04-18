@@ -1640,3 +1640,19 @@ h1 {
     font-size: 12px; }
   .wrap-stored-user .pagi-btn .pagination .page-item .page-link {
     font-size: 12px; } }
+
+@media only screen and (max-width: 46.1875em) {
+  .container-stored-user {
+    padding: 35px 10px; }
+  .list-users {
+    font-size: 16px; }
+  .wrap-stored-user {
+    padding: 10px 15px; }
+  .table-users {
+    font-size: 12px; }
+  .wrap-stored-user .item-search .input-search {
+    width: 222px;
+    height: 25px;
+    line-height: 25px; }
+  .wrap-stored-user .item-search .fa-search {
+    font-size: 16px; } }
