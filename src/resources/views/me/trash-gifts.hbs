@@ -1,16 +1,16 @@
 <div class="container-stored-gift">
 <div class="mt-4 wrap-stored-gift">
   <div>
-    <a href="/me/stored/gifts">Danh sách quà tặng</a>
+    <a href="/me/stored/gifts"> < Danh sách quà tặng</a>
     <h3>Quà tặng đã xóa</h3>
   </div>
-    <table class="table mt-4">
+    <table class="table mt-4 table-gifts">
         <thead>
             <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Tên quà tặng</th>
                 <th scope="col">Người tặng</th>
-                <th scope="col" colspan="2">Thời gian xóa</th>
+                <th scope="col" colspan="2" >Thời gian xóa</th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
                 <td>{{this.name}}</td>
                 <td>{{this.author}}</td>
                 <td>{{this.deletedAt}}</td>
-                <td>
+                <td class="features">
                     <a href="" class="btn btn-link btn-restore" data-id={{this._id}}>Khôi phục</a>
                     <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-gift-modal">Xóa vĩnh viễn</a>
                 </td>
