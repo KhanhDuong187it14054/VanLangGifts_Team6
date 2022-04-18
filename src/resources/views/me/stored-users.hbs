@@ -20,40 +20,22 @@
         </thead>
         <tbody id="wrap-all-users">
           
-            {{!-- {{#each users}}
-            <tr>
-              <th scope="row">{{sum @index 1}}</th>
-              <td>{{this.username}}</td>
-              <td>{{this.email}}</td>
-              {{#if this.admin}}
-              <td style="color:rgb(38, 202, 85)">{{this.admin}}</td>
-              {{else}}
-              <td style="color:red">{{this.admin}}</td>
-              {{/if}}
-              <td>{{this.createdAt}}</td>
-              <td>
-                <a href="/users/{{this._id}}/edit" class="btn btn-link">Sửa</a>
-                <a href="" class="btn btn-link" data-id="{{this.username}}" data-toggle="modal"
-                  data-target="#delete-user-modal">Xóa</a>
-              </td>
-            </tr>
-            {{/each}} --}}
         </tbody>
       </table>
-        <div class="pagi-btn">
-          <ul class="pagination">
-            <li class="page-item" id="pre"><a class="page-link" href="#" onclick="prePage()"><i
-                  class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
-            <li class="item-pagination">
-              {{!--
-            <li class="page-item"><a class="page-link" href="#" onclick="loadPage(1)">1</a></li>
-            <li class="page-item"><a class="page-link" href="#" onclick="loadPage(3)">3</a></li>
-            --}}
-            </li>
-            <li class="page-item" id="next"><a class="page-link" href="#" onclick="nextPage()"><i
-                  class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
-          </ul>
-        </div>
+      <div class="pagi-btn">
+        <ul class="pagination">
+          <li class="page-item" id="pre"><a class="page-link" href="#" onclick="prePage()"><i
+                class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+          <li class="item-pagination">
+            {{!--
+          <li class="page-item"><a class="page-link" href="#" onclick="loadPage(1)">1</a></li>
+          <li class="page-item"><a class="page-link" href="#" onclick="loadPage(3)">3</a></li>
+          --}}
+          </li>
+          <li class="page-item" id="next"><a class="page-link" href="#" onclick="nextPage()"><i
+                class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
     </div>
 
     {{!-- Confirm delete user --}}

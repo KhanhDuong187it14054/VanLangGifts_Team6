@@ -1613,3 +1613,15 @@ h1 {
   .pagi-btn {
     height: 50px;
     line-height: 50px; } }
+
+.container-stored-user {
+  padding: 50px 190px; }
+
+.wrap-stored-user {
+  border: 1px solid #454545;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12); }
+
+.wrap-stored-user .pagi-btn .pagination .page-item .page-link {
+  color: #000; }
