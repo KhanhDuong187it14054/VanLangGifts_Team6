@@ -1531,3 +1531,15 @@ h1 {
 
 .wrap-stored-gift .pagi-btn .pagination .page-item .active {
   background-color: rgba(154, 227, 233, 0.772); }
+
+.col-id {
+  width: 50px; }
+
+.col-gift {
+  width: 300px; }
+
+.col-author {
+  width: 300px; }
+
+.col-time-gift {
+  width: 200px; }
