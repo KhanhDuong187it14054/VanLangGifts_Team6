@@ -1518,7 +1518,7 @@ h1 {
   width: 70%;
   background-color: #fff;
   margin: 0px auto;
-  padding: 30px;
+  padding: 0px 30px;
   border-radius: 5px; }
 
 .checkbox-select-all-options {
@@ -1543,6 +1543,10 @@ h1 {
 
 .col-time-gift {
   width: 200px; }
+
+.return-list-gifts {
+  height: 85px;
+  line-height: 85px; }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
   .container-stored-gift {
@@ -1585,3 +1589,20 @@ h1 {
   .return-list-gifts {
     height: 55px;
     line-height: 55px; } }
+
+@media only screen and (max-width: 46.1875em) {
+  .wrap-stored-gift {
+    width: 100%;
+    padding: 0px 15px; }
+  .container-stored-gift {
+    padding: 15px 10px; }
+  .return-list-gifts {
+    font-size: 14px;
+    height: 68px;
+    line-height: 68px; }
+  .list-delete-gifts {
+    font-size: 17px; }
+  .table-gifts {
+    font-size: 12px; }
+  .btn-link {
+    font-size: 12px; } }
