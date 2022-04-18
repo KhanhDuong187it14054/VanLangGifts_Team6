@@ -2040,3 +2040,31 @@ h1 {
         font-size: 13px;
     }
 }
+
+// ---------------------STORED-GIFTS--------------------
+.container-stored-gift {
+    background-color: rgb(126, 242, 215);
+    padding: 50px;
+}
+
+.wrap-stored-gift {
+    width: 70%;
+    background-color: #fff;
+    margin: 0px auto;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.checkbox-select-all-options {
+    width: 140px;
+    margin: 0px 16px;
+}
+
+.wrap-stored-gift .pagi-btn .pagination li a {
+    background-color: transparent;
+    color: #08f;
+}
+
+.wrap-stored-gift .pagi-btn .pagination .page-item .active {
+    background-color: rgba(154, 227, 233, 0.772);
+}

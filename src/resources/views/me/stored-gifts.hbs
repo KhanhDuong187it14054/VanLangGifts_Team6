@@ -1,4 +1,3 @@
-
 <div class="container-stored-gift">
   <div class="wrap-stored-gift">
     <form method="POST" name="container-form" class="" action="/gifts/handle-form-actions">
@@ -147,6 +146,13 @@
           $('#wrap-all-list-gifts').append(item);
         }
 
+        const activeItem = $('.page-link');
+        for (i = 0; i < activeItem.length; i++) {
+            if(parseInt(activeItem[i].innerText) === currentPage) {
+                activeItem[i].classList.add("active");
+            }
+        }
+
         var itemNone = $(`<h3 id="text-none">Xin lỗi bạn. </br> Hiện quà tặng này không có.</h3>`)
         if (rs.data.length === 0) {
           $('#wrap-all-list-gifts').append(itemNone);
@@ -190,10 +196,11 @@
         $('.item-pagination').html('');
         for (let i = 0; i < rs.tongSoPage; i++) {
           var itemLi = $(`
-                                    <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
-                                `)
+                          <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
+                      `)
           $('.item-pagination').append(itemLi);
         }
+        
 
         for (let i = 0; i < rs.data.length; i++) {
           const element = rs.data[i];
@@ -218,6 +225,14 @@
                     `)
           $('#wrap-all-list-gifts').append(item);
         }
+
+        const activeItem = $('.page-link');
+        for (i = 0; i < activeItem.length; i++) {
+            if(parseInt(activeItem[i].innerText) === currentPage) {
+                activeItem[i].classList.add("active");
+            }
+        }
+
         var itemNone = $(`<h3 class="text-none">Xin lỗi bạn. </br> Hiện quà tặng này không có.</h3>`)
         if (rs.data.length === 0) {
           $('#wrap-all-list-gifts').append(itemNone);
@@ -277,6 +292,14 @@
                     `)
           $('#wrap-all-list-gifts').append(item);
         }
+
+        const activeItem = $('.page-link');
+        for (i = 0; i < activeItem.length; i++) {
+            if(parseInt(activeItem[i].innerText) === currentPage) {
+                activeItem[i].classList.add("active");
+            }
+        }
+        
         var itemNone = $(`<h3 class="text-none">Xin lỗi bạn. </br> Hiện quà tặng này không có.</h3>`)
         if (rs.data.length === 0) {
           $('#wrap-all-list-gifts').append(itemNone);
