@@ -1557,8 +1557,15 @@ h1 {
     font-size: 12px; }
   .item-search .input-search {
     width: 240px;
-    padding: 1px 10px; }
+    padding: 3px 10px; }
   .item-search .input-search {
     font-size: 12px; }
   .item-search .fa {
-    font-size: 16px; } }
+    font-size: 14px; }
+  .table-gifts {
+    font-size: 14px; }
+  .col-gift {
+    width: 190px; }
+  .col-author {
+    width: 150px;
+    background-color: #d07d7d; } }

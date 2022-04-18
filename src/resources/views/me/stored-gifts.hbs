@@ -28,7 +28,7 @@
 
       </div>
 
-      <table class="table mt-4 ">
+      <table class="table mt-4 table-gifts">
         <thead>
           <tr>
             <th scope="col"></th>
@@ -299,7 +299,7 @@
                 activeItem[i].classList.add("active");
             }
         }
-        
+
         var itemNone = $(`<h3 class="text-none">Xin lỗi bạn. </br> Hiện quà tặng này không có.</h3>`)
         if (rs.data.length === 0) {
           $('#wrap-all-list-gifts').append(itemNone);
