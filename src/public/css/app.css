@@ -1436,9 +1436,6 @@ h1 {
     font-size: 12px; } }
 
 @media only screen and (max-width: 46.1875em) {
-  #show-all-gifts .item-search .fa-search {
-    right: -217px;
-    top: -44px; }
   #show-all-gifts .item-search .item-type {
     margin-top: 10px; }
   #show-all-gifts .item-search .input-search {
