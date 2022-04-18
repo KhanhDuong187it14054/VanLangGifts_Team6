@@ -1661,11 +1661,12 @@ h1 {
     width: 95px;
     overflow: scroll; }
   .email {
-    width: 62px;
+    width: 72px;
     overflow: scroll; }
   .info-item {
     display: flex; }
-  .table td, .table th {
+  .table td,
+  .table th {
     padding: 11px 5px;
     vertical-align: top;
     border-top: 1px solid #dee2e6; } }
