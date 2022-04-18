@@ -1,13 +1,20 @@
 <div id="gift-detail">
-    <div>
-        <img class="image-detail" src="{{gift.image}}" alt="Ảnh quà tặng">
-    </div>
+    {{!-- <img class="image-detail" src="{{gift.image}}" alt="Ảnh quà tặng">
     <div class="right-detail">
         <div class="info-detail">
             <p class="detail-name" style="font-family:'Segoe UI'" >Tên quà tặng:<span> {{ gift.name }} </span></p>
             <p class="detail-des" style="font-family:'Segoe UI'" >Mô tả:  <span>{{gift.description}}</span></p>
             <p style="font-family:'Segoe UI'">Người tặng: <span>{{gift.author}} </span> </p>
         </div>
+        <button data-id="{{gift.idAuthor}}" id="btn-contact" style="font-family:'Segoe UI'"> Liên hệ </button>
+    </div> --}}
+    <div class="image">
+        <img src="{{gift.image}}" alt="Ảnh quà tặng">
+    </div>
+    <div class="info">
+        <p class="detail-name" style="font-family:'Segoe UI'" >Tên quà tặng:<span> {{ gift.name }} </span></p>
+        <p class="detail-des" style="font-family:'Segoe UI'" >Mô tả:  <span>{{gift.description}}</span></p>
+        <p style="font-family:'Segoe UI'">Người tặng: <span>{{gift.author}} </span> </p>
         <button data-id="{{gift.idAuthor}}" id="btn-contact" style="font-family:'Segoe UI'"> Liên hệ </button>
     </div>
 </div>

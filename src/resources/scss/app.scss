@@ -1951,7 +1951,7 @@ h1 {
 // ---------------------SHOW-DETAIL-GIFTS--------------------
 #gift-detail {
     display: flex;
-    height: 745px;
+    flex-wrap: wrap;
     width: 70%;
     margin: 0px auto;
     margin-top: 20px;
@@ -1964,32 +1964,6 @@ h1 {
         0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-#gift-detail .right-detail {
-    margin-left: 30px;
-}
-
-#gift-detail .right-detail .detail-des {
-    width: 550px;
-    background-color: #fff;
-}
-
-#gift-detail .right-detail .detail-name span {
-    color: rgb(18, 139, 232);
-    font-weight: bold;
-}
-
-#gift-detail .right-detail .info-detail p {
-    font-size: 20px;
-    font-weight: 300;
-    overflow: hidden;
-    text-overflow: clip;
-    word-wrap: break-word;
-}
-
-#gift-detail .right-detail .info-detail {
-    height: 597px;
-}
-
 #btn-contact {
     padding: 10px 20px;
     border-radius: 8px;
@@ -1997,8 +1971,31 @@ h1 {
     border: none;
     color: white;
     cursor: pointer;
+    position: absolute;
+    top: 93%;
 }
 
 #btn-contact:hover {
     background-color: rgb(56, 159, 237);
+}
+
+.image {
+    flex-basis: 50%;
+    background-color: rgb(56, 159, 237);
+}
+
+.image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.info {
+    position: relative;
+    flex-basis: 50%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.info p {
+    font-size: 18px;
 }
