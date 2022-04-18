@@ -2086,6 +2086,10 @@ h1 {
 }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+    .container-stored-gift {
+        padding: 30px 50px;
+    }
+
     .wrap-stored-gift h3 {
         font-size: 16px;
     }
@@ -2120,7 +2124,7 @@ h1 {
     }
 
     .table-gifts {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .col-gift {
@@ -2129,6 +2133,9 @@ h1 {
 
     .col-author {
         width: 150px;
-        background-color: rgb(208, 125, 125);
+    }
+
+    .align-items-center {
+        margin-top: 10px !important;
     }
 }
