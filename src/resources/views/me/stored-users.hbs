@@ -10,7 +10,7 @@
       </div>
       <table class="table mt-4 table-users">
         <thead>
-          <tr>
+          <tr  class="info-item">
             <th scope="col" class="col-stt">STT</th>
             <th scope="col" class="col-username">Username</th>
             <th scope="col" class="col-email">Email</th>
@@ -107,10 +107,10 @@
         for (let i = 0; i < rs.data.length; i++) {
           const element = rs.data[i];
           var item = $(`
-                      <tr>
+                      <tr class="info-item">
                       <th scope="row">${i+1}</th>
-                      <td>${element.username}</td>
-                      <td>${element.email}</td>
+                      <td class="username">${element.username}</td>
+                      <td class="email">${element.email}</td>
                       <td class="role-user-admin">${element.admin}</td>
                       <td>${element.createdAt}</td>
                       <td>
@@ -192,10 +192,10 @@
                 for (let i = 0; i < rs.data.length; i++) {
                     const element = rs.data[i];
                     var item = $(`
-                                   <tr>
+                                   <tr class="info-item">
                                     <th scope="row">${i+1}</th>
-                                    <td>${element.username}</td>
-                                    <td>${element.email}</td>
+                                    <td class="username">${element.username}</td>
+                                    <td class="email">${element.email}</td>
                                     <td class="role-user-admin">${element.admin}</td>
                                     <td>${element.createdAt}</td>
                                     <td>
@@ -262,10 +262,10 @@
                 for (let i = 0; i < rs.data.length; i++) {
                     const element = rs.data[i];
                     var item = $(`
-                                  <tr>
+                                  <tr class="info-item">
                                     <th scope="row">${i+1}</th>
-                                    <td>${element.username}</td>
-                                    <td>${element.email}</td>
+                                    <td class="username">${element.username}</td>
+                                    <td class="email">${element.email}</td>
                                     <td class="role-user-admin">${element.admin}</td>
                                     <td>${element.createdAt}</td>
                                     <td>

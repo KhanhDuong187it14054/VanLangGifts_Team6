@@ -2282,6 +2282,27 @@ h1 {
         font-size: 16px;
     }
 
-    .table-users .col-email {
+    .username {
+        // background-color: yellow;
+        display: block;
+        width: 95px;
+        overflow: scroll;
+    }
+
+    .email {
+        // background-color: rgb(27, 188, 108);
+        width: 62px;
+        overflow: scroll;
+    }
+
+    .info-item {
+        display: flex;
+    }
+
+    .table td,
+    .table th {
+        padding: 11px 5px;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
     }
 }
