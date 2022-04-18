@@ -1558,5 +1558,7 @@ h1 {
   .item-search .input-search {
     width: 240px;
     padding: 1px 10px; }
+  .item-search .input-search {
+    font-size: 12px; }
   .item-search .fa {
     font-size: 16px; } }
