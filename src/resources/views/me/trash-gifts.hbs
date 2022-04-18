@@ -19,7 +19,7 @@
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.author}}</td>
-                <td>{{this.deletedAt}}</td>
+                <td class="col-time-delete">{{this.deletedAt}}</td>
                 <td class="features">
                     <a href="" class="btn btn-link btn-restore" data-id={{this._id}}>Khôi phục</a>
                     <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-gift-modal">Xóa vĩnh viễn</a>
@@ -66,6 +66,11 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function(){
+        var timeDelete = document.getElementsByClassName("col-time-delete");
+        for (var i = 0; i < timeDelete.length; i++) {
+          timeDelete[i].innerHTML = timeDelete[i].innerHTML.split('G')[0];
+        }
+
         var giftId;
         var deleteForm = document.forms['delete-gift-form'];
         var restoreForm = document.forms['restore-gift-form'];

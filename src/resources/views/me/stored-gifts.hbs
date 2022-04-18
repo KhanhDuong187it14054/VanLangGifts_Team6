@@ -106,7 +106,6 @@
 
   function loadPage(page) {
     currentPage = page
-    console.log("Load", currentPage)
     var valueSearch = $('.input-search').val();
     $.ajax({
       url: '/gifts/get-all?page=' + page + '&name=' + valueSearch,
@@ -123,6 +122,7 @@
 
         for (let i = 0; i < rs.data.length; i++) {
           const element = rs.data[i];
+          const timeCreate = element.createdAt.split('.')[0];
           var item = $(`
                           <tr>
                             <td>
@@ -134,7 +134,7 @@
                             <th scope="row">${element._id}</th>
                             <td>${element.name}</td>
                             <td>${element.author}</td>
-                            <td>${element.createdAt}</td>
+                            <td>${timeCreate}</td>
                             <td>
                               <a href="/gifts/${element._id}/edit" class="btn btn-link">Sửa</a>
                               <a href="" class="btn btn-link" data-toggle="modal" data-id="${element._id}"
@@ -161,9 +161,7 @@
         var textNone = document.getElementById('text-none');
         var pre = document.getElementById('pre');
         var next = document.getElementById('next');
-        //  console.log(textNone)
-        //  console.log(pre)
-        //  console.log(next)
+
         if (textNone) {
           pre.style.display = "none";
           next.style.display = "none";
@@ -182,7 +180,6 @@
 
   function prePage() {
     currentPage--;
-    console.log('Pre ', currentPage)
     if (currentPage < 1) {
       currentPage = 1;
     }
@@ -247,9 +244,7 @@
 
   function nextPage() {
     currentPage++;
-    console.log('Next ', currentPage)
     var pageItem = $('.page-item')
-    console.log(pageItem.length)
 
     if (currentPage > pageItem.length - 2) {
       currentPage = pageItem.length - 2
@@ -328,7 +323,6 @@
       $('#delete-gift-modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget);
         giftId = button.data('id');
-        console.log("hi")
       });
 
       // when delete gift btn clicked
