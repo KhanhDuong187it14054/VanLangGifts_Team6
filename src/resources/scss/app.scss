@@ -1999,3 +1999,19 @@ h1 {
 .info p {
     font-size: 18px;
 }
+
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+    #gift-detail {
+        width: 65%;
+        padding: 30px;
+    }
+
+    .info p {
+        font-size: 14px;
+    }
+
+    #btn-contact {
+        padding: 7px 11px;
+        top: 90%;
+    }
+}
