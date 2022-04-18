@@ -2015,3 +2015,28 @@ h1 {
         top: 88%;
     }
 }
+
+@media only screen and (max-width: 46.1875em) {
+    .image {
+        flex-basis: 100%;
+    }
+
+    #gift-detail {
+        padding: 35px;
+        padding-bottom: 50px;
+        width: 77%;
+    }
+
+    .info {
+        flex-basis: 100%;
+        padding: 20px 0px;
+    }
+
+    .info p {
+        font-size: 15px;
+    }
+
+    #btn-contact {
+        font-size: 13px;
+    }
+}
