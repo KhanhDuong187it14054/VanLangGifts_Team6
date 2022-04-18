@@ -1547,6 +1547,9 @@ h1 {
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
   .container-stored-gift {
     padding: 30px 50px; }
+  .wrap-stored-gift {
+    padding-bottom: 0px;
+    padding-top: 5px; }
   .wrap-stored-gift h3 {
     font-size: 16px; }
   .wrap-stored-gift a {
@@ -1565,7 +1568,8 @@ h1 {
   .item-search .fa {
     font-size: 14px; }
   .table-gifts {
-    font-size: 12px; }
+    font-size: 12px;
+    margin-bottom: 0px; }
   .col-gift {
     width: 190px; }
   .col-author {
@@ -1573,4 +1577,11 @@ h1 {
   .align-items-center {
     margin-top: 10px !important; }
   .features {
-    width: 204px; } }
+    width: 204px; }
+  .col-name-gift {
+    width: 150px; }
+  .col-name-author {
+    width: 160px; }
+  .return-list-gifts {
+    height: 55px;
+    line-height: 55px; } }

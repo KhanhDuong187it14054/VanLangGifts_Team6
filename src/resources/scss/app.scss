@@ -2090,6 +2090,11 @@ h1 {
         padding: 30px 50px;
     }
 
+    .wrap-stored-gift {
+        padding-bottom: 0px;
+        padding-top: 5px;
+    }
+
     .wrap-stored-gift h3 {
         font-size: 16px;
     }
@@ -2125,6 +2130,7 @@ h1 {
 
     .table-gifts {
         font-size: 12px;
+        margin-bottom: 0px;
     }
 
     .col-gift {
@@ -2141,5 +2147,18 @@ h1 {
 
     .features {
         width: 204px;
+    }
+
+    .col-name-gift {
+        width: 150px;
+    }
+
+    .col-name-author {
+        width: 160px;
+    }
+
+    .return-list-gifts {
+        height: 55px;
+        line-height: 55px;
     }
 }
