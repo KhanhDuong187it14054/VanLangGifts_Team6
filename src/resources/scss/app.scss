@@ -2084,3 +2084,34 @@ h1 {
 .col-time-gift {
     width: 200px;
 }
+
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+    .wrap-stored-gift h3 {
+        font-size: 16px;
+    }
+
+    .wrap-stored-gift a {
+        font-size: 12px;
+    }
+
+    .form-check {
+        font-size: 12px;
+    }
+
+    .checkbox-select-all-options {
+        font-size: 12px;
+    }
+
+    .check-all-submit-btn {
+        font-size: 12px;
+    }
+
+    .item-search .input-search {
+        width: 240px;
+        padding: 1px 10px;
+    }
+
+    .item-search .fa {
+        font-size: 16px;
+    }
+}
