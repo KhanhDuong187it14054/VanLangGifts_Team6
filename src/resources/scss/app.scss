@@ -19,7 +19,7 @@ h1 {
 }
 
 #app {
-    background-color: #000;
+    // background-color: #000;
     height: 100vh;
 }
 
@@ -1946,4 +1946,59 @@ h1 {
     .item-all-gift {
         margin-right: 0px;
     }
+}
+
+// ---------------------SHOW-DETAIL-GIFTS--------------------
+#gift-detail {
+    display: flex;
+    height: 745px;
+    width: 70%;
+    margin: 0px auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 50px;
+    border: 1px solid rgb(120, 119, 119);
+    border-radius: 10px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+#gift-detail .right-detail {
+    margin-left: 30px;
+}
+
+#gift-detail .right-detail .detail-des {
+    width: 550px;
+    background-color: #fff;
+}
+
+#gift-detail .right-detail .detail-name span {
+    color: rgb(18, 139, 232);
+    font-weight: bold;
+}
+
+#gift-detail .right-detail .info-detail p {
+    font-size: 20px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: clip;
+    word-wrap: break-word;
+}
+
+#gift-detail .right-detail .info-detail {
+    height: 597px;
+}
+
+#btn-contact {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: rgb(81, 180, 255);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#btn-contact:hover {
+    background-color: rgb(56, 159, 237);
 }
