@@ -2041,7 +2041,7 @@ h1 {
     }
 }
 
-// ---------------------STORED-GIFTS--------------------
+// ---------------------STORED-GIFTS / TRASH-GIFTS--------------------
 .container-stored-gift {
     background-color: rgb(126, 242, 215);
     padding: 50px;
@@ -2190,9 +2190,21 @@ h1 {
 
     .table-gifts {
         font-size: 12px;
+        margin-bottom: 0px;
     }
 
     .btn-link {
         font-size: 12px;
+    }
+
+    .list-gifts {
+        font-size: 18px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .pagi-btn {
+        height: 50px;
+        line-height: 50px;
     }
 }

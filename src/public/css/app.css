@@ -1603,6 +1603,14 @@ h1 {
   .list-delete-gifts {
     font-size: 17px; }
   .table-gifts {
-    font-size: 12px; }
+    font-size: 12px;
+    margin-bottom: 0px; }
   .btn-link {
-    font-size: 12px; } }
+    font-size: 12px; }
+  .list-gifts {
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px; }
+  .pagi-btn {
+    height: 50px;
+    line-height: 50px; } }
