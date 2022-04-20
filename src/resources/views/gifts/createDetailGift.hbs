@@ -43,16 +43,25 @@
     $('#image1').hide();
     $('#image2').hide();
 
+    var typeArray = ['jpg','JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF']
+
     var tongsoImage = 0;
 
     var files = document.querySelector("#formFile");
 
     files.addEventListener('change', updateValue);
     function updateValue(e) {
+        for (var i = 0; i < files.files.length; i++) {
+            var typeFile = files.files[i].name.split(".")[1];
+            if( typeArray.includes(typeFile) === false) {
+                alert("Vui lòng chọn file là hình ảnh")
+                files.value = ""
+            };
+            
+        }
         if(files.files.length > 3) {
             alert("Vui lòng chỉ chọn 3 file")
-            console.log(files.value = "")
-            console.log(files.files)
+            files.value = "";
         }
         tongsoImage = tongsoImage + files.files.length;
     }
