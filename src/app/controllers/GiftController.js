@@ -19,24 +19,6 @@ class GiftController {
                     image: gift.image[0],
                     image1: gift.image[1],
                     image2: gift.image[2],
-                    // contentType0: gift.fileImages[0].contentType
-                    //     ? gift.fileImages[0].contentType
-                    //     : null,
-                    // imageBase640: gift.fileImages[0].imageBase64
-                    //     ? gift.fileImages[0].imageBase64
-                    //     : null,
-                    // contentType1: gift.fileImages[1].contentType
-                    //     ? gift.fileImages[1].contentType
-                    //     : null,
-                    // imageBase641: gift.fileImages[1].imageBase64
-                    //     ? gift.fileImages[1].imageBase64
-                    //     : null,
-                    // contentType2: gift.fileImages[2].contentType
-                    //     ? gift.fileImages[2].contentType
-                    //     : null,
-                    // imageBase642: gift.fileImages[2].imageBase64
-                    //     ? gift.fileImages[2].imageBase64
-                    //     : null,
                     fileImages: gift.fileImages,
                     data: req.data,
                     data_admin: req.data?.admin,

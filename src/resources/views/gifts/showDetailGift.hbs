@@ -1,15 +1,13 @@
-{{!-- 
-{{#each fileImages}}
-    <img class="d-block w-100" src='data:{{this.contentType}};base64,{{this.imageBase64}}' alt="Third slide">
-{{/each}} --}}
+
 <div id="gift-detail">
     <div class="image">
-        {{!-- <img src="{{gift.image}}" alt="Ảnh quà tặng"> --}}
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
+                {{#if image}}
                 <div class="carousel-item active">
                 <img class="d-block w-100" src="{{image}}" alt="First slide">
                 </div>
+                {{/if}}
                 {{#if image1}}
                 <div class="carousel-item">
                 <img class="d-block w-100" src="{{image1}}" alt="Second slide">
@@ -20,21 +18,6 @@
                 <img class="d-block w-100" src="{{image2}}" alt="Third slide">
                 </div>
                 {{/if}}
-                {{!-- {{#if imageBase640}}
-                <div class="carousel-item">
-                <img class="d-block w-100" src='data:{{contentType0}};base64,{{imageBase640}}' alt="Third slide">
-                </div>
-                {{/if}}
-                {{#if imageBase641}}
-                <div class="carousel-item">
-                <img class="d-block w-100" src='data:{{contentType1}};base64,{{imageBase641}}' alt="Third slide">
-                </div>
-                {{/if}}
-                {{#if imageBase642}}
-                <div class="carousel-item">
-                <img class="d-block w-100" src='data:{{contentType2}};base64,{{imageBase642}}' alt="Third slide">
-                </div>
-                {{/if}} --}}
                 {{#each fileImages}}
                     <div class="carousel-item">
                         <img class="d-block w-100" src='data:{{this.contentType}};base64,{{this.imageBase64}}' alt="Third slide">
@@ -62,6 +45,7 @@
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
+    
 
     $(document).ready(function(){
         var userId = document.getElementById('btn-contact').getAttribute('data-id');
@@ -70,6 +54,12 @@
             deleteForm.action = '/conversations/' + userId + '?_method=GET';
             deleteForm.submit();
         });
+
+        const divFirst = $('.carousel-inner').children();
+        console.log(divFirst[0].className = 'carousel-item active')
+
+        const divCon = document.getElementsByClassName('carousel-inner');
+        console.log(divCon.childNodes)
     })
 
 </script>

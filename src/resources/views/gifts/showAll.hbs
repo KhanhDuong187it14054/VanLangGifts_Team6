@@ -63,11 +63,21 @@
 
                 for (let i = 0; i < rs.data.length; i++) {
                     const element = rs.data[i];
+                    var avatarGift = element.image[0];
+                    if (element.fileImages[0] !== undefined) {
+                        var avatarSupport =  `data:${element.fileImages[0].contentType};base64,${element.fileImages[0].imageBase64}`;
+                    }
+
+
+                    if (avatarGift === "") {
+                        avatarGift = avatarSupport
+                    }
+
                     var item = $(`
                         <div class="item-all-gift">
                             <div class="card card-gift-item ">
                                 <a class="item-size-image" href="/gifts/${element.slug}">
-                                    <img class=" image-size-home" src="${element.image[0]}" alt="${element.name}">
+                                    <img class=" image-size-home" src=${avatarGift} alt="${element.name}">
                                 </a>
                                 <div class="card-body">
                                     <a href="/gifts/${element.slug}">
@@ -146,11 +156,23 @@
 
                 for (let i = 0; i < rs.data.length; i++) {
                     const element = rs.data[i];
+                    var avatarGift = element.image[0];
+                    if (element.fileImages[0] !== undefined) {
+                        var avatarSupport =  `data:${element.fileImages[0].contentType};base64,${element.fileImages[0].imageBase64}`;
+                    }
+
+
+                    if (avatarGift === "") {
+                        avatarGift = avatarSupport
+
+                    }
+                    
+
                     var item = $(`
                                     <div class="item-all-gift">
                                         <div class="card card-gift-item ">
                                             <a class="item-size-image" href="/gifts/${element.slug}">
-                                                <img class=" image-size-home" src="${element.image[0]}" alt="${element.name}">
+                                                <img class=" image-size-home" src=${avatarGift} alt="${element.name}">
                                             </a>
                                             <div class="card-body">
                                                 <a href="/gifts/${element.slug}">
@@ -200,11 +222,21 @@
 
                 for (let i = 0; i < rs.data.length; i++) {
                     const element = rs.data[i];
+                    var avatarGift = element.image[0];
+
+                    if (element.fileImages[0] !== undefined) {
+                        var avatarSupport =  `data:${element.fileImages[0].contentType};base64,${element.fileImages[0].imageBase64}`;
+                    }
+
+                    if (avatarGift === "") {
+                        avatarGift = avatarSupport
+                    }
+                    
                     var item = $(`
                                     <div class="item-all-gift">
                                         <div class="card card-gift-item ">
                                             <a class="item-size-image" href="/gifts/${element.slug}">
-                                                <img class=" image-size-home" src="${element.image[0]}" alt="${element.name}">
+                                                <img class=" image-size-home" src=${avatarGift} alt="${element.name}">
                                             </a>
                                             <div class="card-body">
                                                 <a href="/gifts/${element.slug}">
