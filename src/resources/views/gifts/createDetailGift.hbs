@@ -2,7 +2,7 @@
 <div class="create-detail-gift">
     <div class="form-create-detail-gift">
         <h3 style="font-family:'Segoe UI'">Thêm quà tặng</h3>
-        <form  action="/gifts/store" enctype="multipart/form-data" method="POST">
+        <form id="formCreateGift"  action="/gifts/store" enctype="multipart/form-data" method="POST">
             {{!-- <form enctype="multipart/form-data"> --}}
                 <div class="item-form">
                     <label style="font-family:'Segoe UI'" for="name">Tên quà tặng</label>
@@ -31,7 +31,7 @@
                     <input type="file" class="form-control" name="images" id="formFile"  multiple>
                     
                 </div>
-                <button style="font-family:'Segoe UI'" type="submit" onclick="()" class="btn btn-primary">Thêm quà tặng</button>
+                <button style="font-family:'Segoe UI'" type="submit"  id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button>
                 {{!-- <button style="font-family:'Segoe UI'" id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button> --}}
             </form>
     </div>
@@ -42,25 +42,26 @@
     $('#them-link').show();
     $('#image1').hide();
     $('#image2').hide();
-  //  const input = document.querySelector('#formFile');
 
-  //  input.addEventListener('change', updateValue);
-
-  //  function updateValue(e) {
-  //      console.log(input[1].value);
-  //  }
-  
-  //  $('#formFile').change(function() {
- //    console.log($('#formFile'));
- //   })
+    var tongsoImage = 0;
 
     var files = document.querySelector("#formFile");
+
     files.addEventListener('change', updateValue);
     function updateValue(e) {
         if(files.files.length > 3) {
             alert("Vui lòng chỉ chọn 3 file")
             console.log(files.value = "")
             console.log(files.files)
+        }
+        tongsoImage = tongsoImage + files.files.length;
+    }
+
+    var image = document.querySelector("#image");
+    image.addEventListener('change', updateImage);
+    function updateImage(e) {
+        if(image.value !== "") {
+            tongsoImage = tongsoImage + 1;
         }
     }
 
@@ -78,8 +79,9 @@
     })
 
     $('#btnCreateGift').click(function (e) {
+        console.log(tongsoImage);
+
         e.preventDefault();
-        console.log($('#formFile').val())
         if ($('#name').val() === '') {
             alert("Vui lòng điền tên quà tặng")
         }
@@ -89,15 +91,11 @@
         else if ($('#author').val() === '') {
             alert("Vui lòng điền tên người tặng")
         }
+        else if ( tongsoImage === 0) {
+            alert("Vui lòng chọn ít nhất 1 hình ảnh")
+        }
         else {
-            $.ajax({
-                url: '/gifts/store',
-                type: 'POST',
-            })
-            .then(data => {
-                console.log(data);
-               // window.location.href = "/homepage"
-            })
+            $('#formCreateGift').submit()
         }
     })
 </script>
