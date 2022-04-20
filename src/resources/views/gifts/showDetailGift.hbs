@@ -1,12 +1,7 @@
-{{!-- {{image}}
-{{image1}}
-{{image2}}
-{{contentType0}}
-{{imageBase640}}
-<img src='data:{{contentType0}};base64,{{imageBase640}}' class="card-img-top" class="img-fluid" alt="...">
-<img src='data:{{contentType1}};base64,{{imageBase641}}' class="card-img-top" class="img-fluid" alt="...">
-<img src='data:{{contentType2}};base64,{{imageBase642}}' class="card-img-top" class="img-fluid" alt="..."> --}}
-
+{{!-- 
+{{#each fileImages}}
+    <img class="d-block w-100" src='data:{{this.contentType}};base64,{{this.imageBase64}}' alt="Third slide">
+{{/each}} --}}
 <div id="gift-detail">
     <div class="image">
         {{!-- <img src="{{gift.image}}" alt="Ảnh quà tặng"> --}}
@@ -25,7 +20,7 @@
                 <img class="d-block w-100" src="{{image2}}" alt="Third slide">
                 </div>
                 {{/if}}
-                {{#if imageBase640}}
+                {{!-- {{#if imageBase640}}
                 <div class="carousel-item">
                 <img class="d-block w-100" src='data:{{contentType0}};base64,{{imageBase640}}' alt="Third slide">
                 </div>
@@ -39,7 +34,12 @@
                 <div class="carousel-item">
                 <img class="d-block w-100" src='data:{{contentType2}};base64,{{imageBase642}}' alt="Third slide">
                 </div>
-                {{/if}}
+                {{/if}} --}}
+                {{#each fileImages}}
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src='data:{{this.contentType}};base64,{{this.imageBase64}}' alt="Third slide">
+                    </div>
+                {{/each}}
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
