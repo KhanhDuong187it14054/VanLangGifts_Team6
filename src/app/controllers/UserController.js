@@ -7,17 +7,19 @@ const UserController = {
     //[GET] /users/:id/edit
     edit(req, res, next) {
         User.findById(req.params.id)
-            .then(user => res.render('users/edit',{
-                user: mongooseToObject(user),
-                data: req.data,
-                data_admin: req.data?.admin,
-            }))
+            .then((user) =>
+                res.render('users/edit', {
+                    user: mongooseToObject(user),
+                    data: req.data,
+                    data_admin: req.data?.admin,
+                }),
+            )
             .catch(next);
     },
 
     //[PUT] /users/:id
     update(req, res, next) {
-        User.updateOne({_id: req.params.id}, req.body)
+        User.updateOne({ _id: req.params.id }, req.body)
             .then(() => res.redirect('/me/stored/users'))
             .catch(next);
         // res.json(req.body)
@@ -25,25 +27,27 @@ const UserController = {
 
     //[PATCH] /users/:id/restore
     restore(req, res, next) {
-        User.restore({ username: req.params.id})
-        Info.restore({ username: req.params.id})
-        .then (() => res.redirect('back'))
-        .catch(next);
+        User.restore({ username: req.params.id });
+        Info.restore({ username: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
     },
 
     //[DELETE] /users/:id
 
-    destroy: async(req, res, next) => {
+    destroy: async (req, res, next) => {
         try {
-            const deleteUsr = await User.deleteOne({ username: req.params.id})
-            const deleteInfo = await Info.deleteOne({ username: req.params.id})
-            res.redirect('back')
+            const deleteUsr = await User.deleteOne({ username: req.params.id });
+            const deleteInfo = await Info.deleteOne({
+                username: req.params.id,
+            });
+            res.redirect('back');
         } catch (err) {
-            res.status(500).send(err)
+            res.status(500).send(err);
         }
     },
 
-    getDetail: async(req, res, next) => {
+    getDetail: async (req, res, next) => {
         try {
             const username = await req.data.username;
             const info = await Info.findOne({ username: username });
@@ -57,109 +61,125 @@ const UserController = {
                 instagram: info.instagram,
                 data: req.data,
                 data_admin: req.data?.admin,
-            })
+            });
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json(err);
         }
     },
 
-    updateDetail: async(req, res, next) => {
+    updateDetail: async (req, res, next) => {
         try {
-            const newInfo = await Info.updateOne({ username: req.params.username}, req.body)
-            return res.redirect('back')
-            return res.json(req.body)
+            const newInfo = await Info.updateOne(
+                { username: req.params.username },
+                req.body,
+            );
+            return res.redirect('back');
+            return res.json(req.body);
             // return res.json(newInfo)
-        } catch(err) {
-            res.status(500).json(err)
+        } catch (err) {
+            res.status(500).json(err);
         }
     },
 
     getAll(req, res, next) {
+        var column = req.query.column;
+        var type = req.query.type;
         var page = req.query.page;
-        const searchedField = req.query.name  ;
+        const searchedField = req.query.name;
         if (!searchedField) {
             if (page) {
-                page = parseInt(page)
-                if(page < 1) {
-                    page = 1
+                page = parseInt(page);
+                if (page < 1) {
+                    page = 1;
                 }
                 var soLuongBoQua = (page - 1) * PAGE_SIZE;
-    
+
                 User.find({})
-                .skip(soLuongBoQua)
-                .limit(PAGE_SIZE)
-                .then(data => {
-                    User.countDocuments({}).then((total) => {
-                        var tongSoPage = Math.ceil(total / PAGE_SIZE)
-                        res.json({
-                            total: total,
-                            tongSoPage: tongSoPage,
-                            data: data
-                        })
-                    })
-                })
-                .catch(err =>
-                    res.status(500).json('Loi Server')
-                )
-            } else {
-                User.find({})
-                    .then(data => {
+                    .sort({ [column]: type })
+                    .skip(soLuongBoQua)
+                    .limit(PAGE_SIZE)
+                    .then((data) => {
                         User.countDocuments({}).then((total) => {
-                            var tongSoPage = Math.ceil(total / PAGE_SIZE)
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
                             res.json({
                                 total: total,
                                 tongSoPage: tongSoPage,
-                                data: data
-                            })
-                        })
+                                data: data,
+                            });
+                        });
                     })
-                    .catch(err =>
-                        res.json(err))
+                    .catch((err) => res.status(500).json('Loi Server'));
+            } else {
+                User.find({})
+                    .sort({ [column]: type })
+                    .then((data) => {
+                        User.countDocuments({}).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.json(err));
             }
         }
         // Co du lieu search
         else {
             if (page) {
-                page = parseInt(page)
-                if(page < 1) {
-                    page = 1
+                page = parseInt(page);
+                if (page < 1) {
+                    page = 1;
                 }
                 var soLuongBoQua = (page - 1) * PAGE_SIZE;
-    
-                User.find({username:{$regex: searchedField ,$options: '$ui'}})
-                .skip(soLuongBoQua)
-                .limit(PAGE_SIZE)
-                .then(data => {
-                    User.countDocuments({username:{$regex: searchedField ,$options: '$ui'}}).then((total) => {
-                        var tongSoPage = Math.ceil(total / PAGE_SIZE)
-                        res.json({
-                            total: total,
-                            tongSoPage: tongSoPage,
-                            data: data
-                        })
-                    })
+
+                User.find({
+                    username: { $regex: searchedField, $options: '$ui' },
                 })
-                .catch(err =>
-                    res.status(500).json('Loi Server')
-                )
-            } else {
-                User.find({username:{$regex: searchedField ,$options: '$ui'}})
-                    .then(data => {
-                        User.countDocuments({username:{$regex: searchedField ,$options: '$ui'}}).then((total) => {
-                            var tongSoPage = Math.ceil(total / PAGE_SIZE)
+                    .sort({ [column]: type })
+                    .skip(soLuongBoQua)
+                    .limit(PAGE_SIZE)
+                    .then((data) => {
+                        User.countDocuments({
+                            username: {
+                                $regex: searchedField,
+                                $options: '$ui',
+                            },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
                             res.json({
                                 total: total,
                                 tongSoPage: tongSoPage,
-                                data: data
-                            })
-                        })
+                                data: data,
+                            });
+                        });
                     })
-                    .catch(err =>
-                        res.json(err))
+                    .catch((err) => res.status(500).json('Loi Server'));
+            } else {
+                User.find({
+                    username: { $regex: searchedField, $options: '$ui' },
+                })
+                    .sort({ [column]: type })
+                    .then((data) => {
+                        User.countDocuments({
+                            username: {
+                                $regex: searchedField,
+                                $options: '$ui',
+                            },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.json(err));
             }
         }
-    }
-
-}
+    },
+};
 
 module.exports = UserController;

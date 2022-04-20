@@ -35,16 +35,16 @@
             <th scope="col" class="col-id">ID</th>
             <th scope="col" class="col-gift">
               Tên quà tặng
-              {{{sortable 'name' _sort}}}
+              <a onclick="sortName()" id="sortName" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
               </a>
             </th>
             <th scope="col" class="col-author">
               Người tặng
-              {{{sortable 'author' _sort}}}
+              <a onclick="sortAuthor()" id="sortAuthor" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
             </th>
             <th scope="col" class="col-time-gift" colspan="2">
               Thời gian tạo
-              {{{sortable 'createdAt' _sort}}}
+              <a onclick="sortTime()" id="sortTime" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
             </th>
           </tr>
         </thead>
@@ -104,11 +104,61 @@
   ///Code Pagination
   var currentPage = 1;
 
+  var column ;
+  var type = '1' ;
+
+  function sortName() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortName').html('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>')
+     // <i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+    } else {
+      type = '-1'
+      $('#sortName').html('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>')
+    // <i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+    }
+    $('#sortAuthor').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'name'
+    loadPage(currentPage)
+  }
+
+  function sortAuthor() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortAuthor').html('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>')
+    } else {
+      type = '-1'
+      $('#sortAuthor').html('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>')
+    }
+    $('#sortName').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'author'
+    loadPage(currentPage)
+  }
+
+  function sortTime() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortTime').html('<i class="fa fa-sort-amount-asc" aria-hidden="true"></i>')
+
+    } else {
+      type = '-1'
+      $('#sortTime').html('<i class="fa fa-sort-amount-desc" aria-hidden="true"></i>')
+
+    }
+    $('#sortName').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortAuthor').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'createdAt'
+    loadPage(currentPage)
+  }
+
+
   function loadPage(page) {
     currentPage = page
     var valueSearch = $('.input-search').val();
     $.ajax({
-      url: '/gifts/get-all?page=' + page + '&name=' + valueSearch,
+      url: '/gifts/get-all?page=' + page + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
         $('#wrap-all-list-gifts').html('');
@@ -131,7 +181,7 @@
                                 </label>
                               </div>
                             </td>
-                            <th scope="row">${element._id}</th>
+                            <th scope="row">${i + 1}</th>
                             <td>${element.name}</td>
                             <td>${element.author}</td>
                             <td>${timeCreate}</td>
@@ -186,7 +236,7 @@
 
     var valueSearch = $('.input-search').val();
     $.ajax({
-      url: '/gifts/get-all?page=' + currentPage + '&name=' + valueSearch,
+      url: '/gifts/get-all?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
         $('#wrap-all-list-gifts').html('');
@@ -209,7 +259,7 @@
                               </label>
                             </div>
                           </td>
-                          <th scope="row">${element._id}</th>
+                          <th scope="row">${i + 1}</th>
                           <td>${element.name}</td>
                           <td>${element.author}</td>
                           <td>${element.createdAt}</td>
@@ -252,7 +302,7 @@
 
     var valueSearch = $('.input-search').val();
     $.ajax({
-      url: '/gifts/get-all?page=' + currentPage + '&name=' + valueSearch,
+      url: '/gifts/get-all?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
         $('#wrap-all-list-gifts').html('');
@@ -274,7 +324,7 @@
                               </label>
                             </div>
                           </td>
-                          <th scope="row">${element._id}</th>
+                          <th scope="row">${i + 1}</th>
                           <td>${element.name}</td>
                           <td>${element.author}</td>
                           <td>${element.createdAt}</td>

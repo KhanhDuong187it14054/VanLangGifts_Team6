@@ -12,14 +12,25 @@
         <thead>
           <tr  class="info-item">
             <th scope="col" class="col-stt">STT</th>
-            <th scope="col" class="col-username">Username</th>
-            <th scope="col" class="col-email">Email</th>
-            <th scope="col" class="col-admin">Admin</th>
-            <th scope="col" class="col-time" colspan="2">Thời gian tạo</th>
+            <th scope="col" class="col-username">
+              Username
+              <a onclick="sortUsername()" id="sortUsername" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
+            </th>
+            <th scope="col" class="col-email">
+              Email
+              <a onclick="sortEmail()" id="sortEmail" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
+            </th>
+            <th scope="col" class="col-admin">
+              Admin
+              <a onclick="sortAdmin()" id="sortAdmin" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
+              </th>
+            <th scope="col" class="col-time" colspan="2">
+              Thời gian tạo
+              <a onclick="sortTime()" id="sortTime" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
+              </th>
           </tr>
         </thead>
         <tbody id="wrap-all-users">
-          
         </tbody>
       </table>
       <div class="pagi-btn">
@@ -86,13 +97,84 @@
 
   ///----Code LoadPage()----///
   var currentPage = 1;
+  
+  var column ;
+  var type = '1' ;
+
+  function sortAdmin() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortAdmin').html('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>')
+    } else {
+      type = '-1'
+      $('#sortAdmin').html('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>')
+
+    }
+    $('#sortUsername').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortEmail').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'admin'
+    loadPage(currentPage)
+  }
+
+  function sortUsername() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortUsername').html('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>')
+
+    } else {
+      type = '-1'
+      $('#sortUsername').html('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>')
+
+    }
+    $('#sortAmin').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortEmail').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'username'
+    loadPage(currentPage)
+  }
+
+  function sortEmail() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortEmail').html('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>')
+
+    } else {
+      type = '-1'
+      $('#sortEmail').html('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>')
+
+    }
+    $('#sortUsername').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortAmin').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'email'
+    loadPage(currentPage)
+  }
+
+  function sortTime() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortTime').html('<i class="fa fa-sort-amount-asc" aria-hidden="true"></i>')
+
+    } else {
+      type = '-1'
+      $('#sortTime').html('<i class="fa fa-sort-amount-desc" aria-hidden="true"></i>')
+
+    }
+    $('#sortUsername').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortEmail').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortAdmin').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'createdAt'
+    loadPage(currentPage)
+  }
 
   function loadPage(page) {
     currentPage = page
     console.log("Load", currentPage)
     var valueSearch = $('.input-search').val();
     $.ajax({
-      url: '/users/get-all?page=' + page + '&name=' + valueSearch,
+     // url: '/users/get-all?page=' + page + '&name=' + valueSearch,
+      url: '/users/get-all?page=' + page + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
         $('#wrap-all-users').html('');
@@ -177,7 +259,7 @@
 
         var valueSearch = $('.input-search').val();
         $.ajax({
-            url: '/users/get-all?page=' + currentPage + '&name=' + valueSearch,
+            url: '/users/get-all?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
         })
             .then(rs => {
                 $('#wrap-all-users').html('');
@@ -247,7 +329,7 @@
 
         var valueSearch = $('.input-search').val();
         $.ajax({
-            url: '/users/get-all?page=' + currentPage + '&name=' + valueSearch,
+            url: '/users/get-all?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
         })
             .then(rs => {
                 $('#wrap-all-users').html('');

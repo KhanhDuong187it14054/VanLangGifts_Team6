@@ -52,6 +52,8 @@ class GiftController {
     }
 
     getAll(req, res, next) {
+        var column = req.query.column;
+        var type = req.query.type;
         var page = req.query.page;
         const searchedField = req.query.name;
         if (!searchedField) {
@@ -63,6 +65,7 @@ class GiftController {
                 var soLuongBoQua = (page - 1) * PAGE_SIZE;
 
                 Gift.find({})
+                    .sort({ [column]: type })
                     .skip(soLuongBoQua)
                     .limit(PAGE_SIZE)
                     .then((data) => {
@@ -78,6 +81,7 @@ class GiftController {
                     .catch((err) => res.status(500).json('Loi Server'));
             } else {
                 Gift.find({})
+                    .sort({ [column]: type })
                     .then((data) => {
                         Gift.countDocuments({}).then((total) => {
                             var tongSoPage = Math.ceil(total / PAGE_SIZE);
@@ -101,6 +105,7 @@ class GiftController {
                 var soLuongBoQua = (page - 1) * PAGE_SIZE;
 
                 Gift.find({ name: { $regex: searchedField, $options: '$ui' } })
+                    .sort({ [column]: type })
                     .skip(soLuongBoQua)
                     .limit(PAGE_SIZE)
                     .then((data) => {
@@ -118,6 +123,7 @@ class GiftController {
                     .catch((err) => res.status(500).json('Loi Server'));
             } else {
                 Gift.find({ name: { $regex: searchedField, $options: '$ui' } })
+                    .sort({ [column]: type })
                     .then((data) => {
                         Gift.countDocuments({
                             name: { $regex: searchedField, $options: '$ui' },
