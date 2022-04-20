@@ -5,18 +5,23 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const Schema = mongoose.Schema;
 
-const Gift = new Schema({
-    _id: { type: Number },
-    name: { type: String, required: true },
-    description: { type: String},
-    image: { type: String },
-    author: { type: String },
-    idAuthor: { type: String, required: true},
-    slug: { type: String, slug: 'name', unique: true },
-}, {
-    _id: false,
-    timestamps: true,
-});
+const Gift = new Schema(
+    {
+        _id: { type: Number },
+        name: { type: String, required: true },
+        description: { type: String },
+        // image: { type: String },
+        image: { type: Array },
+        fileImages: { type: Array },
+        author: { type: String },
+        idAuthor: { type: String, required: true },
+        slug: { type: String, slug: 'name', unique: true },
+    },
+    {
+        _id: false,
+        timestamps: true,
+    },
+);
 
 mongoose.plugin(slug);
 

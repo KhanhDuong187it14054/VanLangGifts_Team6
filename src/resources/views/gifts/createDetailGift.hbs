@@ -1,28 +1,103 @@
+{{message}}
 <div class="create-detail-gift">
     <div class="form-create-detail-gift">
         <h3 style="font-family:'Segoe UI'">Thêm quà tặng</h3>
-        <form method="POST" action="/gifts/store">
-            <div class="item-form">
-                <label style="font-family:'Segoe UI'" for="name">Tên quà tặng</label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="item-form">
-                <label style="font-family:'Segoe UI'" for="description">Mô tả</label>
-                <input type="text" class="form-control" id="description" name="description">
-            </div>
-            {{!-- <div class="">
-                <label for="v style=" font-family:'Segoe UI'" ideoId">Video ID</label>
-                <input type="  text" class="form-control" id="videoId" name="videoId">
-            </div> --}}
-            <div class="item-form">
-                <label style="font-family:'Segoe UI'" for="image">Link image</label>
-                <input type="text" class="form-control" id="image" name="image">
-            </div>
-            <div class="item-form">
-                <label style="font-family:'Segoe UI'" for="author">Người tặng</label>
-                <input type="text" class="form-control" id="author" name="author">
-            </div>
-            <button style="font-family:'Segoe UI'" type="submit" class="btn btn-primary">Thêm quà tặng</button>
-        </form>
+        <form  action="/gifts/store" enctype="multipart/form-data" method="POST">
+            {{!-- <form enctype="multipart/form-data"> --}}
+                <div class="item-form">
+                    <label style="font-family:'Segoe UI'" for="name">Tên quà tặng</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="item-form">
+                    <label style="font-family:'Segoe UI'" for="description">Mô tả</label>
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
+                {{!-- <div class="">
+                    <label for="v style=" font-family:'Segoe UI'" ideoId">Video ID</label>
+                    <input type="  text" class="form-control" id="videoId" name="videoId">
+                </div> --}}
+                <div class="item-form">
+                    <label style="font-family:'Segoe UI'" for="image">Link image</label>
+                    <input type="text" class="form-control" id="image" name="image" placeholder="Link 1">
+                    <input type="text" class="form-control" id="image1" name="image1" placeholder="Link 2">
+                    <input type="text" class="form-control" id="image2" name="image2" placeholder="Link 3">
+                </div>
+                <p id="them-link">Thêm link</p>
+                <div class="item-form">
+                    <label style="font-family:'Segoe UI'" for="author">Người tặng</label>
+                    <input type="text" class="form-control" id="author" name="author">
+                </div>
+                <div class="item-form">
+                    <input type="file" class="form-control" name="images" id="formFile"  multiple>
+                    
+                </div>
+                <button style="font-family:'Segoe UI'" type="submit" onclick="()" class="btn btn-primary">Thêm quà tặng</button>
+                {{!-- <button style="font-family:'Segoe UI'" id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button> --}}
+            </form>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    $('#them-link').show();
+    $('#image1').hide();
+    $('#image2').hide();
+  //  const input = document.querySelector('#formFile');
+
+  //  input.addEventListener('change', updateValue);
+
+  //  function updateValue(e) {
+  //      console.log(input[1].value);
+  //  }
+  
+  //  $('#formFile').change(function() {
+ //    console.log($('#formFile'));
+ //   })
+
+    var files = document.querySelector("#formFile");
+    files.addEventListener('change', updateValue);
+    function updateValue(e) {
+        if(files.files.length > 3) {
+            alert("Vui lòng chỉ chọn 3 file")
+            console.log(files.value = "")
+            console.log(files.files)
+        }
+    }
+
+
+    var i = 1;
+    $('#them-link').click(function() {
+        if (i == 1) {
+            $('#image1').show();
+        }
+        if (i == 2) {
+            $('#image2').show();
+            $('#them-link').hide();
+        }
+        i = i + 1;
+    })
+
+    $('#btnCreateGift').click(function (e) {
+        e.preventDefault();
+        console.log($('#formFile').val())
+        if ($('#name').val() === '') {
+            alert("Vui lòng điền tên quà tặng")
+        }
+        else if ($('#description').val() === '') {
+            alert("Vui lòng điền mô tả")
+        }
+        else if ($('#author').val() === '') {
+            alert("Vui lòng điền tên người tặng")
+        }
+        else {
+            $.ajax({
+                url: '/gifts/store',
+                type: 'POST',
+            })
+            .then(data => {
+                console.log(data);
+               // window.location.href = "/homepage"
+            })
+        }
+    })
+</script>
