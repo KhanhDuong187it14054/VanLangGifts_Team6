@@ -3,7 +3,7 @@ const multer = require('multer');
 // set storage
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads');
+        cb(null, 'src/uploads');
         if (!file) {
             const error = new Error('Please choose files');
             error.httpStatusCode = 400;

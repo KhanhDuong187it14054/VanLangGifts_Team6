@@ -5,6 +5,8 @@ const giftController = require('../app/controllers/GiftController');
 const middlewareController = require('../app/controllers/MiddlewareController');
 const store = require('../app/controllers/Multer');
 
+const { uploadFile, getFileStream } = require('../app/controllers/s3');
+
 //show my gifts
 router.get(
     '/my-gifts',
@@ -32,11 +34,34 @@ router.post('/search', middlewareController.verifyToken, giftController.search);
 
 // Create Gift
 router.get('/create', middlewareController.verifyToken, giftController.create);
+// router.post(
+//     '/store',
+//     middlewareController.verifyToken,
+//     store.array('images', 3),
+//     giftController.store,
+// );
+
+router.get('/images/images-1650510903788.jpg', (req, res) => {
+    const key = 'images-1650510903788.jpg';
+    const readStream = getFileStream(key);
+
+    res.json(readStream);
+});
 router.post(
     '/store',
     middlewareController.verifyToken,
     store.array('images', 3),
-    giftController.store,
+    async (req, res) => {
+        try {
+            const files = req.files;
+            console.log('multer ', files);
+            const results = await uploadFile(files);
+            console.log(results);
+            res.send('success');
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
 );
 
 router.get('/:id/edit', middlewareController.verifyToken, giftController.edit);
