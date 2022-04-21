@@ -44,8 +44,8 @@ router.get('/create', middlewareController.verifyToken, giftController.create);
 //     giftController.store,
 // );
 
-router.get('/images/images-1650545116995.jpg', (req, res) => {
-    const key = 'images-1650545116995.jpg';
+router.get('/images/:key', (req, res) => {
+    const key = req.params.key;
     const readStream = getFileStream(key);
     readStream.pipe(res);
     // res.json(readStream);
