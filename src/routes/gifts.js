@@ -61,23 +61,23 @@ router.post(
             console.log('multer ', files);
             const results = await uploadFile(files);
             console.log('results', results);
+            res.json(results);
+            // const arrayKey = [];
+            // results.map((res) => arrayKey.push(res.Key));
+            // console.log('arrayKey', arrayKey);
 
-            const arrayKey = [];
-            results.map((res) => arrayKey.push(res.Key));
-            console.log('arrayKey', arrayKey);
+            // const idAuthor = req.data._id;
+            // const image = [req.body.image, req.body.image1, req.body.image2];
 
-            const idAuthor = req.data._id;
-            const image = [req.body.image, req.body.image1, req.body.image2];
-
-            const gift = await new Gift({
-                name: req.body.name,
-                description: req.body.description,
-                image: image,
-                fileImages: arrayKey,
-                author: req.body.author,
-                idAuthor: idAuthor,
-            });
-            gift.save().then(() => res.redirect('/homepage'));
+            // const gift = await new Gift({
+            //     name: req.body.name,
+            //     description: req.body.description,
+            //     image: image,
+            //     fileImages: arrayKey,
+            //     author: req.body.author,
+            //     idAuthor: idAuthor,
+            // });
+            // gift.save().then(() => res.redirect('/homepage'));
         } catch (err) {
             res.status(500).json(err);
         }
