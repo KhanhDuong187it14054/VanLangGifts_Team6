@@ -5,6 +5,8 @@ const giftController = require('../app/controllers/GiftController');
 const middlewareController = require('../app/controllers/MiddlewareController');
 const store = require('../app/controllers/Multer');
 
+const Gift = require('../app/models/Gift');
+
 const { uploadFile, getFileStream } = require('../app/controllers/s3');
 
 //show my gifts
@@ -34,6 +36,7 @@ router.post('/search', middlewareController.verifyToken, giftController.search);
 
 // Create Gift
 router.get('/create', middlewareController.verifyToken, giftController.create);
+
 // router.post(
 //     '/store',
 //     middlewareController.verifyToken,
@@ -41,12 +44,13 @@ router.get('/create', middlewareController.verifyToken, giftController.create);
 //     giftController.store,
 // );
 
-router.get('/images/images-1650510903788.jpg', (req, res) => {
-    const key = 'images-1650510903788.jpg';
+router.get('/images/images-1650545116995.jpg', (req, res) => {
+    const key = 'images-1650545116995.jpg';
     const readStream = getFileStream(key);
-
-    res.json(readStream);
+    readStream.pipe(res);
+    // res.json(readStream);
 });
+
 router.post(
     '/store',
     middlewareController.verifyToken,
@@ -56,8 +60,24 @@ router.post(
             const files = req.files;
             console.log('multer ', files);
             const results = await uploadFile(files);
-            console.log(results);
-            res.send('success');
+            console.log('results', results);
+
+            const arrayKey = [];
+            results.map((res) => arrayKey.push(res.Key));
+            console.log('arrayKey', arrayKey);
+
+            const idAuthor = req.data._id;
+            const image = [req.body.image, req.body.image1, req.body.image2];
+
+            const gift = await new Gift({
+                name: req.body.name,
+                description: req.body.description,
+                image: image,
+                fileImages: arrayKey,
+                author: req.body.author,
+                idAuthor: idAuthor,
+            });
+            gift.save().then(() => res.redirect('/homepage'));
         } catch (err) {
             res.status(500).json(err);
         }

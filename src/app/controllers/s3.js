@@ -52,7 +52,7 @@ exports.uploadFile = async (files) => {
     return await Promise.all(params.map((param) => s3.upload(param).promise()));
 };
 
-exports.getFileStream = async (fileKey) => {
+exports.getFileStream = (fileKey) => {
     const downloadParams = {
         Key: fileKey,
         Bucket: bucketName,

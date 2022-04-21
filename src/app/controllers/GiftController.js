@@ -3,6 +3,7 @@ const {
     mongooseToObject,
     multipleMongooseToObject,
 } = require('../../util/mongoose');
+const { uploadFile, getFileStream } = require('../controllers/s3');
 const { request } = require('express');
 const fs = require('fs');
 
@@ -149,8 +150,8 @@ class GiftController {
         });
     }
 
-    // [POST] /gifts/store
-    store(req, res, next) {
+    //[POST] /gifts/store
+    store2(req, res, next) {
         // req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`
         // req.body.image = `${req.body.image}`
         const files = req.files;
@@ -160,6 +161,8 @@ class GiftController {
 
             return img.toString('base64');
         });
+
+        console.log('imgArray', imgArray);
 
         let result = imgArray.map((src, index) => {
             // create object to store data in the collection
@@ -189,6 +192,14 @@ class GiftController {
             .then(() => res.redirect('/homepage'))
             .catch(next);
         //  return res.json({gift: gift})
+    }
+
+    store(req, res, next) {
+        const files = req.files;
+        console.log('multer ', files);
+        const results = uploadFile(files);
+        console.log(results);
+        return res.json(results);
     }
 
     // [GET] /gifts/:id/edit
