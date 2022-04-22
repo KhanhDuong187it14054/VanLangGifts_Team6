@@ -23,7 +23,7 @@
                             <div class="chatBoxBottom">
                                 <textarea class="chatMessageInput" placeholder="Write something ..." name="text"
                                     id="text"></textarea>
-                                <button id="btnSubmitChat" class="chatSubmitButton" >Send</button>
+                                <button id="btnSubmitChat buttonEnter" class="chatSubmitButton" >Send</button>
                             </div>
                         </div>
                     </div>
@@ -38,8 +38,8 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    var socket = io("http://localhost:1104");
-    //var socket = io("https://vanlanggifts.herokuapp.com");
+    // var socket = io("http://localhost:1104");
+    var socket = io("https://vanlanggifts.herokuapp.com");
     function getIdRoom(nameAuthor) {
         $('#chatBoxTop').animate({ scrollTop: 1000 }, 800)
 
@@ -97,7 +97,7 @@
             socket.emit("tao-phong", data.idRoom);
 
             $("#text").focusin(function() {
-                socket.emit("toi-dang-go-chu",{nameCurrent:data.nameCurrent, myId:myId});
+                socket.emit("toi-dang-go-chu",{nameCurrent:data.nameCurrent, myId: myId});
             })
 
             $("#text").focusout(function() {
