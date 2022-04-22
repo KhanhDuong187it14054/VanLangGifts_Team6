@@ -1468,9 +1468,14 @@ h1 {
 #btn-contact:hover {
   background-color: #389fed; }
 
+#gift-detail .carousel-item {
+  height: 500px;
+  line-height: 500px;
+  text-align: center; }
+
 .image {
   flex-basis: 50%;
-  background-color: #389fed; }
+  background-color: transparent; }
 
 .image img {
   max-width: 100%;

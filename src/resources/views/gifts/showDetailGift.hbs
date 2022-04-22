@@ -1,6 +1,3 @@
-{{#each fileImages}}
-    {{this}}
-{{/each}}
 <div id="gift-detail">
     <div class="image">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -62,6 +59,18 @@
 
         const divCon = document.getElementsByClassName('carousel-inner');
         console.log(divCon.childNodes)
+
+        var setAuto = 300000;
+        $('#carouselExampleControls').carousel({
+            interval: setAuto,
+        })
+        $('#carouselExampleControls').click(function(setAuto){
+            if(setAuto !== true){
+                setAuto = true;
+            } else {
+                setAuto = 300000;
+            }
+        })
     })
 
 </script>

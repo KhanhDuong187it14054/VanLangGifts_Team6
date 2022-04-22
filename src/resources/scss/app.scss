@@ -1979,9 +1979,15 @@ h1 {
     background-color: rgb(56, 159, 237);
 }
 
+#gift-detail .carousel-item {
+    height: 500px;
+    line-height: 500px;
+    text-align: center;
+}
+
 .image {
     flex-basis: 50%;
-    background-color: rgb(56, 159, 237);
+    background-color: transparent;
 }
 
 .image img {
