@@ -46,7 +46,6 @@
 
     function loadPage(page) {
         currentPage = page
-        console.log("Load", currentPage)
         var valueSearch = $('.input-search').val();
         $.ajax({
             url: '/gifts/get-all?page=' + page + '&name=' + valueSearch,
@@ -63,9 +62,10 @@
 
                 for (let i = 0; i < rs.data.length; i++) {
                     const element = rs.data[i];
+                    console.log(element);
                     var avatarGift = element.image[0];
                     if (element.fileImages[0] !== undefined) {
-                        var avatarSupport =  `data:${element.fileImages[0].contentType};base64,${element.fileImages[0].imageBase64}`;
+                        var avatarSupport =  `/gifts/images/${element.fileImages[0]}`;
                     }
 
 
@@ -107,9 +107,7 @@
                 var textNone = document.getElementById('text-none');
                 var pre = document.getElementById('pre');
                 var next = document.getElementById('next');
-                console.log(textNone)
-                console.log(pre)
-                console.log(next)
+
                 if (textNone) {
                     pre.style.display = "none";
                     next.style.display = "none";
@@ -128,7 +126,6 @@
 
     function prePage() {
         currentPage--;
-        console.log('Pre ', currentPage)
         if (currentPage < 1) {
             currentPage = 1;
         }
@@ -158,7 +155,7 @@
                     const element = rs.data[i];
                     var avatarGift = element.image[0];
                     if (element.fileImages[0] !== undefined) {
-                        var avatarSupport =  `data:${element.fileImages[0].contentType};base64,${element.fileImages[0].imageBase64}`;
+                        var avatarSupport =  `/gifts/images/${element.fileImages[0]}`;
                     }
 
 
@@ -166,7 +163,6 @@
                         avatarGift = avatarSupport
 
                     }
-                    
 
                     var item = $(`
                                     <div class="item-all-gift">
@@ -198,9 +194,7 @@
 
     function nextPage() {
         currentPage++;
-        console.log('Next ', currentPage)
         var pageItem = $('.page-item')
-        console.log(pageItem.length)
 
         if (currentPage > pageItem.length - 2) {
             currentPage = pageItem.length - 2
@@ -225,7 +219,7 @@
                     var avatarGift = element.image[0];
 
                     if (element.fileImages[0] !== undefined) {
-                        var avatarSupport =  `data:${element.fileImages[0].contentType};base64,${element.fileImages[0].imageBase64}`;
+                        var avatarSupport =  `/gifts/images/${element.fileImages[0]}`;
                     }
 
                     if (avatarGift === "") {

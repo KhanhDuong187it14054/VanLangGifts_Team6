@@ -68,14 +68,25 @@
 
         for (let i = 0; i < rs.gifts.length; i++) {
           const element = rs.gifts[i];
+          console.log(element);
+          var avatarGift = element.image[0];
+
+          if (element.fileImages[0] !== undefined) {
+              var avatarSupport =  `/gifts/images/${element.fileImages[0]}`;
+          }
+
+          if (avatarGift === "") {
+              avatarGift = avatarSupport
+          }
+
           const myTime  = element.createdAt.split('T')[0]
           var item = $(`
                       <div class="item-my-gifts">
-                        <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
+                        <img src="${avatarGift}" class="img-item-my-gifts" alt="itemImage"/>
                         <div class="info-gifts-item">
-                            <p class="name-gift">Tên quà tặng: ${element.name}</p>
-                            <p class="text-description">Mô tả: ${element.description}</p>
-                            <p class="time-create">Ngày tạo: ${myTime}</p>
+                            <p class="name-gift"> <strong> Tên quà tặng: </strong> <br> ${element.name}</p>
+                            <p class="text-description"> <strong> Mô tả: </strong> <br> ${element.description}</p>
+                            <p class="time-create"> <strong> Ngày tạo: </strong> ${myTime}</p>
                         </div>
                         <div id="edit-delete" class="edit-delete">
                             <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -145,11 +156,11 @@
                   const myTime  = element.createdAt.split('T')[0]
                   var item = $(`
                               <div class="item-my-gifts">
-                                <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
+                                <img src="${element.image[0]}" class="img-item-my-gifts" alt="itemImage"/>
                                 <div class="info-gifts-item">
-                                    <p class="name-gift">Tên quà tặng: ${element.name}</p>
-                                    <p class="text-description">Mô tả: ${element.description}</p>
-                                    <p class="time-create">Ngày tạo: ${myTime}</p>
+                                    <p class="name-gift"> <strong> Tên quà tặng: </strong> <br> ${element.name}</p>
+                                    <p class="text-description"> <strong> Mô tả: </strong> <br> ${element.description}</p>
+                                    <p class="time-create"> <strong> Ngày tạo: </strong> ${myTime}</p>
                                 </div>
                                 <div id="edit-delete" class="edit-delete">
                                     <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -208,11 +219,11 @@
                   const myTime  = element.createdAt.split('T')[0]
                   var item = $(`
                               <div class="item-my-gifts">
-                                <img src="${element.image}" class="img-item-my-gifts" alt="itemImage"/>
+                                <img src="${element.image[0]}" class="img-item-my-gifts" alt="itemImage"/>
                                 <div class="info-gifts-item">
-                                    <p class="name-gift">Tên quà tặng: ${element.name}</p>
-                                    <p class="text-description">Mô tả: ${element.description}</p>
-                                    <p class="time-create">Ngày tạo: ${myTime}</p>
+                                    <p class="name-gift"> <strong>Tên quà tặng: </strong> <br> ${element.name}</p>
+                                    <p class="text-description"> <strong>Mô tả: </strong> <br> ${element.description}</p>
+                                    <p class="time-create"> <strong>Ngày tạo: </strong> ${myTime}</p>
                                 </div>
                                 <div id="edit-delete" class="edit-delete">
                                     <a href="/gifts/${element._id}/edit" class="icon-edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>

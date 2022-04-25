@@ -87,7 +87,53 @@ router.post(
 router.get('/:id/edit', middlewareController.verifyToken, giftController.edit);
 router.post('/handle-form-actions', giftController.handleFormActions);
 
-router.put('/:id', middlewareController.verifyToken, giftController.update);
+router.put(
+    '/:id',
+    middlewareController.verifyToken,
+    store.array('images', 3),
+    async (req, res) => {
+        try {
+            const files = req.files;
+            console.log('multer PUT ', files);
+            const results = await uploadFile(files);
+            console.log('results PUT', results);
+
+            const arrayKey = [];
+            results.map((res) => arrayKey.push(res.Key));
+            console.log('arrayKey PUT', arrayKey);
+
+            console.log('req.body', req.body);
+            const idAuthor = req.data._id;
+            console.log('idAuthor', idAuthor);
+
+            const image = [];
+            if (req.body.image0 !== undefined) {
+                image.push(req.body.image0);
+            }
+            if (req.body.image1 !== undefined) {
+                image.push(req.body.image1);
+            }
+            if (req.body.image2 !== undefined) {
+                image.push(req.body.image2);
+            }
+            // console.log(image)
+            Gift.updateOne(
+                { _id: req.params.id },
+                {
+                    name: req.body.name,
+                    description: req.body.description,
+                    image: image,
+                    fileImages: arrayKey,
+                    author: req.body.author,
+                    idAuthor: idAuthor,
+                },
+            ).then(() => res.redirect('back'));
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+);
+
 router.patch('/:id/restore', giftController.restore);
 router.delete('/:id', giftController.destroy);
 router.delete('/:id/force', giftController.forceDestroy);

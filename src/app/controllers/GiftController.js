@@ -17,7 +17,7 @@ class GiftController {
             .then((gift) =>
                 res.render('gifts/showDetailGift', {
                     gift: mongooseToObject(gift),
-                    image: gift.image[0],
+                    image0: gift.image[0],
                     image1: gift.image[1],
                     image2: gift.image[2],
                     fileImages: gift.fileImages,
@@ -150,58 +150,6 @@ class GiftController {
         });
     }
 
-    //[POST] /gifts/store
-    store2(req, res, next) {
-        // req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`
-        // req.body.image = `${req.body.image}`
-        const files = req.files;
-        console.log('////////////', files);
-        let imgArray = files.map((file) => {
-            let img = fs.readFileSync(file.path);
-
-            return img.toString('base64');
-        });
-
-        console.log('imgArray', imgArray);
-
-        let result = imgArray.map((src, index) => {
-            // create object to store data in the collection
-            let finalImg = {
-                // filename : files[index].originalname,
-                filename: files[index].originalname + Math.random(),
-                contentType: files[index].mimetype,
-                imageBase64: src,
-            };
-            return finalImg;
-        });
-
-        const idAuthor = req.data._id;
-        req.body.idAuthor = idAuthor;
-        const image = [req.body.image, req.body.image1, req.body.image2];
-        // const gift = new Gift(req.body);
-        const gift = new Gift({
-            name: req.body.name,
-            description: req.body.description,
-            image: image,
-            fileImages: result,
-            author: req.body.author,
-            idAuthor: req.body.idAuthor,
-        });
-        console.log('Gifttt', gift);
-        gift.save()
-            .then(() => res.redirect('/homepage'))
-            .catch(next);
-        //  return res.json({gift: gift})
-    }
-
-    store(req, res, next) {
-        const files = req.files;
-        console.log('multer ', files);
-        const results = uploadFile(files);
-        console.log(results);
-        return res.json(results);
-    }
-
     // [GET] /gifts/:id/edit
     edit(req, res, next) {
         Gift.findById(req.params.id)
@@ -217,13 +165,31 @@ class GiftController {
 
     // [PUT] /gifts/:id
     update(req, res, next) {
-        Gift.updateOne({ _id: req.params.id }, req.body)
-            .then(() =>
-                res.render('me/stored-gifts', {
-                    data: req.data,
-                    data_admin: req.data?.admin,
-                }),
-            )
+        const idAuthor = req.data._id;
+
+        const image = [];
+        if (req.body.image0 !== undefined) {
+            image.push(req.body.image0);
+        }
+        if (req.body.image1 !== undefined) {
+            image.push(req.body.image1);
+        }
+        if (req.body.image2 !== undefined) {
+            image.push(req.body.image2);
+        }
+        // console.log(image)
+        Gift.updateOne(
+            { _id: req.params.id },
+            {
+                name: req.body.name,
+                description: req.body.description,
+                image: image,
+                // fileImages: arrayKey,
+                author: req.body.author,
+                idAuthor: idAuthor,
+            },
+        )
+            .then(() => res.redirect('back'))
             .catch(next);
     }
 

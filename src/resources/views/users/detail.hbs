@@ -1,10 +1,16 @@
 <div id="user-detail">
+  <div class="alert alert-danger" id="noti-no-change" style="display: none">
+   Bạn chưa thay đổi thông tin nào !
+  </div>
   <div class="wrap-user-detail">
+    <div class="detail-left">
+    <h2>MY PROFILE</h2>
     {{#if avatar}}
     <img src="{{avatar}}" alt="user images">
     {{else}}
     <img src="https://icon-library.com/images/user-icon/user-icon-14.jpg" alt="user images" />
     {{/if}}
+    </div>
 
     <form class="form-user-detail" method="POST" action="/users/update/{{username}}?_method=PUT">
       <div class="item-form">
@@ -56,9 +62,46 @@
           aria-describedby="emailHelp" placeholder="Enter link instagram">
       </div>
 
-      <button type="submit" class="btn btn-primary">Update</button>
+      <button type="submit" id="buttonUpdateInfo" class="btn btn-primary btn-update-info">Update</button>
     </form>
 
   </div>
-
 </div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+  var formChange = document.querySelector(".form-user-detail");
+  var buttonUpdateInfo = $('#buttonUpdateInfo')
+
+  var valName = formChange.name.value;
+  var valPhone = formChange.phone.value;
+  var valAvatar = formChange.avatar.value;
+  var valFacebook = formChange.facebook.value;
+  var valInstagram = formChange.instagram.value;
+
+  buttonUpdateInfo.click(function(e) {
+    e.preventDefault();
+    var valName1 = formChange.name.value;
+    var valPhone1 = formChange.phone.value;
+    var valAvatar1 = formChange.avatar.value;
+    var valFacebook1 = formChange.facebook.value;
+    var valInstagram1 = formChange.instagram.value;
+    if (valName !== valName1 || valPhone !== valPhone1 || valAvatar !== valAvatar1 || valFacebook !== valFacebook1 || valInstagram !== valInstagram1) {
+      formChange.submit()
+    } else {
+      var i = 0;
+      var setTime1 = function () {
+          $("#noti-no-change").hide();
+      }
+
+      var setTime = setInterval(() => {
+          i++;
+          $("#noti-no-change").show();
+          if (i === 30) {
+              clearInterval(setTime)
+              setTime1();
+          }
+      }, 100)
+    }
+  })
+</script>

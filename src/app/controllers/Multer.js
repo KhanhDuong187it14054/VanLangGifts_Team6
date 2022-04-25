@@ -12,6 +12,8 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         // image.jpg
+        // console.log("Anh tu multer", file)
+
         var ext = file.originalname.substr(file.originalname.lastIndexOf('.'));
 
         cb(null, file.fieldname + '-' + Date.now() + ext);

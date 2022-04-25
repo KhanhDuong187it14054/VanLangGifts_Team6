@@ -1,53 +1,48 @@
 const User = require('../models/User');
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 class MiddlewareController {
-
     // Verify token
     verifyToken(req, res, next) {
         try {
-            console.log("User dang Login",req.body)
             var accessToken = req.cookies.accessToken;
             var idUser = jwt.verify(accessToken, 'ngay2thang2');
             User.findOne({
-                _id: idUser
+                _id: idUser,
             })
-            .then(data => {
-                if(data) {
-                    req.data = data;
-                    next()
-                } else {
-                    res.json("NOT PERMISSION")
-                }
-            })
-            .catch(err => {
-                res.status(500).json(err)
-            })
+                .then((data) => {
+                    if (data) {
+                        req.data = data;
+                        next();
+                    } else {
+                        res.json('NOT PERMISSION');
+                    }
+                })
+                .catch((err) => {
+                    res.status(500).json(err);
+                });
         } catch (err) {
             // return res.json('Token khong hop le')
-            return res.render('auth/login')
+            return res.render('auth/login');
         }
     }
-
 
     // Get token
     getToken(req, res, next) {
         var accessToken = req.headers;
         req.accessToken = accessToken;
-        console.log(accessToken);
-        next()
+        next();
     }
 
     // Check Admin
     checkAdmin(req, res, next) {
         var roleAdmin = req.data.admin;
-        if ( roleAdmin === true ) {
-            next()
+        if (roleAdmin === true) {
+            next();
         } else {
-            res.json('NOT PERMISSION')
+            res.json('NOT PERMISSION');
         }
     }
 }
-
 
 module.exports = new MiddlewareController();

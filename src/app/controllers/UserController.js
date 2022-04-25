@@ -73,9 +73,19 @@ const UserController = {
                 { username: req.params.username },
                 req.body,
             );
+            // const info = await Info.findOne({ username: req.params.username });
+            // return res.render('users/detail', {
+            //     username: info.username,
+            //     email: info.email,
+            //     name: info.name,
+            //     phone: info.phone,
+            //     avatar: info.avatar,
+            //     facebook: info.facebook,
+            //     instagram: info.instagram,
+            //     data: req.data,
+            //     data_admin: req.data?.admin,
+            // });
             return res.redirect('back');
-            return res.json(req.body);
-            // return res.json(newInfo)
         } catch (err) {
             res.status(500).json(err);
         }

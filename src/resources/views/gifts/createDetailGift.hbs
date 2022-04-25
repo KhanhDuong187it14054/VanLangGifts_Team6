@@ -1,8 +1,10 @@
 
 <div class="create-detail-gift">
+    <div class="alert alert-danger" id="noti-no-change" style="display: none"></div>
+    <div class="alert alert-danger" id="noti-success" style="display: none">Cảm ơn bạn đã đóng góp món quà này</div>
     <div class="form-create-detail-gift">
         <h3 style="font-family:'Segoe UI'">Thêm quà tặng</h3>
-        <form id="formCreateGift"  action="/gifts/store" enctype="multipart/form-data" method="POST">
+        <form id="formCreateGift" action="/gifts/store" method="POST" enctype="multipart/form-data">
             {{!-- <form enctype="multipart/form-data"> --}}
                 <div class="item-form">
                     <label style="font-family:'Segoe UI'" for="name">Tên quà tặng</label>
@@ -17,19 +19,19 @@
                     <input type="  text" class="form-control" id="videoId" name="videoId">
                 </div> --}}
                 <div class="item-form">
-                    <label style="font-family:'Segoe UI'" for="image">Link image</label>
-                    <input type="text" class="form-control" id="image" name="image" placeholder="Link 1">
-                    <input type="text" class="form-control" id="image1" name="image1" placeholder="Link 2">
-                    <input type="text" class="form-control" id="image2" name="image2" placeholder="Link 3">
-                </div>
-                <p id="them-link">Thêm link</p>
-                <div class="item-form">
                     <label style="font-family:'Segoe UI'" for="author">Người tặng</label>
                     <input type="text" class="form-control" id="author" name="author">
                 </div>
                 <div class="item-form">
+                    <label style="font-family:'Segoe UI'" for="image">Thêm ảnh bằng liên kết: ( tối đa 3 liên kết )</label>
+                    <input type="text" class="form-control link-image" id="image" name="image" placeholder="Link ảnh 1">
+                    <input type="text" class="form-control link-image" id="image1" name="image1" placeholder="Link ảnh 2">
+                    <input type="text" class="form-control link-image" id="image2" name="image2" placeholder="Link ảnh 3">
+                </div>
+                <p id="them-link" style="color: rgb(0 165 236); font-size: 15px; margin-left: 5px;"> <i class="fa fa-plus" aria-hidden="true"></i> Thêm link</p>
+                <div class="item-form">
+                    <label style="font-family:'Segoe UI'" for="formFile">Thêm ảnh từ máy của bạn: ( tối đa 3 ảnh ) </label>
                     <input type="file" class="form-control" name="images" id="formFile"  multiple>
-                    
                 </div>
                 <button style="font-family:'Segoe UI'" type="submit"  id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button>
                 {{!-- <button style="font-family:'Segoe UI'" id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button> --}}
@@ -43,9 +45,9 @@
     $('#image1').hide();
     $('#image2').hide();
 
-    var typeArray = ['jpg','JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF']
-
     var tongsoImage = 0;
+    
+    var typeArray = ['jpg','JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF']
 
     var files = document.querySelector("#formFile");
 
@@ -54,13 +56,41 @@
         for (var i = 0; i < files.files.length; i++) {
             var typeFile = files.files[i].name.split(".")[1];
             if( typeArray.includes(typeFile) === false) {
-                alert("Vui lòng chọn file là hình ảnh")
+              //  alert("Vui lòng chọn file là hình ảnh")
+                $("#noti-no-change").html("Vui lòng chọn file là hình ảnh")
+                var i = 0;
+                var setTime1 = function () {
+                    $("#noti-no-change").hide();
+                }
+
+                var setTime = setInterval(() => {
+                    i++;
+                    $("#noti-no-change").show();
+                    if (i === 30) {
+                        clearInterval(setTime)
+                        setTime1();
+                    }
+                }, 100)
                 files.value = ""
             };
             
         }
         if(files.files.length > 3) {
-            alert("Vui lòng chỉ chọn 3 file")
+            //alert("Vui lòng chỉ chọn 3 file")
+            $("#noti-no-change").html("Vui lòng chỉ chọn nhiều nhất 3 ảnh")
+                var i = 0;
+                var setTime1 = function () {
+                    $("#noti-no-change").hide();
+                }
+
+                var setTime = setInterval(() => {
+                    i++;
+                    $("#noti-no-change").show();
+                    if (i === 30) {
+                        clearInterval(setTime)
+                        setTime1();
+                    }
+                }, 100)
             files.value = "";
         }
         tongsoImage = tongsoImage + files.files.length;
@@ -88,22 +118,91 @@
     })
 
     $('#btnCreateGift').click(function (e) {
-        console.log(tongsoImage);
 
         e.preventDefault();
         if ($('#name').val() === '') {
-            alert("Vui lòng điền tên quà tặng")
+          // alert("Vui lòng điền tên quà tặng")
+            $("#noti-no-change").html("Vui lòng điền tên quà tặng")
+                var i = 0;
+                var setTime1 = function () {
+                    $("#noti-no-change").hide();
+                }
+
+                var setTime = setInterval(() => {
+                    i++;
+                    $("#noti-no-change").show();
+                    if (i === 30) {
+                        clearInterval(setTime)
+                        setTime1();
+                    }
+                }, 100)
         }
         else if ($('#description').val() === '') {
-            alert("Vui lòng điền mô tả")
+           // alert("Vui lòng điền mô tả")
+            $("#noti-no-change").html("Vui lòng điền mô tả")
+                var i = 0;
+                var setTime1 = function () {
+                    $("#noti-no-change").hide();
+                }
+
+                var setTime = setInterval(() => {
+                    i++;
+                    $("#noti-no-change").show();
+                    if (i === 30) {
+                        clearInterval(setTime)
+                        setTime1();
+                    }
+                }, 100)
         }
         else if ($('#author').val() === '') {
-            alert("Vui lòng điền tên người tặng")
+            //alert("Vui lòng điền tên người tặng")
+            $("#noti-no-change").html("Vui lòng điền tên người tặng")
+                var i = 0;
+                var setTime1 = function () {
+                    $("#noti-no-change").hide();
+                }
+
+                var setTime = setInterval(() => {
+                    i++;
+                    $("#noti-no-change").show();
+                    if (i === 30) {
+                        clearInterval(setTime)
+                        setTime1();
+                    }
+                }, 100)
         }
         else if ( tongsoImage === 0) {
-            alert("Vui lòng chọn ít nhất 1 hình ảnh")
+           // alert("Vui lòng chọn ít nhất 1 hình ảnh")
+           $("#noti-no-change").html("Vui lòng chọn ít nhất 1 hình ảnh")
+                var i = 0;
+                var setTime1 = function () {
+                    $("#noti-no-change").hide();
+                }
+
+                var setTime = setInterval(() => {
+                    i++;
+                    $("#noti-no-change").show();
+                    if (i === 30) {
+                        clearInterval(setTime)
+                        setTime1();
+                    }
+                }, 100)
         }
         else {
+            $("#noti-success").html("Cảm ơn bạn đã đóng góp món quà này")
+                var i = 0;
+                var setTime1 = function () {
+                    $("#noti-success").hide();
+                }
+
+                var setTime = setInterval(() => {
+                    i++;
+                    $("#noti-success").show();
+                    if (i === 30) {
+                        clearInterval(setTime)
+                        setTime1();
+                    }
+                }, 100)
             $('#formCreateGift').submit()
         }
     })
