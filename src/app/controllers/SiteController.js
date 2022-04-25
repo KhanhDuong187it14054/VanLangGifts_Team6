@@ -6,16 +6,20 @@ class SiteController {
         Gift.find({})
             .skip(0)
             .limit(9)
-            .then(gifts => {
+            .then((gifts) => {
                 res.render('home', {
                     gifts: multipleMongooseToObject(gifts),
                     data: req.data,
                     data_admin: req.data?.admin,
                 });
-                console.log(req.data)
+                console.log(req.data);
             })
             .catch(next);
         // res.render('home');
+    }
+
+    intro(req, res, next) {
+        res.render('news/introduce');
     }
 }
 

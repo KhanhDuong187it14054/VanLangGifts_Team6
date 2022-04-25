@@ -52,12 +52,11 @@
     var dataa;
     $('#wrapper-chat').hide();
     $('#no-friend').hide()
-   // var socket = io("http://localhost:1104");
+    // var socket = io("http://localhost:1104");
      var socket = io("https://vanlanggifts.herokuapp.com");
 
     var soLuongFriend = 0;
     $(document).ready(function() {
-    //    console.log('Ready run')
         $.ajax({
             url: '/messenger/chat-room',
             type: 'GET',
@@ -76,8 +75,6 @@
                         </li>`)
                     }
                     if(i === data.length - 1) {
-                     //   console.log("Chay voi", data[i].username)
-                     //   console.log("-------------------")
                         getIdRoom(data[i].username);
                     }
                 }
@@ -97,8 +94,6 @@
     })
 
     function getIdRoom(nameAuthor) {
-    //    console.log("Function getIdroom đang chạy");
-    //    console.log("++++++++++++++++++++++++++++");
         $('#chatBoxTop').animate({ scrollTop: 2000 }, 800)
         $.ajax({
             url: '/messenger/chat-room/' + nameAuthor,
@@ -108,6 +103,7 @@
             dataa = data;
             idRoom = data.idRoom;
             myIdd = data.myId;
+
             const phone = (data.infoFriend.phone === '') ? "Chưa cập nhật" : data.infoFriend.phone;
             const avatar = (data.infoFriend.avatar === '') ? "http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" : data.infoFriend.avatar;
             const facebook = (data.infoFriend.facebook === '' || data.infoFriend.facebook === "") ? "#" : data.infoFriend.facebook;
@@ -129,7 +125,6 @@
 
             $("#chatBoxTop").html("")
             for (var i = 0; i < data.messages.length; i++) {
-        //        console.log("Server load tin nhan dang chay ", i)
                 if (data.messages[i].sender === data.myId) {
                     $("#chatBoxTop").append(`
                     <div class="own">
@@ -153,30 +148,32 @@
 
             // Socket cu
             const myId = data.myId;
+            const idFriend = data.infoFriend._id;
             //1
-           socket.emit("tao-phong", data.idRoom);
+            socket.emit("tao-phong", data.idRoom);
 
-      //      $("#text").focusin(function() {
-      //          console.log('dang focus')
-      //          socket.emit("toi-dang-go-chu",{nameCurrent:data.nameCurrent, myId: myId});
-      //     })
+        //    $("#text").focusin(function() {
+        //        console.log('dang focus')
+        //        socket.emit("toi-dang-go-chu",{nameCurrent:data.nameCurrent, myId: myId, idFriend: idFriend});
+        //   })
 
-      //      $("#text").focusout(function() {
-      //          console.log('huy focus')
-      //          socket.emit("toi-stop-go-chu", myId)
-      //      })
+        //    $("#text").focusout(function() {
+        //        console.log('huy focus')
+        //        socket.emit("toi-stop-go-chu", myId)
+        //    })
 
             // vi tri Cu
-            const avatarCurrent = data.avatarCurrent;
-            avatarCurrentt = data.avatarCurrent;
+        //    const avatarCurrent = data.avatarCurrent;
+        //    avatarCurrentt = data.avatarCurrent;
 
-    //        socket.on('ai-do-dang-go-chu', function (data) {
-    //            var itemHtml = $(`<div id="${data.myId}"><p> ${data.nd} </p> <img src="/public/img/chat.gif"  alt="" /> </div>`)
-    //            $('#thongBao').html(itemHtml)
-    //        })
-    //        socket.on('ai-do-stop-go-chu', function (data) {
-    //            var idItem = document.getElementById(data)
-    //        })
+        //    socket.on('ai-do-dang-go-chu', function (data) {
+        //        var itemHtml = $(`<div id="${data.myId}"><p> ${data.nd} </p> <img src="/public/img/chat.gif"  alt="" /> </div>`)
+        //        $('#thongBao').html(itemHtml)
+        //    })
+        //    socket.on('ai-do-stop-go-chu', function (data) {
+        //        var idItem = document.getElementById(data)
+        //            idItem.remove();
+        //    })
 
         //    console.log("helo")
         //    socket.on("server-gui-lai-tin", function(data) {
@@ -205,11 +202,6 @@
     }
 
     socket.on("server-gui-lai-tin", function(data) {
-     //   console.log("Socket gan lai dang chay ", data)
-     //   console.log('myId', myIdd)
-     //   console.log('dataId', data.id)
-     //   console.log('avatarCurrent', avatarCurrentt)
-     //   console.log('avatarr', avatarr)
         if(data.id === myIdd){
                $("#chatBoxTop").append(`
                <div class="own">
@@ -232,29 +224,28 @@
     });
 
     $("#text").focusin(function() {
-        console.log('dang focus')
-        console.log('dataa.nameCurrent', dataa.nameCurrent)
-        socket.emit("toi-dang-go-chu",{nameCurrent: dataa.nameCurrent, myId: myIdd});
+        console.log('b', idRoom)
+        socket.emit("toi-dang-go-chu",{nameCurrent: dataa.nameCurrent, myId: myIdd, idRoom: idRoom});
     })
 
     $("#text").focusout(function() {
-        console.log('huy focus')
         socket.emit("toi-stop-go-chu", myIdd)
     })
 
     socket.on('ai-do-dang-go-chu', function (data) {
-        var itemHtml = $(`<div id="${data.myId}"><p> ${data.nd} </p> <img src="/public/img/chat.gif"  alt="" /> </div>`)
-        $('#thongBao').html(itemHtml)
+        if (data.idRoom === idRoom) {
+            var itemHtml = $(`<div id="${data.myId}"><p> ${data.nd} </p> <img src="/public/img/chat.gif"  alt="" /> </div>`)
+            $('#thongBao').html(itemHtml)
+        }
     })
     socket.on('ai-do-stop-go-chu', function (data) {
         var idItem = document.getElementById(data);
         idItem.remove();
     })
+
     // vi tri moi
     $("#btnSubmitChat").click(function () {
-       // console.log($('.chatMessageInput').val().length);
         var checkRong = /^\s*$/.test($('.chatMessageInput').val());
-       // console.log(checkRong);
         $('#chatBoxTop').animate({ scrollTop: 2000 }, 500)
 
         // Thêm tin nhắn vào DB
@@ -279,17 +270,13 @@
             )
         }
     $('.chatMessageInput').val("")
-    //    console.log('Room hien tai', idRoom);
-    //    console.log('ID người gửi', myIdd);
-    //    console.log("---------------------")
+
     });
 
     function gotoCheck() {
         window.onclick = e => {
             var userName = e.target.getAttribute('data-id')
             if (userName !== null) {
-            //    console.log('userName', userName);
-            //    console.log("---------------------")
                 getIdRoom(userName);
             }
         }
@@ -298,7 +285,6 @@
      $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == '13') {
-            //alert("Hello")
             $("#btnSubmitChat").click();
         }
     });

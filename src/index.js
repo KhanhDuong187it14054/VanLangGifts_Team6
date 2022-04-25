@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const io = require("socket.io")(server);
+const io = require('socket.io')(server);
 const PORT = process.env.PORT || 1104;
 
 const SortMiddleware = require('./app/middlewares/SortMiddleware');
@@ -15,37 +15,39 @@ const path = require('path');
 const mongoose = require('mongoose');
 const route = require('./routes');
 const dotenv = require('dotenv');
-const session = require('express-session')
-
+const session = require('express-session');
 
 dotenv.config();
 
 app.use(cookieParser('secret'));
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(session({cookie: {maxAge: null}}))
-
+app.use(session({ cookie: { maxAge: null } }));
 
 // const db = require('./config/db');
 // db.connect();
-const db = async() => {
+const db = async () => {
     try {
-        await mongoose.connect( process.env.MONGODB_URI || 'mongodb+srv://khanhduong2t2:ngay2thang2@vanlanggiftsteam6.leeac.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true,
-        })
-        console.log("Connected successfully")
+        await mongoose.connect(
+            process.env.MONGODB_URI ||
+                'mongodb+srv://khanhduong2t2:ngay2thang2@vanlanggiftsteam6.leeac.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+            {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                useFindAndModify: false,
+                useCreateIndex: true,
+            },
+        );
+        console.log('Connected successfully');
     } catch (e) {
-        console.log(e)
-        console.log("connection failed")
+        console.log(e);
+        console.log('connection failed');
     }
-}
+};
 
-db()
+db();
 
-app.use('/public',express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(
     express.urlencoded({
@@ -66,25 +68,25 @@ const hbs = exphbs.create({
                 default: 'oi oi-elevator',
                 asc: 'oi oi-sort-ascending',
                 desc: 'oi oi-sort-descending',
-            }
+            };
             const types = {
                 default: 'desc',
                 asc: 'desc',
                 desc: 'asc',
-            }
+            };
             const icon = icons[sortType];
             const type = types[sortType];
 
             return `<a href="?_sort&column=${field}&type=${type}">
             <span class="${icon}"></span>
             </a>`;
-        }
-    }
+        },
+    },
 });
 // TEMPLATE ENGINE
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources','views'));
+app.set('views', path.join(__dirname, 'resources', 'views'));
 //console.log('PATH: ', path.join(__dirname, 'resources/views')) //xem đường dẫn
 
 //HTTP logger
@@ -97,7 +99,7 @@ app.use(SortMiddleware);
 
 const User = require('../src/app/models/User');
 const Info = require('../src/app/models/Info');
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 // Routes init
@@ -107,30 +109,36 @@ server.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`);
 });
 
+io.on('connection', function (socket) {
+    console.log('Co nguoi ket noi' + socket.id);
 
-io.on("connection", function(socket) {
-    console.log("Co nguoi ket noi" + socket.id)
-
-    socket.on("tao-phong", function(data) {
-        socket.Phong = data
-        socket.join(socket.Phong)
-        console.log(socket.adapter.rooms)
+    socket.on('tao-phong', function (data) {
+        socket.Phong = data;
+        socket.join(socket.Phong);
+        console.log(socket.adapter.rooms);
     });
 
-    socket.on("user-gui-tin", function(data) {
-        io.sockets.in(socket.Phong).emit("server-gui-lai-tin",
-        {
-            id: data.id , nd: data.nd
-        })
+    socket.on('user-gui-tin', function (data) {
+        io.sockets.in(socket.Phong).emit('server-gui-lai-tin', {
+            id: data.id,
+            nd: data.nd,
+        });
     });
 
-    socket.on("toi-dang-go-chu", function(data) {
-        var nd = data.nameCurrent + " đang soạn tin";
-        io.sockets.emit("ai-do-dang-go-chu",{ nd: nd, myId: data.myId})
-    })
+    socket.on('toi-dang-go-chu', function (data) {
+        var nd = data.nameCurrent + ' đang soạn tin';
+        // io.sockets.emit("ai-do-dang-go-chu",{ nd: nd, myId: data.myId})
+        io.sockets
+            .in(socket.Phong)
+            .emit('ai-do-dang-go-chu', {
+                nd: nd,
+                myId: data.myId,
+                idRoom: data.idRoom,
+            });
+    });
 
-    socket.on("toi-stop-go-chu", function(data) {
-        io.sockets.emit("ai-do-stop-go-chu",data)
-    })
-
-})
+    socket.on('toi-stop-go-chu', function (data) {
+        // io.sockets.emit("ai-do-stop-go-chu",data)
+        io.sockets.in(socket.Phong).emit('ai-do-stop-go-chu', data);
+    });
+});
