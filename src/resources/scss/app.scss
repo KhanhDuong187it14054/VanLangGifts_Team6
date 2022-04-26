@@ -1588,7 +1588,7 @@ h1 {
 
     .wrap-user-detail img {
         width: 45%;
-        height: 111px;
+        height: 120px;
     }
 }
 
@@ -1603,7 +1603,7 @@ h1 {
 
 .form-create-detail-gift {
     position: relative;
-    width: 47%;
+    width: 40%;
     margin: 0px auto;
     background-color: #fff;
     padding: 20px;
@@ -1620,7 +1620,7 @@ h1 {
 }
 
 .link-image {
-    margin: 5px;
+    margin: 5px 0px;
 }
 
 .form-create-detail-gift h3::after {
@@ -1650,9 +1650,41 @@ h1 {
 }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+    .form-create-detail-gift {
+        width: 42%;
+    }
+
     .form-create-detail-gift button {
         font-size: 15px;
         margin-top: 15px;
+    }
+
+    .form-create-detail-gift h3 {
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    .create-detail-gift {
+        padding: 55px 97px;
+    }
+
+    .item-form input {
+        font-size: 10px;
+        height: 25px;
+        line-height: 10px;
+    }
+
+    #them-link {
+        font-size: 10px !important;
+    }
+
+    .form-create-detail-gift h3::after {
+        width: 105px;
+        height: 105px;
+    }
+
+    #btnCreateGift {
+        font-size: 12px;
     }
 }
 
