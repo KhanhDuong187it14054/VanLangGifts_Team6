@@ -7,32 +7,6 @@ const region = 'us-west-2';
 const accessKeyId = 'AKIA2P3DKJENLSYKS447';
 const secretAccessKey = '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';
 
-// const s3 = new S3({
-//     region,
-//     accessKeyId,
-//     secretAccessKey,
-// })
-
-// //uploads a file to s3
-// function uploadFile(files) {
-
-//     for(var i = 0; i < files.length; i++) {
-//         var file = files[i];
-//         console.log('--filepath', file.path)
-//         const fileStream = fs.createReadStream(file.path);
-
-//         const uploadParams = {
-//             Bucket: bucketName,
-//             Body: fileStream,
-//             Key: file.filename
-//         }
-//         return s3.upload(uploadParams).promise()
-//     }
-// }
-// exports.uploadFile = uploadFile
-
-// //downloads a file from s3
-
 const s3 = new S3({
     region,
     accessKeyId,

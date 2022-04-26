@@ -19,7 +19,10 @@ class SiteController {
     }
 
     intro(req, res, next) {
-        res.render('news/introduce');
+        res.render('news/introduce', {
+            data: req.data,
+            data_admin: req.data?.admin,
+        });
     }
 }
 

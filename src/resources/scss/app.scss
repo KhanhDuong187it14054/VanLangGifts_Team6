@@ -2753,6 +2753,28 @@ h1 {
     height: 50%;
 }
 
+@media only screen and (min-width: 46.25em) and (max-width: 1280px) {
+    #introduce-wrapper {
+        font-size: 18px;
+    }
+
+    #introduce-wrapper img {
+        width: 35%;
+        height: 35%;
+    }
+}
+
+@media only screen and (max-width: 46.1875em) {
+    #introduce-wrapper {
+        font-size: 16px;
+    }
+
+    #introduce-wrapper img {
+        width: 70%;
+        height: 70%;
+    }
+}
+
 // ---------------------EDIT-USERS--------------------
 #container-edit-user {
     background-color: #b0cdc5;
