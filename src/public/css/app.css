@@ -1262,7 +1262,19 @@ h1 {
     margin-bottom: 5px; }
   .form-create-detail-gift button {
     font-size: 12px;
-    margin-top: 10px; } }
+    margin-top: 10px; }
+  .create-detail-gift {
+    padding: 50px 20px; }
+  .form-create-detail-gift h3::after {
+    width: 85px;
+    height: 85px;
+    top: -8%; }
+  .item-form input {
+    font-size: 12px; }
+  .item-form label {
+    font-size: 14px; }
+  #them-link {
+    font-size: 12px !important; } }
 
 #wrap-container-my-gifts {
   padding: 50px 0px;
