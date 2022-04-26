@@ -1755,13 +1755,30 @@ h1 {
     line-height: 50px; } }
 
 .container-stored-user {
-  padding: 50px 190px; }
+  padding: 50px 190px;
+  background-color: #bbb; }
 
 .wrap-stored-user {
+  background-color: #fff;
   border: 1px solid #454545;
   border-radius: 10px;
   padding: 10px 20px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(145, 18, 18, 0.06), 0 10px 20px rgba(0, 0, 0, 0.12); }
+
+.wrap-stored-user .list-users {
+  font-weight: 600px !important; }
+
+.wrap-stored-user .col-email {
+  width: 345px; }
+
+.wrap-stored-user .col-username {
+  width: 285px; }
+
+.wrap-stored-user .col-admin {
+  width: 170px; }
+
+.wrap-stored-user .col-stt {
+  width: 100px; }
 
 .wrap-stored-user .pagi-btn .pagination .page-item .page-link {
   color: #000; }
@@ -2026,3 +2043,19 @@ h1 {
   display: block;
   width: 50%;
   height: 50%; }
+
+#container-edit-user {
+  background-color: #b0cdc5;
+  padding: 150px;
+  height: 82%; }
+
+#wrapper-edit-user {
+  background-color: #fff;
+  border: 1px solid #000;
+  width: 602px;
+  border-radius: 7px;
+  padding: 0px 20px 20px 20px;
+  margin: 0px auto; }
+
+#none-admin {
+  margin-left: 20px; }

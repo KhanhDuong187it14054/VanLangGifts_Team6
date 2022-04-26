@@ -227,6 +227,24 @@ class GiftController {
         }
     }
 
+    handleFormTrashActions(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Gift.deleteMany({ _id: { $in: req.body.giftIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+
+                break;
+            case 'restore':
+                Gift.restore({ _id: { $in: req.body.giftIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            default:
+                res.json({ message: 'Action is invalid' });
+        }
+    }
+
     // [GET] /gifts/my-gifts
     MyGifts(req, res, next) {
         Gift.find({ idAuthor: req.data._id })

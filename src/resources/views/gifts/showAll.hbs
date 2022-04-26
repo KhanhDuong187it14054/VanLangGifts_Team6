@@ -5,6 +5,9 @@
         <a class="item-type" onclick="getAll()">All</a>
         <a class="item-type" onclick="book()">Sách</a>
         <a class="item-type" onclick="balo()">Balo</a>
+        <a class="item-type" onclick="binhNuoc()">Bình nước</a>
+        <a class="item-type" onclick="ao()">Áo</a>
+        <a class="item-type" onclick="giay()">Giày</a>`
     </div>
     <div id="wrap-all-gifts"></div>
     <ul class="pagination">
@@ -39,6 +42,21 @@
 
     function balo() {
         var valueSearch = $('.input-search').val('Balo');
+        loadPage(1)
+    }
+
+    function binhNuoc() {
+        var valueSearch = $('.input-search').val('Bình nước');
+        loadPage(1)
+    }
+
+    function ao() {
+        var valueSearch = $('.input-search').val('Ao');
+        loadPage(1)
+    }
+
+    function giay() {
+        var valueSearch = $('.input-search').val('Giày');
         loadPage(1)
     }
 

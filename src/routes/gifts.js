@@ -86,6 +86,10 @@ router.post(
 
 router.get('/:id/edit', middlewareController.verifyToken, giftController.edit);
 router.post('/handle-form-actions', giftController.handleFormActions);
+router.post(
+    '/handle-form-trash-actions',
+    giftController.handleFormTrashActions,
+);
 
 router.put(
     '/:id',

@@ -172,6 +172,7 @@
 
         for (let i = 0; i < rs.data.length; i++) {
           const element = rs.data[i];
+          console.log("thoi gian: ", element.createdAt )
           const timeCreate = element.createdAt.split('.')[0];
           var item = $(`
                           <tr>

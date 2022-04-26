@@ -149,6 +149,7 @@
             // Socket cu
             const myId = data.myId;
             const idFriend = data.infoFriend._id;
+            avatarCurrentt = data.avatarCurrent;
             //1
             socket.emit("tao-phong", data.idRoom);
 
@@ -164,7 +165,6 @@
 
             // vi tri Cu
         //    const avatarCurrent = data.avatarCurrent;
-        //    avatarCurrentt = data.avatarCurrent;
 
         //    socket.on('ai-do-dang-go-chu', function (data) {
         //        var itemHtml = $(`<div id="${data.myId}"><p> ${data.nd} </p> <img src="/public/img/chat.gif"  alt="" /> </div>`)
