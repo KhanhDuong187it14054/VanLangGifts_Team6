@@ -2422,11 +2422,12 @@ h1 {
 
     //Edit Gifts
     .container-edit-gift {
-        padding: 10px 50px;
+        padding: 2px 50px 25px 50px;
     }
 
     .container-edit-gift .wrap-stored-gift {
         font-size: 13px;
+        padding: 15px 20px;
     }
 
     .container-edit-gift .form-group {
@@ -2447,11 +2448,12 @@ h1 {
     }
 
     #formEditGift #them-link {
-        font-size: 13px !important;
+        font-size: 11px !important;
+        margin-bottom: 5px;
     }
 
     #btnEditGift {
-        font-size: 13px;
+        font-size: 11px;
     }
 }
 

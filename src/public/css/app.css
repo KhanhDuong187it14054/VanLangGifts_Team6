@@ -1776,9 +1776,10 @@ h1 {
     height: 55px;
     line-height: 55px; }
   .container-edit-gift {
-    padding: 10px 50px; }
+    padding: 2px 50px 25px 50px; }
   .container-edit-gift .wrap-stored-gift {
-    font-size: 13px; }
+    font-size: 13px;
+    padding: 15px 20px; }
   .container-edit-gift .form-group {
     margin-bottom: 10px; }
   #formEditGift #formFile {
@@ -1789,9 +1790,10 @@ h1 {
     font-size: 13px;
     line-height: 1.5; }
   #formEditGift #them-link {
-    font-size: 13px !important; }
+    font-size: 11px !important;
+    margin-bottom: 5px; }
   #btnEditGift {
-    font-size: 13px; } }
+    font-size: 11px; } }
 
 @media only screen and (max-width: 46.1875em) {
   .wrap-stored-gift {
