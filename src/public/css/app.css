@@ -1802,11 +1802,20 @@ h1 {
     font-size: 11px; } }
 
 @media only screen and (max-width: 46.1875em) {
+  #formEditGift textarea {
+    line-height: 1.5;
+    font-size: 14px; }
+  #formEditGift input {
+    font-size: 14px; }
   .wrap-stored-gift {
-    width: 100%;
+    width: 100% !important;
     padding: 0px 15px; }
+  .wrap-stored-gift label {
+    font-size: 14px; }
+  .wrap-stored-gift h3 {
+    font-size: 20px; }
   .container-stored-gift {
-    padding: 15px 10px; }
+    padding: 5px 10px 20px 10px; }
   .return-list-gifts {
     font-size: 14px;
     height: 68px;
@@ -1824,7 +1833,9 @@ h1 {
     line-height: 50px; }
   .pagi-btn {
     height: 50px;
-    line-height: 50px; } }
+    line-height: 50px; }
+  #btnEditGift {
+    font-size: 14px; } }
 
 .container-stored-user {
   padding: 50px 190px;
