@@ -1155,6 +1155,8 @@ h1 {
   .form-user-detail button {
     font-size: 11px;
     margin-top: 13px; }
+  .form-user-detail {
+    padding: 20px 40px; }
   #user-detail {
     padding: 15px 50px 40px 50px; } }
 
@@ -1164,7 +1166,7 @@ h1 {
   .wrap-user-detail {
     width: 100%;
     display: inline-block;
-    padding: 0px auto; }
+    padding: 0px 15px 0px 15px; }
   .wrap-user-detail img {
     display: block;
     width: 60%;
@@ -1173,7 +1175,16 @@ h1 {
     margin-left: auto; }
   .form-user-detail {
     padding: 20px 0px;
-    width: 100%; } }
+    width: 100%; }
+  .wrap-user-detail .detail-left {
+    width: 100%;
+    box-shadow: none; }
+  .wrap-user-detail h2 {
+    width: 100%;
+    font-size: 30px; }
+  .wrap-user-detail img {
+    width: 45%;
+    height: 111px; } }
 
 .create-detail-gift {
   background-color: #e99191;
