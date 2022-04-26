@@ -1911,9 +1911,10 @@ h1 {
   .wrap-stored-user .col-email {
     width: 50px; }
   .wrap-stored-user .col-admin {
-    width: 52px; }
+    width: 55px;
+    background-color: pink; }
   .wrap-stored-user .col-username {
-    width: 70px; }
+    width: 75px; }
   .wrap-stored-user .pagi-btn {
     height: 34px;
     line-height: 34px;
