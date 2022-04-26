@@ -1956,6 +1956,15 @@ h1 {
 }
 
 @media only screen and (max-width: 46.1875em) {
+    #wrap-container-my-gifts .item-search .fa-search {
+        left: 243px;
+        top: -27px;
+    }
+
+    #wrap-container-my-gifts .pagination {
+        width: 100px;
+    }
+
     #container-my-gifts {
         padding: 20px 20px 0px 20px;
     }
@@ -1965,7 +1974,7 @@ h1 {
     }
 
     .item-my-gifts .img-item-my-gifts {
-        height: 45%;
+        height: 38%;
         width: 38%;
     }
 
@@ -1979,21 +1988,22 @@ h1 {
     }
 
     .name-gift {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .item-my-gifts .info-gifts-item .text-description {
         position: absolute;
-        left: -136px;
+        left: -110px;
         top: 121px;
-        width: 300px;
-        font-size: 16px;
-        height: 100px;
+        width: 240px;
+        font-size: 12px;
+        height: 110px;
     }
 
     .item-my-gifts .info-gifts-item .time-create {
         width: 300px;
-        left: -136px;
+        left: -110px;
+        font-size: 12px;
     }
 }
 

@@ -54,7 +54,9 @@
     files.addEventListener('change', updateValue);
     function updateValue(e) {
         for (var i = 0; i < files.files.length; i++) {
-            var typeFile = files.files[i].name.split(".")[1];
+            var lengthFile = files.files[i].name.split(".");
+            var typeFile = files.files[i].name.split(".")[lengthFile.length - 1];
+
             if( typeArray.includes(typeFile) === false) {
               //  alert("Vui lòng chọn file là hình ảnh")
                 $("#noti-no-change").html("Vui lòng chọn file là hình ảnh")
