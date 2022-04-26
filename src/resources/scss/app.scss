@@ -2421,12 +2421,24 @@ h1 {
     }
 
     //Edit Gifts
+    .container-edit-gift {
+        padding: 10px 50px;
+    }
+
     .container-edit-gift .wrap-stored-gift {
         font-size: 13px;
     }
 
+    .container-edit-gift .form-group {
+        margin-bottom: 10px;
+    }
+
+    #formEditGift #formFile {
+        line-height: 20px !important;
+    }
+
     #formEditGift input {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     #formEditGift textarea {
@@ -2436,6 +2448,10 @@ h1 {
 
     #formEditGift #them-link {
         font-size: 13px !important;
+    }
+
+    #btnEditGift {
+        font-size: 13px;
     }
 }
 
