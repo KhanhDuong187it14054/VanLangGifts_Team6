@@ -1674,7 +1674,7 @@ h1 {
         line-height: 10px;
     }
 
-    #them-link {
+    #formCreateGift #them-link {
         font-size: 10px !important;
     }
 
@@ -1916,7 +1916,7 @@ h1 {
     }
 
     #container-my-gifts {
-        padding: 20px 90px;
+        padding: 20px 0px;
     }
 
     #wrap-container-my-gifts {
@@ -1933,7 +1933,7 @@ h1 {
     }
 
     .item-my-gifts .info-gifts-item .text-description {
-        height: 130px;
+        height: 110px;
     }
 
     .item-my-gifts .edit-delete .icon-edit .fa {
@@ -2418,6 +2418,24 @@ h1 {
     .return-list-gifts {
         height: 55px;
         line-height: 55px;
+    }
+
+    //Edit Gifts
+    .container-edit-gift .wrap-stored-gift {
+        font-size: 13px;
+    }
+
+    #formEditGift input {
+        font-size: 13px;
+    }
+
+    #formEditGift textarea {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    #formEditGift #them-link {
+        font-size: 13px !important;
     }
 }
 

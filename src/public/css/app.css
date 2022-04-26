@@ -1245,7 +1245,7 @@ h1 {
     font-size: 10px;
     height: 25px;
     line-height: 10px; }
-  #them-link {
+  #formCreateGift #them-link {
     font-size: 10px !important; }
   .form-create-detail-gift h3::after {
     width: 105px;
@@ -1427,7 +1427,7 @@ h1 {
   #wrap-container-my-gifts .item-search {
     width: 80%; }
   #container-my-gifts {
-    padding: 20px 90px; }
+    padding: 20px 0px; }
   #wrap-container-my-gifts {
     padding: 40px 0px; }
   .item-my-gifts {
@@ -1436,7 +1436,7 @@ h1 {
   .item-my-gifts .info-gifts-item p {
     font-size: 12px; }
   .item-my-gifts .info-gifts-item .text-description {
-    height: 130px; }
+    height: 110px; }
   .item-my-gifts .edit-delete .icon-edit .fa {
     font-size: 14px;
     width: 26px;
@@ -1774,7 +1774,16 @@ h1 {
     width: 160px; }
   .return-list-gifts {
     height: 55px;
-    line-height: 55px; } }
+    line-height: 55px; }
+  .container-edit-gift .wrap-stored-gift {
+    font-size: 13px; }
+  #formEditGift input {
+    font-size: 13px; }
+  #formEditGift textarea {
+    font-size: 13px;
+    line-height: 1.5; }
+  #formEditGift #them-link {
+    font-size: 13px !important; } }
 
 @media only screen and (max-width: 46.1875em) {
   .wrap-stored-gift {
