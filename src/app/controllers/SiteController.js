@@ -7,6 +7,7 @@ class SiteController {
             .skip(0)
             .limit(9)
             .then((gifts) => {
+                console.log('Giftsssss', gifts);
                 res.render('home', {
                     gifts: multipleMongooseToObject(gifts),
                     data: req.data,

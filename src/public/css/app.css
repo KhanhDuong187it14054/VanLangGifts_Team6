@@ -2128,6 +2128,17 @@ h1 {
   object-fit: cover;
   margin-right: 10px; }
 
+@media only screen and (max-width: 46.1875em) {
+  #container-chat {
+    padding: 20px 0px; }
+  #wrapper-chat {
+    width: 85%;
+    display: block; }
+  #wrap-list-friend {
+    width: 100%; }
+  #list-friend {
+    display: flex; } }
+
 #introduce-container {
   background-image: linear-gradient(to top, #a02931 0%, #2f2c44 100%);
   background-size: cover;
