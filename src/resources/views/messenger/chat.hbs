@@ -53,7 +53,7 @@
     $('#wrapper-chat').hide();
     $('#no-friend').hide()
     // var socket = io("http://localhost:1104");
-    var socket = io("https://vanlanggifts.herokuapp.com");
+     var socket = io("https://vanlanggifts.herokuapp.com");
 
     var soLuongFriend = 0;
     $(document).ready(function() {
@@ -63,7 +63,8 @@
         })
         .then(data => {
                 for (var i = data.length - 1; i >= 0; i--) {
-                    if(data[i].avatar === "") {
+                    console.log(data[i].avatar);
+                    if(data[i].avatar === "" || data[i].avatar === undefined) {
                         $("#list-friend").append(`<li class="item-friend" data-id="`+ data[i].username +`" onclick="gotoCheck()">
                             <img data-id="`+ data[i].username +`" src="http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" alt=""/>
                             <span data-id="`+ data[i].username +`">`+ data[i].username +`</span>
@@ -105,7 +106,7 @@
             myIdd = data.myId;
 
             const phone = (data.infoFriend.phone === '') ? "Chưa cập nhật" : data.infoFriend.phone;
-            const avatar = (data.infoFriend.avatar === '') ? "http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" : data.infoFriend.avatar;
+            const avatar = (data.infoFriend.avatar === '' || data.infoFriend.avatar === undefined) ? "http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" : data.infoFriend.avatar;
             const facebook = (data.infoFriend.facebook === '' || data.infoFriend.facebook === "") ? "#" : data.infoFriend.facebook;
             const instagram = (data.infoFriend.instagram === '' || data.infoFriend.instagram === "") ? "#" : data.infoFriend.instagram;
             avatarr = avatar;
