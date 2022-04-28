@@ -1623,13 +1623,13 @@ h1 {
   color: white;
   cursor: pointer;
   position: absolute;
-  top: 93%; }
+  top: 90%; }
 
 #btn-contact:hover {
   background-color: #389fed; }
 
 #gift-detail .carousel-item {
-  height: 500px;
+  height: 465px;
   line-height: 500px;
   text-align: center; }
 
