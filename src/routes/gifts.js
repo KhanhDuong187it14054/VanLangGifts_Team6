@@ -6,6 +6,8 @@ const middlewareController = require('../app/controllers/MiddlewareController');
 const store = require('../app/controllers/Multer');
 
 const Gift = require('../app/models/Gift');
+const Info = require('../app/models/Info');
+const User = require('../app/models/User');
 
 const { uploadFile, getFileStream } = require('../app/controllers/s3');
 
@@ -20,6 +22,13 @@ router.get(
     middlewareController.verifyToken,
     giftController.getMyGifts,
 );
+
+router.post(
+    '/update-sent-gifts',
+    middlewareController.verifyToken,
+    giftController.checkSentGifts,
+);
+
 router.get(
     '/show-stored-gifts',
     middlewareController.verifyToken,
@@ -27,6 +36,16 @@ router.get(
 );
 
 router.get('/get-all', middlewareController.verifyToken, giftController.getAll);
+router.get(
+    '/get-all-stored',
+    middlewareController.verifyToken,
+    giftController.getAllStored,
+);
+router.get(
+    '/censored/get-all',
+    middlewareController.verifyToken,
+    giftController.getAllCensored,
+);
 router.get(
     '/show-all',
     middlewareController.verifyToken,
@@ -37,18 +56,10 @@ router.post('/search', middlewareController.verifyToken, giftController.search);
 // Create Gift
 router.get('/create', middlewareController.verifyToken, giftController.create);
 
-// router.post(
-//     '/store',
-//     middlewareController.verifyToken,
-//     store.array('images', 3),
-//     giftController.store,
-// );
-
 router.get('/images/:key', (req, res) => {
     const key = req.params.key;
     const readStream = getFileStream(key);
     readStream.pipe(res);
-    // res.json(readStream);
 });
 
 router.post(
@@ -57,14 +68,15 @@ router.post(
     store.array('images', 3),
     async (req, res) => {
         try {
+            const userAuthor = await User.findById(req.data._id);
+            const infoAuthor = await Info.findOne({
+                username: userAuthor.username,
+            });
+
             const files = req.files;
-            console.log('multer ', files);
             const results = await uploadFile(files);
-            console.log('results', results);
-            // res.json(results);
             const arrayKey = [];
             results.map((res) => arrayKey.push(res.Key));
-            console.log('arrayKey', arrayKey);
 
             const idAuthor = req.data._id;
             const image = [req.body.image, req.body.image1, req.body.image2];
@@ -72,9 +84,11 @@ router.post(
             const gift = await new Gift({
                 name: req.body.name,
                 description: req.body.description,
+                quality: req.body.quality,
                 image: image,
                 fileImages: arrayKey,
-                author: req.body.author,
+                type: req.body.type,
+                author: infoAuthor.name,
                 idAuthor: idAuthor,
             });
             gift.save().then(() => res.redirect('/homepage'));
@@ -98,17 +112,12 @@ router.put(
     async (req, res) => {
         try {
             const files = req.files;
-            console.log('multer PUT ', files);
             const results = await uploadFile(files);
-            console.log('results PUT', results);
 
             const arrayKey = [];
             results.map((res) => arrayKey.push(res.Key));
-            console.log('arrayKey PUT', arrayKey);
 
-            console.log('req.body', req.body);
             const idAuthor = req.data._id;
-            console.log('idAuthor', idAuthor);
 
             const image = [];
             if (req.body.image0 !== undefined) {
@@ -120,7 +129,6 @@ router.put(
             if (req.body.image2 !== undefined) {
                 image.push(req.body.image2);
             }
-            // console.log(image)
             Gift.updateOne(
                 { _id: req.params.id },
                 {
@@ -128,7 +136,9 @@ router.put(
                     description: req.body.description,
                     image: image,
                     fileImages: arrayKey,
-                    author: req.body.author,
+                    //  author: req.body.author,
+                    type: req.body.type,
+                    quality: req.body.quality,
                     idAuthor: idAuthor,
                 },
             ).then(() => res.redirect('back'));

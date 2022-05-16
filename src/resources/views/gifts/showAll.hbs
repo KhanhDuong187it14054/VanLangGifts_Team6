@@ -1,13 +1,15 @@
 <div id="show-all-gifts">
     <div class="item-search">
         <input type="text" class="input-search">
+        <input type="text" class="input-type" style="display: none">
         <i class="fa fa-search" aria-hidden="true" onclick="loadPage(1)"></i>
         <a class="item-type" onclick="getAll()">All</a>
         <a class="item-type" onclick="book()">Sách</a>
         <a class="item-type" onclick="balo()">Balo</a>
         <a class="item-type" onclick="binhNuoc()">Bình nước</a>
         <a class="item-type" onclick="ao()">Áo</a>
-        <a class="item-type" onclick="giay()">Giày</a>`
+        <a class="item-type" onclick="dodunghoctap()">Đồ dùng học tập</a>
+        <a class="item-type" onclick="thietbidientu()">Thiết bị điện tử</a>
     </div>
     <div id="wrap-all-gifts"></div>
     <ul class="pagination">
@@ -55,8 +57,13 @@
         loadPage(1)
     }
 
-    function giay() {
-        var valueSearch = $('.input-search').val('Giày');
+    function dodunghoctap() {
+        var valueSearch = $('.input-type').val('Đồ dùng học tập');
+        loadPage(1)
+    }
+
+    function thietbidientu() {
+        var valueSearch = $('.input-type').val('Thiết bị điện tử');
         loadPage(1)
     }
 
@@ -65,8 +72,9 @@
     function loadPage(page) {
         currentPage = page
         var valueSearch = $('.input-search').val();
+        var valueType = $('.input-type').val();
         $.ajax({
-            url: '/gifts/get-all?page=' + page + '&name=' + valueSearch,
+            url: '/gifts/get-all?page=' + page + '&name=' + valueSearch + '&typeGift=' + valueType,
         })
             .then(rs => {
                 $('#wrap-all-gifts').html('');
@@ -80,7 +88,6 @@
 
                 for (let i = 0; i < rs.data.length; i++) {
                     const element = rs.data[i];
-                    console.log(element);
                     var avatarGift = element.image[0];
                     if (element.fileImages[0] !== undefined) {
                         var avatarSupport =  `/gifts/images/${element.fileImages[0]}`;
@@ -243,7 +250,6 @@
                     if (avatarGift === "") {
                         avatarGift = avatarSupport
                     }
-                    
                     var item = $(`
                                     <div class="item-all-gift">
                                         <div class="card card-gift-item ">
@@ -268,7 +274,6 @@
                         activeItem[i].classList.add("active");
                     }
                 }
-                
                 var itemNone = $(`<h3 class="text-none">Xin lỗi bạn. </br> Hiện quà tặng này không có.</h3>`)
                 if (rs.data.length === 0) {
                     $('#wrap-all-gifts').append(itemNone);

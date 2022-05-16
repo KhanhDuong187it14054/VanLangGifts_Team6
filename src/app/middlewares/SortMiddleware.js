@@ -1,20 +1,14 @@
 module.exports = function SortMiddleware(req, res, next) {
     res.locals._sort = {
         enabled: false,
-        type: 'default'
+        type: 'default',
     };
     if (req.query.hasOwnProperty('_sort')) {
-        // res.locals._sort.enabled = true;
-        // res.locals._sort.type = req.query.type;
-        // res.locals._sort.column = req.query.column;
-    
-        // Cách này tương tự như trên, dùng ghi đè value
-        // của 1 đối tượng
         Object.assign(res.locals._sort, {
             enabled: true,
             type: req.query.type,
             column: req.query.column,
-        })
+        });
     }
     next();
-}
+};

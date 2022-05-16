@@ -22,7 +22,6 @@ const UserController = {
         User.updateOne({ _id: req.params.id }, req.body)
             .then(() => res.redirect('/me/stored/users'))
             .catch(next);
-        // res.json(req.body)
     },
 
     //[PATCH] /users/:id/restore
@@ -61,6 +60,7 @@ const UserController = {
                 instagram: info.instagram,
                 data: req.data,
                 data_admin: req.data?.admin,
+                data_censor: req.data?.censor,
             });
         } catch (err) {
             res.status(500).json(err);
@@ -73,18 +73,6 @@ const UserController = {
                 { username: req.params.username },
                 req.body,
             );
-            // const info = await Info.findOne({ username: req.params.username });
-            // return res.render('users/detail', {
-            //     username: info.username,
-            //     email: info.email,
-            //     name: info.name,
-            //     phone: info.phone,
-            //     avatar: info.avatar,
-            //     facebook: info.facebook,
-            //     instagram: info.instagram,
-            //     data: req.data,
-            //     data_admin: req.data?.admin,
-            // });
             return res.redirect('back');
         } catch (err) {
             res.status(500).json(err);

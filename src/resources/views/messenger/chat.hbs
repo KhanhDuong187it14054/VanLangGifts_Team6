@@ -53,7 +53,7 @@
     $('#wrapper-chat').hide();
     $('#no-friend').hide()
     // var socket = io("http://localhost:1104");
-     var socket = io("https://vanlanggifts.herokuapp.com");
+    var socket = io("https://vanlanggifts.herokuapp.com");
 
     var soLuongFriend = 0;
     $(document).ready(function() {
@@ -63,7 +63,6 @@
         })
         .then(data => {
                 for (var i = data.length - 1; i >= 0; i--) {
-                    console.log(data[i].avatar);
                     if(data[i].avatar === "" || data[i].avatar === undefined) {
                         $("#list-friend").append(`<li class="item-friend" data-id="`+ data[i].username +`" onclick="gotoCheck()">
                             <img data-id="`+ data[i].username +`" src="http://windows79.com/wp-content/uploads/2021/02/Thay-the-hinh-dai-dien-tai-khoan-nguoi-dung-mac.png" alt=""/>
@@ -154,51 +153,6 @@
             //1
             socket.emit("tao-phong", data.idRoom);
 
-        //    $("#text").focusin(function() {
-        //        console.log('dang focus')
-        //        socket.emit("toi-dang-go-chu",{nameCurrent:data.nameCurrent, myId: myId, idFriend: idFriend});
-        //   })
-
-        //    $("#text").focusout(function() {
-        //        console.log('huy focus')
-        //        socket.emit("toi-stop-go-chu", myId)
-        //    })
-
-            // vi tri Cu
-        //    const avatarCurrent = data.avatarCurrent;
-
-        //    socket.on('ai-do-dang-go-chu', function (data) {
-        //        var itemHtml = $(`<div id="${data.myId}"><p> ${data.nd} </p> <img src="/public/img/chat.gif"  alt="" /> </div>`)
-        //        $('#thongBao').html(itemHtml)
-        //    })
-        //    socket.on('ai-do-stop-go-chu', function (data) {
-        //        var idItem = document.getElementById(data)
-        //            idItem.remove();
-        //    })
-
-        //    console.log("helo")
-        //    socket.on("server-gui-lai-tin", function(data) {
-        //        console.log("Socket gan lai dang chay ", data)
-             //   if(data.id === myId){
-             //       $("#chatBoxTop").append(`
-             //       <div class="own">
-             //           <div class="messageTop" id="messageText">
-             //               <p class="messageText" >` + data.nd + `</p>
-             //               <img class="messageImg" id="imageAuthor" src="`+ avatarCurrent+`" alt="" />
-             //           </div>
-              //      </div>
-             //       `);
-              //  } else {
-              //      $("#chatBoxTop").append(`
-              //      <div>
-              //          <div class="messageTop" id="messageText">
-              //              <img class="messageImg" id="imageAuthor" src="`+ avatar +`" alt="" />
-              //             <p class="messageText" >` + data.nd + `</p>
-              //          </div>
-              //      </div>
-              //      `);
-              //  }
-         //   });
         })
     }
 
@@ -225,7 +179,6 @@
     });
 
     $("#text").focusin(function() {
-        console.log('b', idRoom)
         socket.emit("toi-dang-go-chu",{nameCurrent: dataa.nameCurrent, myId: myIdd, idRoom: idRoom});
     })
 
@@ -256,16 +209,13 @@
                 type: 'POST',
                 data: {
                         text: $("#text").val(),
-                    //  conversationId: data.idRoom,
                         conversationId: idRoom,
-                    //  sender: data.myId,
                         sender: myIdd,
                     }
             })
             socket.emit('user-gui-tin',
                 {
                     nd: $('#text').val(),
-                //    id: data.myId,
                     id: myIdd,
                 }
             )

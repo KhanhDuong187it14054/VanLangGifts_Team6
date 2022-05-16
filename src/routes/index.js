@@ -1,5 +1,6 @@
 const siteRouter = require('./site');
-const authRouter = require('./auth')
+const authRouter = require('./auth');
+const censorRouter = require('./censor');
 const meRouter = require('./me');
 const giftsRouter = require('./gifts');
 const usersRouter = require('./users');
@@ -9,6 +10,7 @@ const conversationRouter = require('./conversations');
 
 function route(app) {
     app.use('/auth', authRouter);
+    app.use('/censored', censorRouter);
     app.use('/me', meRouter);
     app.use('/gifts', giftsRouter);
     app.use('/users', usersRouter);

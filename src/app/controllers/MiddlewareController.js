@@ -22,7 +22,6 @@ class MiddlewareController {
                     res.status(500).json(err);
                 });
         } catch (err) {
-            // return res.json('Token khong hop le')
             return res.render('auth/login');
         }
     }
@@ -38,6 +37,15 @@ class MiddlewareController {
     checkAdmin(req, res, next) {
         var roleAdmin = req.data.admin;
         if (roleAdmin === true) {
+            next();
+        } else {
+            res.json('NOT PERMISSION');
+        }
+    }
+
+    checkCensor(req, res, next) {
+        var roleCensor = req.data.censor;
+        if (roleCensor === true) {
             next();
         } else {
             res.json('NOT PERMISSION');

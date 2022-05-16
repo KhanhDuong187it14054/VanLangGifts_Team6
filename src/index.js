@@ -24,8 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({ cookie: { maxAge: null } }));
 
-// const db = require('./config/db');
-// db.connect();
 const db = async () => {
     try {
         await mongoose.connect(
@@ -87,7 +85,6 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-//console.log('PATH: ', path.join(__dirname, 'resources/views')) //xem đường dẫn
 
 //HTTP logger
 app.use(morgan('combined'));
@@ -127,18 +124,14 @@ io.on('connection', function (socket) {
 
     socket.on('toi-dang-go-chu', function (data) {
         var nd = data.nameCurrent + ' đang soạn tin';
-        // io.sockets.emit("ai-do-dang-go-chu",{ nd: nd, myId: data.myId})
-        io.sockets
-            .in(socket.Phong)
-            .emit('ai-do-dang-go-chu', {
-                nd: nd,
-                myId: data.myId,
-                idRoom: data.idRoom,
-            });
+        io.sockets.in(socket.Phong).emit('ai-do-dang-go-chu', {
+            nd: nd,
+            myId: data.myId,
+            idRoom: data.idRoom,
+        });
     });
 
     socket.on('toi-stop-go-chu', function (data) {
-        // io.sockets.emit("ai-do-stop-go-chu",data)
         io.sockets.in(socket.Phong).emit('ai-do-stop-go-chu', data);
     });
 });

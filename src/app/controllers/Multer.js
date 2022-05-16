@@ -1,6 +1,5 @@
 const multer = require('multer');
 
-// set storage
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'src/uploads');
@@ -11,9 +10,6 @@ var storage = multer.diskStorage({
         }
     },
     filename: function (req, file, cb) {
-        // image.jpg
-        // console.log("Anh tu multer", file)
-
         var ext = file.originalname.substr(file.originalname.lastIndexOf('.'));
 
         cb(null, file.fieldname + '-' + Date.now() + ext);

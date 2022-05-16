@@ -28,13 +28,13 @@
         $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode == '13') {
-            //alert("Hello")
             $("#buttonEnter").click();
         }
         });
 
         var login = document.getElementById('login');
         var register = document.getElementById('register');
+        var notificationVerify = document.getElementById('notification-verify');
         var header = document.getElementById('header');
         var footer = document.getElementById('footer');
 
@@ -43,6 +43,10 @@
             footer.style.display = "none";
         }
         if(register) {
+            header.style.display = "none";
+            footer.style.display = "none";
+        }
+        if(notificationVerify) {
             header.style.display = "none";
             footer.style.display = "none";
         }

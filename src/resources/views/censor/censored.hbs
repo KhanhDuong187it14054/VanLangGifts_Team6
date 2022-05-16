@@ -1,26 +1,7 @@
 <div class="container-stored-gift">
   <div class="wrap-stored-gift">
-    <form method="POST" name="container-form" class="" action="/gifts/handle-form-actions">
       <div>
         <h3 class="list-gifts">Danh sách quà tặng</h3>
-        <a href="/me/trash/gifts">Thùng rác ({{deletedCount}})</a>
-
-        <div class="mt-4 d-flex align-items-center">
-          <div class="form-check ">
-            <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
-            <label class="form-check-label" for="checkbox-all">
-              Chọn tất cả
-            </label>
-          </div>
-
-          <select class="form-control form-control-sm checkbox-select-all-options" name="action" required>
-            <option value="">-- Hành động --</option>
-            <option value="delete">Xóa</option>
-          </select>
-
-          <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>Thực hiện</button>
-        </div>
-
         <div class="item-search">
           <input type="text" class="input-search">
           <i class="fa fa-search" aria-hidden="true" onclick="loadPage(1)"></i>
@@ -31,7 +12,6 @@
       <table class="table mt-4 table-gifts">
         <thead>
           <tr>
-            <th scope="col"></th>
             <th scope="col" class="col-id">ID</th>
             <th scope="col" class="col-gift">
               Tên quà tặng
@@ -42,9 +22,13 @@
               Người tặng
               <a onclick="sortAuthor()" id="sortAuthor" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
             </th>
-            <th scope="col" class="col-time-gift" colspan="2">
+            <th scope="col" class="col-time-gift">
               Thời gian tạo
               <a onclick="sortTime()" id="sortTime" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
+            </th>
+            <th scope="col" class="col-time-gift">
+              Trạng thái
+              <a onclick="sortStatus()" id="sortStatus" style="color: rgb(0, 179, 255)"><i class="fa fa-sort" aria-hidden="true"></i></a>
             </th>
           </tr>
         </thead>
@@ -67,30 +51,6 @@
                 class="fa fa-angle-double-right" aria-hidden="true"></i></a></li>
         </ul>
       </div>
-
-    </form>
-    {{!-- Confirm delete code --}}
-    <div id="delete-gift-modal" class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Xóa quà tặng</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Bạn chắc chắn muốn xóa quà tặng này ?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-            <button id="btn-delete-gift" type="button" class="btn btn-danger">Xóa bỏ</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <form name="delete-gift-form" method="POST"></form>
   </div>
 
 </div>
@@ -103,7 +63,6 @@
 
   ///Code Pagination
   var currentPage = 1;
-
   var column ;
   var type = '1' ;
 
@@ -117,6 +76,7 @@
     }
     $('#sortAuthor').html('<i class="fa fa-sort" aria-hidden="true"></i>')
     $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortStatus').html('<i class="fa fa-sort" aria-hidden="true"></i>')
     column = 'name'
     loadPage(currentPage)
   }
@@ -131,6 +91,7 @@
     }
     $('#sortName').html('<i class="fa fa-sort" aria-hidden="true"></i>')
     $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortStatus').html('<i class="fa fa-sort" aria-hidden="true"></i>')
     column = 'author'
     loadPage(currentPage)
   }
@@ -147,7 +108,25 @@
     }
     $('#sortName').html('<i class="fa fa-sort" aria-hidden="true"></i>')
     $('#sortAuthor').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortStatus').html('<i class="fa fa-sort" aria-hidden="true"></i>')
     column = 'createdAt'
+    loadPage(currentPage)
+  }
+
+  function sortStatus() {
+    if(type === '-1') {
+      type = '1'
+      $('#sortStatus').html('<i class="fa fa-sort-alpha-asc" aria-hidden="true"></i>')
+
+    } else {
+      type = '-1'
+      $('#sortStatus').html('<i class="fa fa-sort-alpha-desc" aria-hidden="true"></i>')
+
+    }
+    $('#sortName').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortAuthor').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    $('#sortTime').html('<i class="fa fa-sort" aria-hidden="true"></i>')
+    column = 'status'
     loadPage(currentPage)
   }
 
@@ -156,7 +135,7 @@
     currentPage = page
     var valueSearch = $('.input-search').val();
     $.ajax({
-      url: '/gifts/get-all-stored?page=' + page + '&name=' + valueSearch + '&column=' + column + '&type=' + type
+      url: '/gifts/censored/get-all?page=' + page + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
         $('#wrap-all-list-gifts').html('');
@@ -172,26 +151,47 @@
           const element = rs.data[i];
           const timeCreate = element.createdAt.split('.')[0];
           var item = $(`
-                          <tr>
-                            <td>
-                              <div class="form-check ">
-                                <input class="form-check-input checkbox-item" type="checkbox" name="giftIds" value="${element._id}">
-                                </label>
-                              </div>
-                            </td>
-                            <th scope="row">${i + 1}</th>
-                            <td>${element.name}</td>
-                            <td>${element.author}</td>
-                            <td>${timeCreate}</td>
-                            <td>
-                              <a href="/gifts/${element._id}/edit" class="btn btn-link">Sửa</a>
-                              <a href="" class="btn btn-link" data-toggle="modal" data-id="${element._id}"
-                                data-target="#delete-gift-modal" style="color: red;">Xóa</a>
+                          <tr class="tr-gifts" data-id="${element._id}" onclick="gotoCheck()">
+                            <th data-id="${element._id}"  scope="row">
+                              <a class="link-to-gifts" href="/censored/${element.slug}">
+                              ${i + 1}</th>
+                              </a>
+                              <td data-id="${element._id}" >
+                                <a class="link-to-gifts" href="/censored/${element.slug}">
+                                    ${element.name}
+                                </a>
+                              </td>
+                            <td data-id="${element._id}" >
+                              <a class="link-to-gifts" href="/censored/${element.slug}" >
+                              ${element.author}</td>
+                              </a>
+                            <td data-id="${element._id}" >
+                              <a class="link-to-gifts" href="/censored/${element.slug}" >
+                              ${timeCreate}</td>
+                              </a>
+                            <td data-id="${element._id}">
+                              <a class="link-to-gifts status-gift" href="/censored/${element.slug}">${element.status}</a>
                             </td>
                           </tr>
                   `)
 
           $('#wrap-all-list-gifts').append(item);
+        }
+
+        const statusGifts = document.getElementsByClassName('status-gift');
+        for(var i = 0; i < statusGifts.length; i++) {
+          if(statusGifts[i].innerHTML == "Không được duyệt") {
+            statusGifts[i].style.fontWeight = "bold"
+            statusGifts[i].style.color = "red"
+          }
+          if(statusGifts[i].innerHTML == "Chờ xét duyệt") {
+            statusGifts[i].style.fontWeight = "bold"
+            statusGifts[i].style.color = "#FFD700"
+          }
+          if(statusGifts[i].innerHTML == "Đã được duyệt") {
+            statusGifts[i].style.fontWeight = "bold"
+            statusGifts[i].style.color = "lime"
+          }
         }
 
         const activeItem = $('.page-link');
@@ -218,7 +218,7 @@
           pre.style.display = "block";
           next.style.display = "block";
         }
-      gotoCheck()
+
       })
       .catch(err => {
         console.log(err);
@@ -234,7 +234,7 @@
 
     var valueSearch = $('.input-search').val();
     $.ajax({
-      url: '/gifts/get-all-stored?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
+      url: '/gifts/censored/get-all?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
         $('#wrap-all-list-gifts').html('');
@@ -249,23 +249,28 @@
         for (let i = 0; i < rs.data.length; i++) {
           const element = rs.data[i];
           var item = $(`
-                        <tr>
-                          <td>
-                            <div class="form-check ">
-                              <input class="form-check-input" type="checkbox" name="giftIds" value="${element._id}">
-                              </label>
-                            </div>
-                          </td>
-                          <th scope="row">${i + 1}</th>
-                          <td>${element.name}</td>
-                          <td>${element.author}</td>
-                          <td>${element.createdAt}</td>
-                          <td>
-                            <a href="/gifts/${element._id}/edit" class="btn btn-link">Sửa</a>
-                            <a href="" class="btn btn-link" data-toggle="modal" data-id="${element._id}"
-                              data-target="#delete-gift-modal" style="color: red;" >Xóa</a>
-                          </td>
-                        </tr>
+                        <tr class="tr-gifts" data-id="${element._id}" onclick="gotoCheck()">
+                            <th data-id="${element._id}"  scope="row">
+                              <a class="link-to-gifts" href="/censored/${element.slug}">
+                              ${i + 1}</th>
+                              </a>
+                              <td data-id="${element._id}" >
+                                <a class="link-to-gifts" href="/censored/${element.slug}">
+                                    ${element.name}
+                                </a>
+                              </td>
+                            <td data-id="${element._id}" >
+                              <a class="link-to-gifts" href="/censored/${element.slug}" >
+                              ${element.author}</td>
+                              </a>
+                            <td data-id="${element._id}" >
+                              <a class="link-to-gifts" href="/censored/${element.slug}" >
+                              ${timeCreate}</td>
+                              </a>
+                            <td data-id="${element._id}">
+                              <a class="link-to-gifts status-gift" href="/gifts/${element.slug}">${element.status}</a>
+                            </td>
+                          </tr>
                     `)
           $('#wrap-all-list-gifts').append(item);
         }
@@ -281,7 +286,6 @@
         if (rs.data.length === 0) {
           $('#wrap-all-list-gifts').append(itemNone);
         }
-      gotoCheck()
 
       })
       .catch(err => {
@@ -299,38 +303,43 @@
 
     var valueSearch = $('.input-search').val();
     $.ajax({
-      url: '/gifts/get-all-stored?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
+      url: '/gifts/censored/get-all?page=' + currentPage + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
         $('#wrap-all-list-gifts').html('');
         $('.item-pagination').html('');
         for (let i = 0; i < rs.tongSoPage; i++) {
           var itemLi = $(`
-                                    <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
-                                `)
+                          <li class="page-item"><a class="page-link" href="#" onclick="loadPage(${i + 1})">${i + 1}</a></li>
+                        `)
           $('.item-pagination').append(itemLi);
         }
 
         for (let i = 0; i < rs.data.length; i++) {
           const element = rs.data[i];
           var item = $(`
-                        <tr>
-                          <td>
-                            <div class="form-check ">
-                              <input class="form-check-input" type="checkbox" name="giftIds" value="${element._id}">
-                              </label>
-                            </div>
-                          </td>
-                          <th scope="row">${i + 1}</th>
-                          <td>${element.name}</td>
-                          <td>${element.author}</td>
-                          <td>${element.createdAt}</td>
-                          <td>
-                            <a href="/gifts/${element._id}/edit" class="btn btn-link">Sửa</a>
-                            <a href="" class="btn btn-link" data-toggle="modal" data-id="${element._id}"
-                              data-target="#delete-gift-modal" style="color: red;">Xóa</a>
-                          </td>
-                        </tr>
+                        <tr class="tr-gifts" data-id="${element._id}" onclick="gotoCheck()">
+                            <th data-id="${element._id}"  scope="row">
+                              <a class="link-to-gifts" href="/censored/${element.slug}">
+                              ${i + 1}</th>
+                              </a>
+                              <td data-id="${element._id}" >
+                                <a class="link-to-gifts" href="/censored/${element.slug}">
+                                    ${element.name}
+                                </a>
+                              </td>
+                            <td data-id="${element._id}" >
+                              <a class="link-to-gifts" href="/censored/${element.slug}" >
+                              ${element.author}</td>
+                              </a>
+                            <td data-id="${element._id}" >
+                              <a class="link-to-gifts" href="/censored/${element.slug}" >
+                              ${timeCreate}</td>
+                              </a>
+                            <td data-id="${element._id}">
+                              <a class="link-to-gifts status-gift" href="/gifts/${element.slug}" >${element.status}</a>
+                            </td>
+                          </tr>
                     `)
           $('#wrap-all-list-gifts').append(item);
         }
@@ -346,7 +355,6 @@
         if (rs.data.length === 0) {
           $('#wrap-all-list-gifts').append(itemNone);
         }
-      gotoCheck()
 
       })
       .catch(err => {
@@ -354,52 +362,19 @@
       })
   }
 
-
-    function gotoCheck() {
-      var giftId;
-      var deleteForm = document.forms['delete-gift-form'];
-      var containerForm = $('form[name="container-form"]')
-      var btnDeleteGift = document.getElementById('btn-delete-gift');
-      var checkboxAll = $('#checkbox-all');
-      var giftItemCheckbox = $('input[name="giftIds"]')
-      var checkAllSubmitBtn = $('.check-all-submit-btn');
-      // when dialog confirm clicked
-      $('#delete-gift-modal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        giftId = button.data('id');
-      });
-
-      // when delete gift btn clicked
-      btnDeleteGift.onclick = function () {
-        deleteForm.action = '/gifts/' + giftId + '?_method=DELETE';
-        deleteForm.submit();
-      }
-
-      // Checkbox all clicked
-      checkboxAll.change(function () {
-        var isCheckedAll = $(this).prop('checked');
-        giftItemCheckbox.prop('checked', isCheckedAll);
-        renderCheckAllSubmitBtn()
-      });
-
-      // Gift item checkbox changed
-      giftItemCheckbox.change(function () {
-        var isCheckedAll = giftItemCheckbox.length === $('input[name="giftIds"]:checked').length;
-        checkboxAll.prop('checked', isCheckedAll);
-        renderCheckAllSubmitBtn()
-      });
-
-
-      // Re-render check all submit button
-      function renderCheckAllSubmitBtn() {
-        var checkedCount = $('input[name="giftIds"]:checked').length;
-        if (checkedCount > 0) {
-          checkAllSubmitBtn.attr('disabled', false);  //gỡ bỏ disable
-        } else {
-          checkAllSubmitBtn.attr('disabled', true);   // gán disable
+  function gotoCheck() {
+      window.onclick = e => {
+        var userName = e.target.getAttribute('data-id')
+        const x = parseInt(userName)
+        if (x !== null) {
+            console.log(x);
         }
       }
-    }
+  }
+
+  
+  
+
 
 
 </script>

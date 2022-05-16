@@ -19,21 +19,17 @@ const ConversationController = {
             const id3 = id2.replace('"', '');
 
             const arrayId1 = [id3, req.params.userId];
-            console.log(arrayId1);
 
             const arrayId2 = [req.params.userId, id3];
-            console.log(arrayId2);
 
             var getConHaveAuthor = await Conversation.find({
                 members: arrayId1,
             });
-            console.log('getConHaveAuthor1 ', getConHaveAuthor);
 
             if (getConHaveAuthor.length === 0) {
                 getConHaveAuthor = await Conversation.find({
                     members: arrayId2,
                 });
-                console.log('getConHaveAuthor2 ', getConHaveAuthor);
             }
             if (getConHaveAuthor.length === 0) {
                 const newConversation = new Conversation({
@@ -110,7 +106,6 @@ const ConversationController = {
         try {
             // Tạo hoặc lấy ID Room
             var idRoom;
-            console.log('id cua nguoi ban', req.params.userId);
             const id = JSON.stringify(req.data._id);
             const id2 = id.slice(0, -1);
             const id3 = id2.replace('"', '');
@@ -134,8 +129,6 @@ const ConversationController = {
                 });
                 const savedConversation = await newConversation.save();
                 idRoom = await savedConversation._id;
-                //req.body.getConHaveAuthor = savedConversation;
-                //req.body.id3 = id3
             } else {
                 idRoom = await getConHaveAuthor[0]._id;
             }
@@ -145,7 +138,6 @@ const ConversationController = {
             const infoAuthor = await Info.findOne({
                 username: userAuthor.username,
             });
-            //res.render("messenger/showMessenger", {
             res.render('messenger/chat', {
                 data: req.data,
                 data_admin: req.data?.admin,

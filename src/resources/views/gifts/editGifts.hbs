@@ -7,10 +7,27 @@
                 <label for="name">Tên quà tặng</label>
                 <input type="text" class="form-control" value="{{gift.name}}" id="name" name="name">
             </div>
-        
+
             <div class="form-group">
                 <label for="description">Mô tả</label>
                 <textarea class="form-control" id="description" name="description">{{gift.description}}</textarea>
+            </div>
+
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="description">Tình trạng món quà:</label>
+                <div class="range-wrap">
+                    <div class="range-value" id="rangeV"></div>
+                    <input id="range" type="range" min="0" max="100" value="50" step="1" id="quality" name="quality">
+                </div>
+            </div>
+
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="description">Thể loại</label>
+                <select id="theloai" name="type">
+                    <option value="Sách" selected>Sách</option>
+                    <option value="Đồ dùng học tập" >Đồ dùng học tập</option>
+                    <option value="Thiết bị điện tử" >Thiết bị điện tử</option>
+                </select>
             </div>
 
             <label for="image0">Link image</label>
@@ -21,11 +38,6 @@
             <div class="form-group">
                 <label style="font-family:'Segoe UI'" for="formFile">Thêm ảnh từ máy của bạn: ( tối đa 3 ảnh ) </label>
                 <input type="file" class="form-control" name="images" id="formFile"  multiple>
-            </div>
-
-            <div class="form-group">
-                <label for="author">Người tặng</label>
-                <input type="text" class="form-control" value="{{gift.author}}" id="author" name="author">
             </div>
 
             <button type="submit" class="btn btn-primary" id="btnEditGift">Lưu lại</button>
@@ -43,7 +55,6 @@
 <script>
 
     var itemImage = $('.item-image');
-    console.log(itemImage.length);
     for(var i = 0; i < itemImage.length; i++) {
         var item = `<input type="text" class="form-control" value="${itemImage[i].innerHTML}" id="image${i}" name="image${i}">`
         $('#formListImage').append(item);
@@ -51,7 +62,6 @@
 
     var j = 0;
     var formListImage = $('#formListImage');
-    console.log("formListImage.children().length", formListImage.children().length)
     for ( var i=0; i < formListImage.children().length; i++) {
         if (formListImage.children()[i].value === " " || formListImage.children()[i].value === "") {
             var idItem = '#'+formListImage.children()[i].id
@@ -77,7 +87,6 @@
         }
         j = j + 1;
     })
-    
 
     var typeArray = ['jpg','JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF']
     var files = document.querySelector("#formFile");
@@ -88,7 +97,6 @@
             var lengthFile = files.files[i].name.split(".");
             var typeFile = files.files[i].name.split(".")[lengthFile.length - 1];;
             if( typeArray.includes(typeFile) === false) {
-              //  alert("Vui lòng chọn file là hình ảnh")
                 $("#noti-no-change").html("Vui lòng chọn file là hình ảnh")
                 var i = 0;
                 var setTime1 = function () {
@@ -105,10 +113,8 @@
                 }, 100)
                 files.value = ""
             };
-            
         }
         if(files.files.length > 3) {
-            //alert("Vui lòng chỉ chọn 3 file")
             $("#noti-no-change").html("Vui lòng chỉ chọn nhiều nhất 3 ảnh")
                 var i = 0;
                 var setTime1 = function () {
@@ -129,10 +135,8 @@
 
     $('#btnEditGift').click(function (e) {
         e.preventDefault();
-        
 
         if ($('#name').val() === '') {
-        // alert("Vui lòng điền tên quà tặng")
             $("#noti-no-change").html("Vui lòng điền tên quà tặng")
                 var i = 0;
                 var setTime1 = function () {
@@ -149,7 +153,6 @@
                 }, 100)
         }
         else if ($('#description').val() === '') {
-           // alert("Vui lòng điền mô tả")
             $("#noti-no-change").html("Vui lòng điền mô tả")
                 var i = 0;
                 var setTime1 = function () {
@@ -166,7 +169,6 @@
                 }, 100)
         }
         else if ($('#author').val() === '') {
-            //alert("Vui lòng điền tên người tặng")
             $("#noti-no-change").html("Vui lòng điền tên người tặng")
                 var i = 0;
                 var setTime1 = function () {
@@ -186,8 +188,6 @@
         else {
             $('#formEditGift').submit()
         }
-
-        console.log("togsoImage", tongsoImage)
     })
 
  </script>

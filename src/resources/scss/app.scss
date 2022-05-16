@@ -74,7 +74,7 @@ h1 {
 
 .login-wrap {
     width: 500px;
-    height: 500px;
+    height: 515px;
     margin: 0px auto;
     background-color: #fff;
     padding: 30px 50px;
@@ -101,7 +101,7 @@ h1 {
     width: 100%;
     text-align: center;
     color: rgb(0, 0, 0);
-    font-size: 50px;
+    font-size: 45px;
     font-weight: 600;
     font-family: 'Open Sans', sans-serif;
 }
@@ -157,7 +157,7 @@ h1 {
 }
 
 .link-register {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 600;
     height: 40px;
     line-height: 40px;
@@ -1392,7 +1392,7 @@ h1 {
     text-align: center;
     left: 0;
     background-color: #d00000;
-    color: #ffffff;
+    color: #ffff;
     border: 2px solid #d00000;
     font-weight: 600;
 }
@@ -1406,7 +1406,7 @@ h1 {
     text-align: center;
     left: 0;
     background-color: #00d01a;
-    color: #ffffff;
+    color: #ffff;
     border: 2px solid #00d01a;
     font-weight: 600;
 }
@@ -1419,7 +1419,7 @@ h1 {
 .wrap-user-detail {
     display: flex;
     // background-color: #33546D;
-    background-color: #ffffff;
+    background-color: #ffff;
     width: 70%;
     height: 100%;
     margin: 0px auto;
@@ -1462,7 +1462,7 @@ h1 {
     width: 70%;
     height: 100%;
     border-radius: 0px 5px 5px 0px;
-    background-color: #ffffff;
+    background-color: #ffff;
 }
 
 .input-group {
@@ -1485,7 +1485,7 @@ h1 {
 }
 
 .btn-update-info {
-    background-color: #ffffff;
+    background-color: #ffff;
     color: #335066;
     border: 1px solid #335066;
     font-weight: 600;
@@ -1649,6 +1649,77 @@ h1 {
     background-color: #f90000;
 }
 
+//----Design-input-range----//
+input[type='range'] {
+    -webkit-appearance: none;
+    margin: 20px 0;
+    width: 100%;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    border-radius: 25px;
+    background-image: linear-gradient(
+        to right,
+        rgb(249, 33, 22) 25% 34%,
+        rgb(239, 236, 48) 25% 66%,
+        rgb(34, 255, 0) 20% 25%
+    );
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 1);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -8px;
+}
+
+.range-wrap {
+    margin-top: 15px;
+    width: 500px;
+    position: relative;
+}
+.range-value {
+    position: absolute;
+    top: -50%;
+}
+.range-value span {
+    width: 34px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: #03a9f4;
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 6px;
+}
+.range-value span:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #03a9f4;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: -1px;
+}
+
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
     .form-create-detail-gift {
         width: 42%;
@@ -1751,7 +1822,7 @@ h1 {
 
 .item-my-gifts {
     background-color: #fff;
-    width: 44%;
+    width: 47%;
     // margin: 0px auto;
     margin-top: 20px;
     margin-bottom: 40px;
@@ -1772,7 +1843,7 @@ h1 {
 }
 
 .item-my-gifts .info-gifts-item .text-description {
-    height: 145px;
+    height: 95px;
     overflow: hidden;
     margin: 0px;
 }
@@ -1792,7 +1863,16 @@ h1 {
     margin-right: 20px;
 }
 
+.item-my-gifts #edit-delete {
+    width: 95px;
+    padding-top: 8px;
+}
+
 .item-my-gifts .edit-delete .icon-edit {
+    margin-right: 5px;
+}
+
+.item-my-gifts .edit-delete .icon-delete {
     margin-right: 5px;
 }
 
@@ -1830,6 +1910,15 @@ h1 {
 
 .item-my-gifts .edit-delete .icon-delete .fa:hover {
     transform: translateY(-1px);
+}
+
+.item-my-gifts .edit-delete #wrap-sent {
+    display: flex;
+    line-height: 13px;
+}
+
+.item-my-gifts .edit-delete #wrap-sent .sent {
+    margin-right: 5px;
 }
 
 .item-search {
@@ -1908,6 +1997,112 @@ h1 {
         0 10px 20px rgba(0, 0, 0, 0.12);
     transform: translateY(-7px);
     transition: transform 0.5s;
+}
+
+.name-status {
+    color: rgb(255, 255, 255);
+    // background-color: red;
+    font-weight: bold;
+    width: 155px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.fa-envelope {
+    color: red;
+    position: absolute;
+    top: 27px;
+    left: 162px;
+    animation-name: Name;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+.text-comment {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 53px;
+    left: 0px;
+    width: 240px;
+    text-align: center;
+    padding: 12px 0px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes Name {
+    0% {
+        top: 27px;
+        left: 162px;
+    }
+    // 25% {top: 26px;
+    //     left: 162px;}
+    // 50% {top: 25px;
+    //     left: 162px;}
+    100% {
+        top: 26px;
+        left: 162px;
+    }
+}
+
+.container-sent {
+    display: block;
+    position: relative;
+    padding-left: 6px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container-sent .sent:hover {
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    border-radius: 3px;
+    background-color: #ccc;
+}
+
+.container-sent input:checked ~ .checkmark {
+    background-color: #2196f3;
+}
+
+.checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container-sent input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-sent .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 @media only screen and (min-width: 46.25em) and (max-width: 1280px) {
@@ -3004,4 +3199,33 @@ h1 {
 
 #none-admin {
     margin-left: 20px;
+}
+
+// ---------------------CENSORED--------------------
+.link-to-gifts {
+    display: inline-block;
+    width: 100%;
+    height: 48px;
+    padding: 12px;
+}
+
+.tr-gifts a {
+    color: #000;
+}
+
+.tr-gifts:hover {
+    background-color: rgb(154, 151, 151);
+}
+
+.tr-gifts td,
+.tr-gifts th {
+    height: 100%;
+    padding: 0px;
+}
+
+// ---------------------notification-verify--------------------
+#notification-verify {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 20px;
 }

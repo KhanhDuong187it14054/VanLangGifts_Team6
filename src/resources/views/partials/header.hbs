@@ -6,6 +6,21 @@
         </a>
     </section>
     {{#if data}}
+    {{#if data_censor}}
+        <div id="sideNav">
+            <nav>
+                <ul>
+                    <br></br>
+                    <li><a href="/users/detail">MY PROFILE</a></li>
+                    <li><a href="/gifts/create">ADD GIFT</a></li>
+                    <li><a href="/gifts/my-gifts">MY GIFTS</a></li>
+                    <li><a href="/messenger/chat">MESSENGER</a></li>
+                    <li><a href="/censored">KIỂM DUYỆT QUÀ TẶNG</a></li>
+                    <li><a href="#" onclick="logout()">LOG OUT</a></li>
+                </ul>
+            </nav>
+        </div>
+    {{/if}}
     {{#if data_admin}}
     <div id="sideNav">
         <nav>
@@ -59,11 +74,15 @@
     </div>
 
 </div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 
     var menuBtn = document.getElementById("menuBtn");
     var sideNav = document.getElementById("sideNav");
     var menu = document.getElementById("menu");
+    
+  //  $('#sideNav').html('');
 
     sideNav.style.right = "-250px";
 

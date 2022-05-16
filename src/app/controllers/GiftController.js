@@ -23,9 +23,40 @@ class GiftController {
                     fileImages: gift.fileImages,
                     data: req.data,
                     data_admin: req.data?.admin,
+                    data_censor: req.data?.censor,
                     getImage: req.getImage,
                 }),
             )
+            .catch(next);
+    }
+
+    showCensored(req, res, next) {
+        Gift.findOne({ slug: req.params.slug })
+            .then((gift) =>
+                res.render('gifts/showCensoredGift', {
+                    gift: mongooseToObject(gift),
+                    image0: gift.image[0],
+                    image1: gift.image[1],
+                    image2: gift.image[2],
+                    fileImages: gift.fileImages,
+                    data: req.data,
+                    data_admin: req.data?.admin,
+                    data_censor: req.data?.censor,
+                    getImage: req.getImage,
+                }),
+            )
+            .catch(next);
+    }
+
+    censoredComment(req, res, next) {
+        Gift.updateOne(
+            { _id: req.params.id },
+            {
+                status: req.body.status,
+                comment: req.body.comment,
+            },
+        )
+            .then(() => res.render('censor/censored'))
             .catch(next);
     }
 
@@ -40,6 +71,7 @@ class GiftController {
         res.render('gifts/showAll', {
             data: req.data,
             data_admin: req.data?.admin,
+            data_censor: req.data?.censor,
         });
     }
 
@@ -53,6 +85,248 @@ class GiftController {
     }
 
     getAll(req, res, next) {
+        var column = req.query.column;
+        var type = req.query.type;
+        var page = req.query.page;
+        const searchedField = req.query.name;
+        const typeField = req.query.typeGift;
+
+        console.log('Typeee', req.query.typeGift);
+
+        if (!searchedField && !typeField) {
+            if (page) {
+                page = parseInt(page);
+                if (page < 1) {
+                    page = 1;
+                }
+                var soLuongBoQua = (page - 1) * PAGE_SIZE;
+
+                Gift.find({ status: 'Đã được duyệt', sent: false })
+                    .sort({ [column]: type })
+                    .skip(soLuongBoQua)
+                    .limit(PAGE_SIZE)
+                    .then((data) => {
+                        Gift.countDocuments({}).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.status(500).json('Loi Server'));
+            } else {
+                Gift.find({ status: 'Đã được duyệt', sent: false })
+                    .sort({ [column]: type })
+                    .then((data) => {
+                        Gift.countDocuments({}).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.json(err));
+            }
+        }
+        // Co du lieu type, nhưng ko có dữ liệu search
+        else if (!searchedField && typeField) {
+            if (page) {
+                page = parseInt(page);
+                if (page < 1) {
+                    page = 1;
+                }
+                var soLuongBoQua = (page - 1) * PAGE_SIZE;
+                Gift.find({
+                    type: { $regex: typeField, $options: '$ui' },
+                    status: 'Đã được duyệt',
+                    sent: false,
+                })
+                    .sort({ [column]: type })
+                    .skip(soLuongBoQua)
+                    .limit(PAGE_SIZE)
+                    .then((data) => {
+                        Gift.countDocuments({
+                            type: { $regex: typeField, $options: '$ui' },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.status(500).json('Loi Server'));
+            } else {
+                Gift.find({
+                    type: { $regex: typeField, $options: '$ui' },
+                    status: 'Đã được duyệt',
+                    sent: false,
+                })
+                    .sort({ [column]: type })
+                    .then((data) => {
+                        Gift.countDocuments({
+                            type: { $regex: typeField, $options: '$ui' },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.json(err));
+            }
+        }
+
+        // Co du lieu search
+        else {
+            if (page) {
+                page = parseInt(page);
+                if (page < 1) {
+                    page = 1;
+                }
+                var soLuongBoQua = (page - 1) * PAGE_SIZE;
+                Gift.find({
+                    name: { $regex: searchedField, $options: '$ui' },
+                    status: 'Đã được duyệt',
+                    sent: false,
+                })
+                    .sort({ [column]: type })
+                    .skip(soLuongBoQua)
+                    .limit(PAGE_SIZE)
+                    .then((data) => {
+                        Gift.countDocuments({
+                            name: { $regex: searchedField, $options: '$ui' },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.status(500).json('Loi Server'));
+            } else {
+                Gift.find({
+                    name: { $regex: searchedField, $options: '$ui' },
+                    status: 'Đã được duyệt',
+                    sent: false,
+                })
+                    .sort({ [column]: type })
+                    .then((data) => {
+                        Gift.countDocuments({
+                            name: { $regex: searchedField, $options: '$ui' },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.json(err));
+            }
+        }
+    }
+
+    getAllStored(req, res, next) {
+        var column = req.query.column;
+        var type = req.query.type;
+        var page = req.query.page;
+        const searchedField = req.query.name;
+        if (!searchedField) {
+            if (page) {
+                page = parseInt(page);
+                if (page < 1) {
+                    page = 1;
+                }
+                var soLuongBoQua = (page - 1) * PAGE_SIZE;
+
+                Gift.find()
+                    .sort({ [column]: type })
+                    .skip(soLuongBoQua)
+                    .limit(PAGE_SIZE)
+                    .then((data) => {
+                        Gift.countDocuments({}).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.status(500).json('Loi Server'));
+            } else {
+                Gift.find()
+                    .sort({ [column]: type })
+                    .then((data) => {
+                        Gift.countDocuments({}).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.json(err));
+            }
+        }
+        // Co du lieu search
+        else {
+            if (page) {
+                page = parseInt(page);
+                if (page < 1) {
+                    page = 1;
+                }
+                var soLuongBoQua = (page - 1) * PAGE_SIZE;
+                Gift.find()
+                    .sort({ [column]: type })
+                    .skip(soLuongBoQua)
+                    .limit(PAGE_SIZE)
+                    .then((data) => {
+                        Gift.countDocuments({
+                            name: { $regex: searchedField, $options: '$ui' },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.status(500).json('Loi Server'));
+            } else {
+                Gift.find()
+                    .sort({ [column]: type })
+                    .then((data) => {
+                        Gift.countDocuments({
+                            name: { $regex: searchedField, $options: '$ui' },
+                        }).then((total) => {
+                            var tongSoPage = Math.ceil(total / PAGE_SIZE);
+                            res.json({
+                                total: total,
+                                tongSoPage: tongSoPage,
+                                data: data,
+                            });
+                        });
+                    })
+                    .catch((err) => res.json(err));
+            }
+        }
+    }
+
+    getAllCensored(req, res, next) {
         var column = req.query.column;
         var type = req.query.type;
         var page = req.query.page;
@@ -147,6 +421,7 @@ class GiftController {
         res.render('gifts/createDetailGift', {
             data: req.data,
             data_admin: req.data?.admin,
+            data_censor: req.data?.censor,
         });
     }
 
@@ -177,14 +452,12 @@ class GiftController {
         if (req.body.image2 !== undefined) {
             image.push(req.body.image2);
         }
-        // console.log(image)
         Gift.updateOne(
             { _id: req.params.id },
             {
                 name: req.body.name,
                 description: req.body.description,
                 image: image,
-                // fileImages: arrayKey,
                 author: req.body.author,
                 idAuthor: idAuthor,
             },
@@ -256,6 +529,17 @@ class GiftController {
                 }),
             )
             .catch((err) => res.json(err));
+    }
+
+    checkSentGifts(req, res, next) {
+        Gift.updateOne(
+            { _id: req.query.id },
+            {
+                sent: req.query.sent,
+            },
+        )
+            .then(() => res.redirect('back'))
+            .catch(next);
     }
 
     getMyGifts(req, res, next) {

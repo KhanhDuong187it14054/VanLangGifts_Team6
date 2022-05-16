@@ -3,20 +3,18 @@ const { multipleMongooseToObject } = require('../../util/mongoose');
 class SiteController {
     // [GET] /
     index(req, res, next) {
-        Gift.find({})
+        Gift.find({ status: 'Đã được duyệt', sent: false })
             .skip(0)
             .limit(9)
             .then((gifts) => {
-                console.log('Giftsssss', gifts);
                 res.render('home', {
                     gifts: multipleMongooseToObject(gifts),
                     data: req.data,
                     data_admin: req.data?.admin,
+                    data_censor: req.data?.censor,
                 });
-                console.log(req.data);
             })
             .catch(next);
-        // res.render('home');
     }
 
     intro(req, res, next) {

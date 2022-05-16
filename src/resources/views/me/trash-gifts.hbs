@@ -112,7 +112,6 @@
         var giftItemCheckbox = $('input[name="giftIds"]');
         var checkAllSubmitBtn = $('.check-all-submit-btn');
 
-        console.log(containerForm);
         // when dialog confirm clicked
         $('#delete-gift-modal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -160,7 +159,6 @@
         // Re-render check all submit button
         function renderCheckAllSubmitBtn() {
           var checkedCount = $('input[name="giftIds"]:checked').length;
-          console.log(checkedCount)
           if (checkedCount > 0) {
             checkAllSubmitBtn.attr('disabled', false);  //gỡ bỏ disable
           } else {

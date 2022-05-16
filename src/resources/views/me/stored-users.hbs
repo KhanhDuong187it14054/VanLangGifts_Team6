@@ -97,7 +97,7 @@
 
   ///----Code LoadPage()----///
   var currentPage = 1;
-  
+
   var column ;
   var type = '1' ;
 
@@ -170,10 +170,8 @@
 
   function loadPage(page) {
     currentPage = page
-    console.log("Load", currentPage)
     var valueSearch = $('.input-search').val();
     $.ajax({
-     // url: '/users/get-all?page=' + page + '&name=' + valueSearch,
       url: '/users/get-all?page=' + page + '&name=' + valueSearch + '&column=' + column + '&type=' + type
     })
       .then(rs => {
@@ -213,7 +211,6 @@
 
         const activeItem = $('.page-link');
         for (i = 0; i < activeItem.length; i++) {
-          console.log(parseInt(activeItem[i].innerText));
           if(parseInt(activeItem[i].innerText) === currentPage) {
             activeItem[i].classList.add("active");
           }
@@ -231,9 +228,6 @@
         var textNone = document.getElementById('text-none');
         var pre = document.getElementById('pre');
         var next = document.getElementById('next');
-        console.log(textNone)
-        console.log(pre)
-        console.log(next)
         if (textNone) {
           pre.style.display = "none";
           next.style.display = "none";
@@ -252,7 +246,6 @@
 
   function prePage() {
         currentPage--;
-        console.log('Pre ', currentPage)
         if (currentPage < 1) {
             currentPage = 1;
         }
@@ -296,7 +289,6 @@
 
                 const activeItem = $('.page-link');
                 for (i = 0; i < activeItem.length; i++) {
-                  console.log(parseInt(activeItem[i].innerText));
                   if(parseInt(activeItem[i].innerText) === currentPage) {
                     activeItem[i].classList.add("active");
                   }
@@ -319,9 +311,7 @@
 
     function nextPage() {
         currentPage++;
-        console.log('Next ', currentPage)
         var pageItem = $('.page-item')
-        console.log(pageItem.length)
 
         if (currentPage > pageItem.length - 2) {
             currentPage = pageItem.length - 2
@@ -366,7 +356,6 @@
 
                 const activeItem = $('.page-link');
                 for (i = 0; i < activeItem.length; i++) {
-                  console.log(parseInt(activeItem[i].innerText));
                   if(parseInt(activeItem[i].innerText) === currentPage) {
                     activeItem[i].classList.add("active");
                   }

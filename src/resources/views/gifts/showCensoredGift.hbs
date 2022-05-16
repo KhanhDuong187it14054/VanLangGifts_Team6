@@ -37,32 +37,29 @@
         <p class="detail-name" style="font-family:'Segoe UI'" ><strong>Tên quà tặng: </strong><span> {{ gift.name }} </span></p>
         <p class="detail-des" style="font-family:'Segoe UI'" ><strong>Mô tả: </strong>  <span>{{gift.description}}</span></p>
         <p style="font-family:'Segoe UI'"><strong>Người tặng: </strong> <span>{{gift.author}} </span> </p>
-        <div class="item-form">
-            <label style="font-family:'Segoe UI'" for="description">Tình trạng món quà:</label>
-            <div class="range-wrap">
-                <div class="range-value" id="rangeV"></div>
-                <input id="range" type="range" min="0" max="100" value="{{gift.quality}}" step="1" id="quality" name="quality">
-            </div>
-        </div>
-        <button data-id="{{gift.idAuthor}}" id="btn-contact" style="font-family:'Segoe UI'"> Liên hệ </button>
+        <p id="status" style="font-family:'Segoe UI'" ><strong>Tình trạng: </strong>{{gift.status}}</p>
+        <p style="font-family:'Segoe UI'" ><strong>Comment: </strong>{{gift.comment}}</p>
+        {{!-- <button data-id="{{gift.idAuthor}}" id="btn-contact" style="font-family:'Segoe UI'"> Liên hệ </button> --}}
+        <form method="POST" action="/censored/comment/{{gift._id}}">
+            <input type="radio" id="status1" name="status" value="Đã được duyệt">
+            <label for="status1">Duyệt</label><br>
+            <input type="radio" id="status2" name="status" value="Không được duyệt">
+            <label for="status2">Không duyệt</label><br>
+            <label for="comment">Nhận xét</label><br>
+            <input type="text" name="comment" id="comment">
+            <input type="submit">
+        </form>
     </div>
 </div>
-<form name="delete-user-form" method="GET"></form>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 
+    
+
     $(document).ready(function(){
         var itemImage = document.getElementsByClassName('carousel-item')
         itemImage[0].classList.add("active");
-
-
-        var userId = document.getElementById('btn-contact').getAttribute('data-id');
-        var deleteForm = document.forms['delete-user-form'];
-        $('#btn-contact').click(function () {
-            deleteForm.action = '/conversations/' + userId + '?_method=GET';
-            deleteForm.submit();
-        });
 
         const divFirst = $('.carousel-inner').children();
 
@@ -79,19 +76,19 @@
                 setAuto = 300000;
             }
         })
+
+        const status = $('#status');
+        console.log(status.html())
+        const status1 = $('#status1');
+        const status2 = $('#status2');
+        if (status.html() === "<strong>Tình trạng: </strong>Đã được duyệt") {
+            console.log(status1)
+            status1.prop( "checked", true );
+        }
+        if (status.html() === "<strong>Tình trạng: </strong>Không được duyệt") {
+            console.log(status2)
+            status2.prop( "checked", true );
+        }
     })
 
-// Design input Range
-    const
-    range = document.getElementById('range'),
-    rangeV = document.getElementById('rangeV'),
-    setValue = ()=>{
-        const
-        newValue = Number( (range.value - range.min) * 100 / (range.max - range.min) ),
-        newPosition = 10 - (newValue * 0.2);
-        rangeV.innerHTML = `<span>${range.value}%</span>`;
-        rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
-    };
-    document.addEventListener("DOMContentLoaded", setValue);
-    range.addEventListener('input', setValue);
 </script>

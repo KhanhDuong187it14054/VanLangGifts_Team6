@@ -5,37 +5,46 @@
     <div class="form-create-detail-gift">
         <h3 style="font-family:'Segoe UI'">Thêm quà tặng</h3>
         <form id="formCreateGift" action="/gifts/store" method="POST" enctype="multipart/form-data">
-            {{!-- <form enctype="multipart/form-data"> --}}
-                <div class="item-form">
-                    <label style="font-family:'Segoe UI'" for="name">Tên quà tặng</label>
-                    <input type="text" class="form-control" id="name" name="name">
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="name">Tên quà tặng</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="description">Mô tả</label>
+                <input type="text" class="form-control" id="description" name="description">
+            </div>
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="description">Tình trạng món quà:</label>
+                <div class="range-wrap">
+                    <div class="range-value" id="rangeV"></div>
+                    <input id="range" type="range" min="0" max="100" value="50" step="1" id="quality" name="quality">
                 </div>
-                <div class="item-form">
-                    <label style="font-family:'Segoe UI'" for="description">Mô tả</label>
-                    <input type="text" class="form-control" id="description" name="description">
-                </div>
-                {{!-- <div class="">
-                    <label for="v style=" font-family:'Segoe UI'" ideoId">Video ID</label>
-                    <input type="  text" class="form-control" id="videoId" name="videoId">
-                </div> --}}
-                <div class="item-form">
-                    <label style="font-family:'Segoe UI'" for="author">Người tặng</label>
-                    <input type="text" class="form-control" id="author" name="author">
-                </div>
-                <div class="item-form">
-                    <label style="font-family:'Segoe UI'" for="image">Thêm ảnh bằng liên kết: ( tối đa 3 liên kết )</label>
-                    <input type="text" class="form-control link-image" id="image" name="image" placeholder="Link ảnh 1">
-                    <input type="text" class="form-control link-image" id="image1" name="image1" placeholder="Link ảnh 2">
-                    <input type="text" class="form-control link-image" id="image2" name="image2" placeholder="Link ảnh 3">
-                </div>
-                <p id="them-link" style="color: rgb(0 165 236); font-size: 15px; margin-left: 5px;"> <i class="fa fa-plus" aria-hidden="true"></i> Thêm link</p>
-                <div class="item-form">
-                    <label style="font-family:'Segoe UI'" for="formFile">Thêm ảnh từ máy của bạn: ( tối đa 3 ảnh ) </label>
-                    <input type="file" class="form-control" name="images" id="formFile"  multiple>
-                </div>
-                <button style="font-family:'Segoe UI'" type="submit"  id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button>
-                {{!-- <button style="font-family:'Segoe UI'" id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button> --}}
-            </form>
+            </div>
+            {{!-- <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="author">Người tặng</label>
+                <input type="text" class="form-control" id="author" name="author">
+            </div> --}}
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="description">Thể loại</label>
+                <select id="theloai" name="type">
+                    <option value="Sách" selected>Sách</option>
+                    <option value="Đồ dùng học tập" >Đồ dùng học tập</option>
+                    <option value="Thiết bị điện tử" >Thiết bị điện tử</option>
+                </select>
+            </div>
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="image">Thêm ảnh bằng liên kết: ( tối đa 3 liên kết )</label>
+                <input type="text" class="form-control link-image" id="image" name="image" placeholder="Link ảnh 1">
+                <input type="text" class="form-control link-image" id="image1" name="image1" placeholder="Link ảnh 2">
+                <input type="text" class="form-control link-image" id="image2" name="image2" placeholder="Link ảnh 3">
+            </div>
+            <p id="them-link" style="color: rgb(0 165 236); font-size: 15px; margin-left: 5px;"> <i class="fa fa-plus" aria-hidden="true"></i> Thêm link</p>
+            <div class="item-form">
+                <label style="font-family:'Segoe UI'" for="formFile">Thêm ảnh từ máy của bạn: ( tối đa 3 ảnh ) </label>
+                <input type="file" class="form-control" name="images" id="formFile"  multiple>
+            </div>
+            <button style="font-family:'Segoe UI'" type="submit"  id="btnCreateGift" class="btn btn-primary">Thêm quà tặng</button>
+        </form>
     </div>
 </div>
 
@@ -58,7 +67,6 @@
             var typeFile = files.files[i].name.split(".")[lengthFile.length - 1];
 
             if( typeArray.includes(typeFile) === false) {
-              //  alert("Vui lòng chọn file là hình ảnh")
                 $("#noti-no-change").html("Vui lòng chọn file là hình ảnh")
                 var i = 0;
                 var setTime1 = function () {
@@ -78,7 +86,6 @@
             
         }
         if(files.files.length > 3) {
-            //alert("Vui lòng chỉ chọn 3 file")
             $("#noti-no-change").html("Vui lòng chỉ chọn nhiều nhất 3 ảnh")
                 var i = 0;
                 var setTime1 = function () {
@@ -123,7 +130,6 @@
 
         e.preventDefault();
         if ($('#name').val() === '') {
-          // alert("Vui lòng điền tên quà tặng")
             $("#noti-no-change").html("Vui lòng điền tên quà tặng")
                 var i = 0;
                 var setTime1 = function () {
@@ -140,7 +146,6 @@
                 }, 100)
         }
         else if ($('#description').val() === '') {
-           // alert("Vui lòng điền mô tả")
             $("#noti-no-change").html("Vui lòng điền mô tả")
                 var i = 0;
                 var setTime1 = function () {
@@ -157,7 +162,6 @@
                 }, 100)
         }
         else if ($('#author').val() === '') {
-            //alert("Vui lòng điền tên người tặng")
             $("#noti-no-change").html("Vui lòng điền tên người tặng")
                 var i = 0;
                 var setTime1 = function () {
@@ -174,7 +178,6 @@
                 }, 100)
         }
         else if ( tongsoImage === 0) {
-           // alert("Vui lòng chọn ít nhất 1 hình ảnh")
            $("#noti-no-change").html("Vui lòng chọn ít nhất 1 hình ảnh")
                 var i = 0;
                 var setTime1 = function () {
@@ -208,4 +211,19 @@
             $('#formCreateGift').submit()
         }
     })
+
+
+// Design input Range
+    const
+    range = document.getElementById('range'),
+    rangeV = document.getElementById('rangeV'),
+    setValue = ()=>{
+        const
+        newValue = Number( (range.value - range.min) * 100 / (range.max - range.min) ),
+        newPosition = 10 - (newValue * 0.2);
+        rangeV.innerHTML = `<span>${range.value}%</span>`;
+        rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+    };
+    document.addEventListener("DOMContentLoaded", setValue);
+    range.addEventListener('input', setValue);
 </script>

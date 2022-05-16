@@ -1,18 +1,19 @@
 <div id="login">
     <div id="login-fail" style="display: none" class="alert alert-danger"></div>
-    <h1 class="welcome-login">WELCOME TO <span class="vanlang-login" style="color: white">VAN LANG GIFTS</span></h1>
+    <h1 class="welcome-login"><span class="vanlang-login" style="color: white">VAN LANG GIFTS</span></h1>
     <div class="login-wrap">
-        <h2 class="text-login">LOGIN</h2>
+        <h2 class="text-login">ĐĂNG NHẬP</h2>
         <div class="form-group">
-            <label class="label-login" for="exampleInputEmail1">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter username">
+            <label class="label-login" for="exampleInputEmail1">Tên đăng nhập</label>
+            <input type="text" class="form-control" id="username" placeholder="Điền tên đăng nhập">
         </div>
         <div class="form-group">
-            <label class="label-login" for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password">
+            <label class="label-login" for="exampleInputPassword1">Mật khẩu</label>
+            <input type="password" class="form-control" id="password" placeholder="Điền mật khẩu">
         </div>
-        <button type="submit" class="btn-login btn-primary" id="buttonEnter" onclick="gotoLogin()">LOGIN</button>
-        <a class="link-register" href="/auth/register"> Register </a>
+        <button type="submit" class="btn-login btn-primary" id="buttonEnter" onclick="gotoLogin()">Đăng nhập</button>
+        <a class="link-register" href="/auth/register"> Đăng kí </a> <br>
+        <a class="link-register" href="/auth/forgot"> Quên mật khẩu </a>
     </div>
 </div>
 
@@ -75,7 +76,7 @@
                 setCookie('accessToken', data.accessToken, 1);
                 setCookie('refreshToken', data.refreshToken, 1);
                 if (data.accessToken !== undefined) {
-                    window.location.href = "/homepage"   //home
+                    window.location.href = "/homepage"
                 }
             })
             .catch(err => {

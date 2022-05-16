@@ -26,5 +26,3 @@ export function upload(file) {
     return s3.upload(uploadParams).promise();
 }
 exports.uploadFile = uploadFile;
-
-//downloads a file from s3
