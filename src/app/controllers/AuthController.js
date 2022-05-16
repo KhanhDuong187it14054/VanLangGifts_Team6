@@ -57,14 +57,6 @@ const AuthController = {
                 format[13],
                 format[14],
             );
-            for (var i = 0; i < format.length; i++) {
-                // if( req.body.username.includes(format[i]) ){
-                //     return res.json({
-                //         message: 'Tên đăng nhập chỉ chứa chữ thường',
-                //     })
-                // }
-                console.log(format[i]);
-            }
             if (req.body.email === '') {
                 return res.json({
                     message: 'Vui lòng điền Email',
@@ -88,12 +80,26 @@ const AuthController = {
                     message: 'Tên đăng nhập ít nhất 6 kí tự',
                 });
             }
+            for (var i = 0; i < format.length; i++) {
+                if (req.body.username.includes(format[i])) {
+                    return res.json({
+                        message: 'Tên đăng nhập không được chứa kí tự đặc biệt',
+                    });
+                }
+                console.log(format[i]);
+            }
 
             if (req.body.password === '') {
                 return res.json({
                     message: 'Vui lòng điền mật khẩu',
                 });
             }
+            if (req.body.password.length < 6) {
+                return res.json({
+                    message: 'Mật khẩu phải dài hơn 6 kí tự',
+                });
+            }
+
             if (req.body.confirmPassword === '') {
                 return res.json({
                     message: 'Vui lòng điền xác nhận mật khẩu',
@@ -179,25 +185,52 @@ const AuthController = {
         }
     },
 
+    changePassword: async (req, res, next) => {
+        try {
+            res.render('auth/changePassword', {
+                email: req.query.email,
+            });
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+
     sendPassword: async (req, res, next) => {
         try {
-            let transporter = nodeMailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: 'khanhduong2t2@gmail.com',
-                    pass: 'sciyolwwrmpohojn',
-                },
-            });
-            const link = process.env.APP_URL;
-            const email = req.body.email;
-            await transporter.sendMail({
-                from: 'khanhduong2t2@gmail.com',
-                to: email,
-                subject: 'Welcom to VanLangGift',
-                text: 'Hello world ?',
-                html: `<b><a href="${link}/auth/get-password?email=${email}">Lấy lại mật khẩu</a></b>`,
-            });
-            res.render('auth/notification2');
+            var validRegex =
+                /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if (req.body.email === '') {
+                return res.json({
+                    message: 'Vui lòng điền Email',
+                });
+            } else if (
+                !req.body.email.match(validRegex) ||
+                !req.body.email.includes('@gmail.com')
+            ) {
+                return res.json({
+                    message: 'Email của bạn không hợp lệ',
+                });
+            } else {
+                let transporter = nodeMailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'khanhduong2t2@gmail.com',
+                        pass: 'sciyolwwrmpohojn',
+                    },
+                });
+                const link = process.env.APP_URL;
+                const email = req.body.email;
+                await transporter.sendMail({
+                    from: 'khanhduong2t2@gmail.com',
+                    to: email,
+                    subject: 'Welcom to VanLangGift',
+                    text: 'Hello world ?',
+                    html: `<b><a href="${link}/auth/get-password?email=${email}">Lấy lại mật khẩu</a></b>`,
+                });
+                return res.json({
+                    message: '',
+                });
+            }
         } catch (err) {
             res.status(500).json(err);
         }
@@ -215,13 +248,36 @@ const AuthController = {
 
     setPassword: async (req, res, next) => {
         try {
-            const salt = await bcrypt.genSalt(10);
-            const hashed = await bcrypt.hash(req.body.password, salt);
-            const user = await User.updateOne(
-                { email: req.query.email },
-                { password: hashed },
-            );
-            res.render('auth/notification3');
+            if (req.body.password === '') {
+                return res.json({
+                    message: 'Vui lòng điền mật khẩu',
+                });
+            }
+            if (req.body.password.length < 6) {
+                return res.json({
+                    message: 'Mật khẩu phải dài hơn 6 kí tự',
+                });
+            }
+            if (req.body.confirmPassword === '') {
+                return res.json({
+                    message: 'Vui lòng điền xác thực mật khẩu',
+                });
+            }
+            if (req.body.password != req.body.confirmPassword) {
+                return res.json({
+                    message: 'Mật khẩu xác nhận không giống. Vui lòng nhập lại',
+                });
+            } else {
+                const salt = await bcrypt.genSalt(10);
+                const hashed = await bcrypt.hash(req.body.password, salt);
+                const user = await User.updateOne(
+                    { email: req.query.email },
+                    { password: hashed },
+                );
+                return res.json({
+                    message: '',
+                });
+            }
         } catch (err) {
             res.status(500).json(err);
         }
@@ -229,6 +285,14 @@ const AuthController = {
 
     notification: async (req, res, next) => {
         res.render('auth/notification');
+    },
+
+    notification2: async (req, res, next) => {
+        res.render('auth/notification2');
+    },
+
+    notification3: async (req, res, next) => {
+        res.render('auth/notification3');
     },
 
     // [GET] /auth/login
@@ -290,7 +354,8 @@ const AuthController = {
                     });
                 } else {
                     return res.json({
-                        message: 'Tài khoản không tồn tại !!!',
+                        message:
+                            'Tài khoản không tồn tại hoặc chưa được xác thực !',
                     });
                 }
             } else {

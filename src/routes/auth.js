@@ -17,8 +17,11 @@ router.post(
 );
 
 router.get('/notification', authController.notification);
+router.get('/notification2', authController.notification2);
+router.get('/notification3', authController.notification3);
 router.get('/verify', authController.verify);
 router.get('/forgot', authController.forgot);
+router.get('/change-password', authController.changePassword);
 router.post('/send-password', authController.sendPassword);
 router.get('/get-password', authController.getPassword);
 router.post('/set-password', authController.setPassword);

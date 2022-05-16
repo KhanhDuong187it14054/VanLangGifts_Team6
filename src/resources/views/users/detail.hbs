@@ -2,6 +2,7 @@
   <div class="alert alert-danger" id="noti-no-change" style="display: none">
    Bạn chưa thay đổi thông tin nào !
   </div>
+  <div id="login-fail" style="display: none" class="alert alert-danger"></div>
   <div class="wrap-user-detail">
     <div class="detail-left">
     <h2>MY PROFILE</h2>
@@ -10,9 +11,11 @@
     {{else}}
     <img src="https://icon-library.com/images/user-icon/user-icon-14.jpg" alt="user images" />
     {{/if}}
+    {{!-- <a class="link-change-password" href="/auth/change-password?email={{email}}"> Thay đổi mật khẩu </a> --}}
+    <a class="link-change-password" onClick="gotoChangePass()" style="color: rgb(0, 157, 255); cursor: pointer"> Thay đổi mật khẩu </a>
     </div>
 
-    <form class="form-user-detail" method="POST" action="/users/update/{{username}}?_method=PUT">
+    <form id="form-update" style="display: block" class="form-user-detail" method="POST" action="/users/update/{{username}}?_method=PUT">
       <div class="item-form">
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
         <label for="email">Email</label>
@@ -64,6 +67,21 @@
 
       <button type="submit" id="buttonUpdateInfo" class="btn btn-primary btn-update-info">Update</button>
     </form>
+    
+    <div style="display: none" id="wrap-change-password" class="form-user-detail" >
+      <div id="notification-verify-detail">
+            <p id="user-email" style="display: none">{{email}}</p>
+            {{!-- <form action="/auth/set-password?email={{email}}" method="POST"> --}}
+            <p style="color: rgb(0, 157, 255); cursor: pointer" onclick="gotoUpdateUser()"> <i class="fa fa-angle-left" aria-hidden="true"></i> Quay lại</p>
+                <h2 class="text-get-password" style="font-size: 25px">Thay đổi mật khẩu</h2>
+                <label for="password" style="margin-left: 58px;">Mật khẩu mới:</label>
+                <input type="password" id="password" name="password" style="width: 275px; padding-left: 8px;"> </br>
+                <label for="confirmPassword" style="margin-left: 58px;">Xác thực mật khẩu:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" style="width: 275px; padding-left: 8px; margin-top: 15px;"> </br>
+                <input type="submit" id="btnChangePassword"  value="Gửi" onclick="gotoGetPassword()" style="margin-right: 222px; ">
+            {{!-- </form> --}}
+        </div>
+    </div>
 
   </div>
 </div>
@@ -104,4 +122,55 @@
       }, 100)
     }
   })
+
+  function gotoGetPassword() {
+        var userEmail = document.getElementById('user-email').innerHTML;
+         $.ajax({
+            url: '/auth/set-password?email=' + userEmail,
+            type: 'POST',
+            data: {
+                password: $('#password').val(),
+                confirmPassword: $('#confirmPassword').val(),
+            }
+        })
+        .then(data => {
+            if (data.message === "") {
+                window.location.href = "/auth/notification3"
+            } else {
+                $('#login-fail').html('');
+                var itemLi = $(`
+                    <strong>${data.message}</strong>
+                `)
+                $('#login-fail').append(itemLi);
+                if (data.message) {
+                    var i = 0;
+                    var setTime1 = function () {
+                        $("#login-fail").hide();
+                    }
+
+                    var setTime = setInterval(() => {
+                        i++;
+                        $("#login-fail").show();
+                        if (i === 30) {
+                            clearInterval(setTime)
+                            setTime1();
+                        }
+                    }, 100)
+                }
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    function gotoChangePass() {
+      $('#form-update').hide(1000);
+      $('#wrap-change-password').show(1000);
+    }
+
+    function gotoUpdateUser() {
+      $('#form-update').show(1000);
+      $('#wrap-change-password').hide(1000);
+    }
 </script>
