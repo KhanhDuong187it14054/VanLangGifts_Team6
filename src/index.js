@@ -12,6 +12,7 @@ const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
+const nodeMailer = require('nodemailer');
 const mongoose = require('mongoose');
 const route = require('./routes');
 const dotenv = require('dotenv');

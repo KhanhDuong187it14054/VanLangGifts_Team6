@@ -7,7 +7,7 @@ var path = require('path');
 const { mongooseToObject } = require('../../util/mongoose');
 
 //Verify Email
-const nodeMailer = require('nodeMailer');
+var nodeMailer = require('nodemailer');
 require('dotenv/config');
 
 const AuthController = {

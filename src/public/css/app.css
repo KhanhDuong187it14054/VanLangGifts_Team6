@@ -1230,12 +1230,12 @@ h1 {
 #btnCreateGift:hover {
   background-color: #f90000; }
 
-input[type=range] {
+input[type='range'] {
   -webkit-appearance: none;
   margin: 20px 0;
   width: 100%; }
 
-input[type=range]::-webkit-slider-runnable-track {
+input[type='range']::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
@@ -1245,7 +1245,7 @@ input[type=range]::-webkit-slider-runnable-track {
   background-size: 100%;
   background-repeat: no-repeat; }
 
-input[type=range]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -1279,7 +1279,7 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 6px; }
 
 .range-value span:before {
-  content: "";
+  content: '';
   position: absolute;
   width: 0;
   height: 0;
@@ -1561,10 +1561,10 @@ input[type=range]::-webkit-slider-thumb {
   background-color: #ccc; }
 
 .container-sent input:checked ~ .checkmark {
-  background-color: #2196F3; }
+  background-color: #2196f3; }
 
 .checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none; }
 
