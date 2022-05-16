@@ -25,5 +25,6 @@ router.get('/change-password', authController.changePassword);
 router.post('/send-password', authController.sendPassword);
 router.get('/get-password', authController.getPassword);
 router.post('/set-password', authController.setPassword);
+router.post('/change-password', authController.changePassword);
 
 module.exports = router;

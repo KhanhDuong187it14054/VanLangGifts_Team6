@@ -73,12 +73,12 @@
             <p id="user-email" style="display: none">{{email}}</p>
             {{!-- <form action="/auth/set-password?email={{email}}" method="POST"> --}}
             <p style="color: rgb(0, 157, 255); cursor: pointer" onclick="gotoUpdateUser()"> <i class="fa fa-angle-left" aria-hidden="true"></i> Quay lại</p>
-                <h2 class="text-get-password" style="font-size: 25px">Thay đổi mật khẩu</h2>
+                <h2 class="text-get-password" style="font-size: 25px; margin-left: 20px;">Thay đổi mật khẩu</h2>
                 <label for="password" style="margin-left: 58px;">Mật khẩu mới:</label>
                 <input type="password" id="password" name="password" style="width: 275px; padding-left: 8px;"> </br>
                 <label for="confirmPassword" style="margin-left: 58px;">Xác thực mật khẩu:</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" style="width: 275px; padding-left: 8px; margin-top: 15px;"> </br>
-                <input type="submit" id="btnChangePassword"  value="Gửi" onclick="gotoGetPassword()" style="margin-right: 222px; ">
+                <input type="submit" id="btnChangePassword"  value="Gửi" onclick="gotoGetPassword()" style="margin-right: 173px; ">
             {{!-- </form> --}}
         </div>
     </div>
@@ -126,7 +126,7 @@
   function gotoGetPassword() {
         var userEmail = document.getElementById('user-email').innerHTML;
          $.ajax({
-            url: '/auth/set-password?email=' + userEmail,
+            url: '/auth/change-password?email=' + userEmail,
             type: 'POST',
             data: {
                 password: $('#password').val(),
@@ -135,7 +135,7 @@
         })
         .then(data => {
             if (data.message === "") {
-                window.location.href = "/auth/notification3"
+                window.location.href = "/users/detail"
             } else {
                 $('#login-fail').html('');
                 var itemLi = $(`
@@ -156,6 +156,9 @@
                             setTime1();
                         }
                     }, 100)
+
+                    $('#password').val("")
+                    $('#confirmPassword').val("")
                 }
             }
         })

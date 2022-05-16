@@ -283,6 +283,43 @@ const AuthController = {
         }
     },
 
+    changePassword: async (req, res, next) => {
+        try {
+            if (req.body.password === '') {
+                return res.json({
+                    message: 'Vui lòng điền mật khẩu',
+                });
+            }
+            if (req.body.password.length < 6) {
+                return res.json({
+                    message: 'Mật khẩu phải dài hơn 6 kí tự',
+                });
+            }
+            if (req.body.confirmPassword === '') {
+                return res.json({
+                    message: 'Vui lòng điền xác thực mật khẩu',
+                });
+            }
+            if (req.body.password != req.body.confirmPassword) {
+                return res.json({
+                    message: 'Mật khẩu xác nhận không giống. Vui lòng nhập lại',
+                });
+            } else {
+                const salt = await bcrypt.genSalt(10);
+                const hashed = await bcrypt.hash(req.body.password, salt);
+                const user = await User.updateOne(
+                    { email: req.query.email },
+                    { password: hashed },
+                );
+                return res.json({
+                    message: 'Đổi mật khẩu thành công',
+                });
+            }
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+
     notification: async (req, res, next) => {
         res.render('auth/notification');
     },
