@@ -69,11 +69,56 @@ const UserController = {
 
     updateDetail: async (req, res, next) => {
         try {
+            const number = parseInt(req.body.phone);
+            var format = [
+                '`',
+                '!',
+                '@',
+                '#',
+                '$',
+                '%',
+                '^',
+                '&',
+                '*',
+                '(',
+                ')',
+                '-',
+                '_',
+                '+',
+                '=',
+                ':',
+                ';',
+                '"',
+                "'",
+                '<',
+                ',',
+                '>',
+                '.',
+                '?',
+                '/',
+                '|',
+                '\\',
+            ];
+            for (var i = 0; i < format.length; i++) {
+                if (req.body.name.includes(format[i])) {
+                    return res.json({
+                        message:
+                            'Tên người dùng không được chứa kí tự đặc biệt !',
+                    });
+                }
+            }
+            if (req.body.phone && !(number == req.body.phone)) {
+                return res.json({
+                    message: 'Số điện thoại của bạn chưa đúng !',
+                });
+            }
             const newInfo = await Info.updateOne(
-                { username: req.params.username },
+                { username: req.query.username },
                 req.body,
             );
-            return res.redirect('back');
+            return res.json({
+                message: 'Cập nhật thành công',
+            });
         } catch (err) {
             res.status(500).json(err);
         }

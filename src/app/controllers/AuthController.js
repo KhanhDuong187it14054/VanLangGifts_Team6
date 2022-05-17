@@ -138,14 +138,14 @@ const AuthController = {
                 let transporter = nodeMailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: 'khanhduong2t2@gmail.com',
-                        pass: 'sciyolwwrmpohojn',
+                        user: 'vanlang9ifts@gmail.com',
+                        pass: 'tzpchelypepgteew',
                     },
                 });
                 const email = req.body.email;
                 const link = process.env.APP_URL;
                 await transporter.sendMail({
-                    from: 'khanhduong2t2@gmail.com',
+                    from: 'vanlang9ifts@gmail.com',
                     to: email,
                     subject: 'Welcom to VanLangGift',
                     text: 'Hello world ?',
@@ -214,14 +214,14 @@ const AuthController = {
                 let transporter = nodeMailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: 'khanhduong2t2@gmail.com',
-                        pass: 'sciyolwwrmpohojn',
+                        user: 'vanlang9ifts@gmail.com',
+                        pass: 'tzpchelypepgteew',
                     },
                 });
                 const link = process.env.APP_URL;
                 const email = req.body.email;
                 await transporter.sendMail({
-                    from: 'khanhduong2t2@gmail.com',
+                    from: 'vanlang9ifts@gmail.com',
                     to: email,
                     subject: 'Welcom to VanLangGift',
                     text: 'Hello world ?',
