@@ -59,7 +59,7 @@ const AuthController = {
             );
             if (req.body.email === '') {
                 return res.json({
-                    message: 'Vui lòng điền Email',
+                    message: 'Vui lòng điền đầy đủ thông tin đăng kí',
                 });
             }
             if (
@@ -72,7 +72,7 @@ const AuthController = {
             }
             if (req.body.username === '') {
                 return res.json({
-                    message: 'Vui lòng điền tên đăng nhập',
+                    message: 'Vui lòng điền đầy đủ thông tin đăng kí',
                 });
             }
             if (req.body.username.length < 6) {
@@ -91,7 +91,7 @@ const AuthController = {
 
             if (req.body.password === '') {
                 return res.json({
-                    message: 'Vui lòng điền mật khẩu',
+                    message: 'Vui lòng điền đầy đủ thông tin đăng kí',
                 });
             }
             if (req.body.password.length < 6) {
@@ -102,7 +102,7 @@ const AuthController = {
 
             if (req.body.confirmPassword === '') {
                 return res.json({
-                    message: 'Vui lòng điền xác nhận mật khẩu',
+                    message: 'Vui lòng điền đầy đủ thông tin đăng kí',
                 });
             }
 
