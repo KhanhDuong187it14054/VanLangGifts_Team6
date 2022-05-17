@@ -52,8 +52,8 @@
     var dataa;
     $('#wrapper-chat').hide();
     $('#no-friend').hide()
-    // var socket = io("http://localhost:1104");
-    var socket = io("https://vanlanggifts.herokuapp.com");
+     var socket = io("http://localhost:1104");
+    // var socket = io("https://vanlanggifts.herokuapp.com");
 
     var soLuongFriend = 0;
     $(document).ready(function() {
@@ -119,8 +119,8 @@
                 <br />
                 Phone: <span id="conversationPhone">` + phone + `</span>
                 <br />
-                <span><a id="conversationInstagram" href="`+ instagram +`"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
-                <span><a id="conversationFacebook" href="` + facebook + `"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></span>
+                <span style="display: none"><a id="conversationInstagram" href="`+ instagram +`"><i class="fa fa-instagram" aria-hidden="true"></i></a></span>
+                <span style="display: none"><a id="conversationFacebook" href="` + facebook + `"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></span>
             `)
 
             $("#chatBoxTop").html("")
