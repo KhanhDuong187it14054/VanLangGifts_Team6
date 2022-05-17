@@ -145,7 +145,8 @@ const AuthController = {
                     },
                 });
                 const email = req.body.email;
-                const link = process.env.APP_URL;
+                //   const link = process.env.APP_URL;
+                const link = 'https://vanlanggifts.herokuapp.com/';
                 await transporter.sendMail({
                     from: 'vanlang9ifts@gmail.com',
                     to: email,
@@ -343,12 +344,12 @@ const AuthController = {
         try {
             if (req.body.username === '') {
                 return res.json({
-                    message: 'Vui lòng điền Username',
+                    message: 'Vui lòng điền Tên đăng nhập',
                 });
             }
             if (req.body.password === '') {
                 return res.json({
-                    message: 'Vui lòng điền Password',
+                    message: 'Vui lòng điền Mật khẩu',
                 });
             }
             const data = await User.findOne({
@@ -368,7 +369,7 @@ const AuthController = {
             if (!validPassword) {
                 return res.json({
                     message:
-                        'Tài khoản hoặc mật khẩu đã sai. Vui lòng nhập lại',
+                        'Tài khoản hoặc mật khẩu đã sai ! Vui lòng nhập lại',
                 });
             }
 
@@ -394,7 +395,7 @@ const AuthController = {
                 } else {
                     return res.json({
                         message:
-                            'Tài khoản không tồn tại hoặc chưa được xác thực !',
+                            'Tài khoản hoặc mật khẩu đã sai ! Vui lòng nhập lại',
                     });
                 }
             } else {
