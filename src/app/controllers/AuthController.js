@@ -115,11 +115,13 @@ const AuthController = {
 
             if (data2) {
                 return res.json({
-                    message: 'Email đã được sử dụng. Vui lòng đăng kí lại',
+                    message:
+                        'Email đã được sử dụng. Vui lòng sử dụng email khác',
                 });
             } else if (data) {
                 return res.json({
-                    message: 'Tài khoản đã tồn tại. Vui lòng đăng kí lại',
+                    message:
+                        'Tên đăng nhập đã được sử dụng. Vui lòng sử dụng tên khác',
                 });
             } else if (req.body.password != req.body.confirmPassword) {
                 return res.json({
