@@ -221,7 +221,8 @@ const AuthController = {
                         pass: 'tzpchelypepgteew',
                     },
                 });
-                const link = process.env.APP_URL;
+                // const link = process.env.APP_URL;
+                const link = 'https://vanlanggifts.herokuapp.com';
                 const email = req.body.email;
                 await transporter.sendMail({
                     from: 'vanlang9ifts@gmail.com',

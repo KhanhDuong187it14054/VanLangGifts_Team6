@@ -2411,7 +2411,8 @@ input[type='range']::-webkit-slider-thumb {
   padding-top: 5px; }
 
 #notification-verify input {
-  width: 225px; }
+  width: 225px;
+  padding-left: 5px; }
 
 #notification-verify label {
   width: 155px; }
@@ -2492,3 +2493,14 @@ input[type='range']::-webkit-slider-thumb {
   font-weight: 600;
   font-family: 'Open Sans', sans-serif;
   margin-bottom: 24px; }
+
+#btn-change-password {
+  width: 70px !important;
+  float: right;
+  margin-right: 16px;
+  margin-top: 9px;
+  background-color: #00c6ff;
+  border: none;
+  border-radius: 3px;
+  height: 33px;
+  color: white; }
