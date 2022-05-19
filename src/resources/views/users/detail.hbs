@@ -75,6 +75,8 @@
             {{!-- <form action="/auth/set-password?email={{email}}" method="POST"> --}}
             <p style="color: rgb(0, 157, 255); cursor: pointer" onclick="gotoUpdateUser()"> <i class="fa fa-angle-left" aria-hidden="true"></i> Cập nhật thông tin </p>
                 <h2 class="text-get-password" style="font-size: 25px; margin-left: 20px;">Thay đổi mật khẩu</h2>
+                <label for="oldPassword" style="margin-left: 58px;">Mật khẩu cũ:</label>
+                <input type="password" id="oldPassword" name="oldPassword" style="width: 275px; padding-left: 8px; margin-bottom: 20px"> </br>
                 <label for="password" style="margin-left: 58px;">Mật khẩu mới:</label>
                 <input type="password" id="password" name="password" style="width: 275px; padding-left: 8px;"> </br>
                 <label for="confirmPassword" style="margin-left: 58px;">Xác thực mật khẩu:</label>
@@ -130,6 +132,7 @@
             url: '/auth/change-password?email=' + userEmail,
             type: 'POST',
             data: {
+                oldPassword: $('#oldPassword').val(),
                 password: $('#password').val(),
                 confirmPassword: $('#confirmPassword').val(),
             }
@@ -158,6 +161,7 @@
                         }
                     }, 100)
 
+                    $('#oldPassword').val("")
                     $('#password').val("")
                     $('#confirmPassword').val("")
                 }

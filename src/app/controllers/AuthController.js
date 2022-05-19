@@ -289,6 +289,17 @@ const AuthController = {
 
     changePassword: async (req, res, next) => {
         try {
+            const getUser = await User.find({ email: req.query.email });
+
+            const passHash = await bcrypt.compareSync(
+                req.body.oldPassword,
+                getUser[0].password,
+            );
+            if (!passHash) {
+                return res.json({
+                    message: 'Mật khẩu cũ không chính xác !',
+                });
+            }
             if (req.body.password === '') {
                 return res.json({
                     message: 'Vui lòng điền mật khẩu',

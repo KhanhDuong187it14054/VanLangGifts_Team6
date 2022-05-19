@@ -109,7 +109,7 @@ const UserController = {
             }
             if (req.body.phone && !(number == req.body.phone)) {
                 return res.json({
-                    message: 'Số điện thoại của bạn chưa đúng !',
+                    message: 'Số điện thoại của bạn không hợp lệ !',
                 });
             }
             const newInfo = await Info.updateOne(
